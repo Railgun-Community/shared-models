@@ -1,0 +1,25 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "node_modules/.bin": true,
+    "node_modules/@ethersproject": true,
+    "node_modules/aes-js": true,
+    "node_modules/bech32": true,
+    "node_modules/bn.js": true,
+    "node_modules/brorand": true,
+    "node_modules/elliptic": true,
+    "node_modules/hash.js": true,
+    "node_modules/hmac-drbg": true,
+    "node_modules/inherits": true,
+    "node_modules/js-sha3": true,
+    "node_modules/minimalistic-assert": true,
+    "node_modules/minimalistic-crypto-utils": true,
+    "node_modules/scrypt-js": true,
+    "node_modules/ws": true
+  }
+}
