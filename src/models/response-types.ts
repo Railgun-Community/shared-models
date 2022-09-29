@@ -141,16 +141,15 @@ export type ValidateCachedProvedTransactionResponse = {
 
 export type Pbkdf2Response = string;
 
-export declare type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount & {
+export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount & {
   recipientAddress?: string;
   walletSource?: string;
   memoText?: string;
 };
 
-export declare type RailgunWalletReceiveTokenAmount =
-  RailgunWalletTokenAmount & {
-    memoText?: string;
-  };
+export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount & {
+  memoText?: string;
+};
 
 export type TransactionHistoryItem = {
   txid: string;

@@ -5,6 +5,7 @@
     "declaration": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "strict": true,
     "types": ["node"],

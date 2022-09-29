@@ -1,6 +1,7 @@
 {
   "name": "@railgun-community/shared-models",
   "version": "1.0.3",
+  "license": "MIT",
   "files": [
     "dist/**/*"
   ],
