@@ -1,35 +1,16 @@
-import * as ArtifactModels from './models/artifact';
-import * as BlockedAddressModels from './models/blocked-address';
-import * as FallbackProviderModels from './models/fallback-provider';
-import * as FeeTokenModels from './models/fee-token';
-import * as FunctionTypesModels from './models/function-types';
-import * as MerkletreeScanModels from './models/merkletree-scan';
-import * as NetworkConfigModels from './models/network-config';
-import * as ProofModels from './models/proof';
-import * as ResponseTypesModels from './models/response-types';
-import * as TransactionModels from './models/transaction';
-import * as WalletModels from './models/wallet';
+export * from './models/artifact';
+export * from './models/blocked-address';
+export * from './models/fallback-provider';
+export * from './models/fee-token';
+export * from './models/function-types';
+export * from './models/merkletree-scan';
+export * from './models/network-config';
+export * from './models/proof';
+export * from './models/response-types';
+export * from './models/transaction';
+export * from './models/wallet';
 
-import * as CompareUtils from './utils/compare';
-import * as ErrorUtils from './utils/error';
-import * as GasUtils from './utils/gas';
-import * as SerializerUtils from './utils/serializer';
-
-export default {
-  ...ArtifactModels,
-  ...BlockedAddressModels,
-  ...FallbackProviderModels,
-  ...FeeTokenModels,
-  ...FunctionTypesModels,
-  ...MerkletreeScanModels,
-  ...NetworkConfigModels,
-  ...ProofModels,
-  ...ResponseTypesModels,
-  ...TransactionModels,
-  ...WalletModels,
-
-  ...CompareUtils,
-  ...ErrorUtils,
-  ...GasUtils,
-  ...SerializerUtils,
-};
+export * from './utils/compare';
+export * from './utils/error';
+export * from './utils/gas';
+export * from './utils/serializer';

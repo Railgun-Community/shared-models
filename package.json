@@ -6,6 +6,9 @@
   "files": [
     "dist/**/*"
   ],
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "peerDependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "@ethersproject/providers": "^5.7.1"
