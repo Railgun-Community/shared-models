@@ -45,7 +45,6 @@ export type Network = {
   deploymentBlock?: RailgunProxyDeploymentBlock;
   isTestNetwork?: boolean;
   feesSerialized?: FeesSerialized;
-  isEVM?: boolean;
   evmGasType: EVMGasType;
   shouldQuickSync: boolean;
 };
@@ -115,7 +114,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     proxyContract: RailgunProxyContract.Ethereum,
     relayAdaptContract: RelayAdaptContract.Ethereum,
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
-    isEVM: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
@@ -137,7 +135,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     proxyContract: RailgunProxyContract.BNBSmartChain,
     relayAdaptContract: RelayAdaptContract.BNBSmartChain,
     deploymentBlock: RailgunProxyDeploymentBlock.BNBSmartChain,
-    isEVM: true,
     evmGasType: EVMGasType.Type0,
     shouldQuickSync: true,
   },
@@ -159,7 +156,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     proxyContract: RailgunProxyContract.PolygonPOS,
     relayAdaptContract: RelayAdaptContract.PolygonPOS,
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
-    isEVM: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
@@ -182,7 +178,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     relayAdaptContract: RelayAdaptContract.Ropsten,
     deploymentBlock: RailgunProxyDeploymentBlock.Ropsten,
     isTestNetwork: true,
-    isEVM: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
@@ -201,7 +196,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
   //   proxyContract: '', // TODO: Add Goerli rail contract address.
   //   isTestNetwork: true,
   //   deploymentBlock: 0,
-  //   isEVM: true,
   // },
   [NetworkName.HardHat]: {
     chain: {
@@ -222,7 +216,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     relayAdaptContract: RelayAdaptContract.HardHat,
     deploymentBlock: RailgunProxyDeploymentBlock.HardHat,
     isTestNetwork: true,
-    isEVM: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
