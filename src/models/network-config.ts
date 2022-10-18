@@ -47,6 +47,7 @@ export type Network = {
   feesSerialized?: FeesSerialized;
   evmGasType: EVMGasType;
   shouldQuickSync: boolean;
+  deprecated?: boolean;
 };
 
 enum RailgunProxyContract {
@@ -117,6 +118,29 @@ export const NETWORK_CONFIG: MapType<Network> = {
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
+  [NetworkName.EthereumRopsten]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 3,
+    },
+    name: NetworkName.EthereumRopsten,
+    publicName: 'Ropsten Test Network',
+    shortPublicName: 'Ropsten',
+    coingeckoId: 'ethereum',
+    baseToken: {
+      symbol: 'ETH',
+      wrappedSymbol: 'WETH',
+      wrappedAddress: BaseTokenWrappedAddress.RopstenWETH,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.Ropsten,
+    relayAdaptContract: RelayAdaptContract.Ropsten,
+    deploymentBlock: RailgunProxyDeploymentBlock.Ropsten,
+    isTestNetwork: true,
+    evmGasType: EVMGasType.Type2,
+    shouldQuickSync: false,
+    deprecated: true,
+  },
   [NetworkName.BNBSmartChain]: {
     chain: {
       type: ChainType.EVM,
@@ -158,28 +182,6 @@ export const NETWORK_CONFIG: MapType<Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
-  },
-  [NetworkName.EthereumRopsten]: {
-    chain: {
-      type: ChainType.EVM,
-      id: 3,
-    },
-    name: NetworkName.EthereumRopsten,
-    publicName: 'Ropsten Test Network',
-    shortPublicName: 'Ropsten',
-    coingeckoId: 'ethereum',
-    baseToken: {
-      symbol: 'ETH',
-      wrappedSymbol: 'WETH',
-      wrappedAddress: BaseTokenWrappedAddress.RopstenWETH,
-      decimals: 18,
-    },
-    proxyContract: RailgunProxyContract.Ropsten,
-    relayAdaptContract: RelayAdaptContract.Ropsten,
-    deploymentBlock: RailgunProxyDeploymentBlock.Ropsten,
-    isTestNetwork: true,
-    evmGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
   },
   // [NetworkName.EthereumGoerli]: {
   //   chainId: 420,
