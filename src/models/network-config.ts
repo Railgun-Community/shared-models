@@ -250,9 +250,9 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
       id: 80001,
     },
     name: NetworkName.PolygonMumbai,
-    publicName: 'Görli Testnet',
-    shortPublicName: 'Görli',
-    coingeckoId: 'ethereum',
+    publicName: 'Mumbai Testnet',
+    shortPublicName: 'Mumbai',
+    coingeckoId: 'polygon-pos',
     baseToken: {
       symbol: 'MATIC',
       wrappedSymbol: 'WMATIC',
