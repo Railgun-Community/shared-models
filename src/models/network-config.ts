@@ -46,7 +46,7 @@ export type Network = {
   deprecated?: boolean;
 };
 
-enum RailgunProxyContract {
+export enum RailgunProxyContract {
   Ethereum = '0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9',
   EthereumRopsten = '0x1c2A4092e2a436d78FcdF3a178a4E1ed87f0bB8F',
   EthereumGoerli = '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
@@ -56,7 +56,7 @@ enum RailgunProxyContract {
   PolygonMumbai = '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
 }
 
-enum RelayAdaptContract {
+export enum RelayAdaptContract {
   Ethereum = '0x22af4EDBeA3De885dDa8f0a0653E6209e44e5B84',
   EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
   EthereumGoerli = '0xD147B7Dfa636a1c50A52bF6A6FE910680274eE24',
