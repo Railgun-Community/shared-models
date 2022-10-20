@@ -40,6 +40,7 @@ export type Network = {
   relayAdaptContract: RelayAdaptContract;
   deploymentBlock: RailgunProxyDeploymentBlock;
   isDevOnlyNetwork?: boolean;
+  isTestnet?: boolean;
   evmGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
@@ -133,6 +134,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     shouldQuickSync: true,
   },
   [NetworkName.EthereumRopsten]: {
+    // DEPRECATED
     chain: {
       type: ChainType.EVM,
       id: 3,
@@ -151,6 +153,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     relayAdaptContract: RelayAdaptContract.EthereumRopsten,
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumRopsten,
     isDevOnlyNetwork: true,
+    isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: false,
     deprecated: true,
@@ -173,6 +176,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.EthereumGoerli,
     relayAdaptContract: RelayAdaptContract.EthereumGoerli,
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
+    isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
@@ -259,6 +263,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     relayAdaptContract: RelayAdaptContract.PolygonMumbai,
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonMumbai,
     isDevOnlyNetwork: true,
+    isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
