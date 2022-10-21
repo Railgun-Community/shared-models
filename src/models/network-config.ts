@@ -63,7 +63,7 @@ export enum RelayAdaptContract {
   BNBChain = '0x20d868C7F1Eb706C46641ADD2f849c5DBf4dB158',
   PolygonPOS = '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC',
   Hardhat = '0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f',
-  PolygonMumbai = '0xf157372693A6536E228d7A9e4f7A588Ae21fe681',
+  PolygonMumbai = '0x8B936B018CeA1c1cc14961CAdabD36E7fe9192cD',
 }
 
 export enum RailgunProxyDeploymentBlock {
