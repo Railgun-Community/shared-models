@@ -8,7 +8,7 @@ export enum NetworkName {
   Polygon = 'Polygon',
 
   // Testnets
-  EthereumRopsten = 'Ethereum_Ropsten',
+  EthereumRopsten_DEPRECATED = 'Ethereum_Ropsten',
   EthereumGoerli = 'Ethereum_Goerli',
   PolygonMumbai = 'Polygon_Mumbai',
 
@@ -133,13 +133,13 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
-  [NetworkName.EthereumRopsten]: {
-    // DEPRECATED
+  [NetworkName.EthereumRopsten_DEPRECATED]: {
+    deprecated: true,
     chain: {
       type: ChainType.EVM,
       id: 3,
     },
-    name: NetworkName.EthereumRopsten,
+    name: NetworkName.EthereumRopsten_DEPRECATED,
     publicName: 'Ropsten Testnet',
     shortPublicName: 'Ropsten',
     coingeckoId: 'ethereum',
@@ -156,7 +156,6 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: false,
-    deprecated: true,
   },
   [NetworkName.EthereumGoerli]: {
     chain: {
@@ -176,6 +175,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.EthereumGoerli,
     relayAdaptContract: RelayAdaptContract.EthereumGoerli,
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
+    isDevOnlyNetwork: true,
     isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
