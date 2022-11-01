@@ -152,6 +152,7 @@ export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount & {
 };
 
 export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount & {
+  senderAddress?: string;
   memoText?: string;
 };
 
@@ -161,6 +162,7 @@ export type TransactionHistoryItem = {
   transferTokenAmounts: RailgunWalletSendTokenAmount[];
   changeTokenAmounts: RailgunWalletTokenAmount[];
   relayerFeeTokenAmount?: RailgunWalletTokenAmount;
+  unshieldTokenAmounts: RailgunWalletSendTokenAmount[];
   version: number;
 };
 

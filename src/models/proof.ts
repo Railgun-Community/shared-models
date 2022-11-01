@@ -1,6 +1,6 @@
 export enum ProofType {
   Transfer = 'Transfer',
-  Withdraw = 'Withdraw',
-  WithdrawBaseToken = 'WithdrawBaseToken',
+  Unshield = 'Unshield',
+  UnshieldBaseToken = 'UnshieldBaseToken',
   CrossContractCalls = 'CrossContractCalls',
 }

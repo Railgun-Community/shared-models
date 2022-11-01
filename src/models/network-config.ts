@@ -17,8 +17,8 @@ export enum NetworkName {
 }
 
 export type FeesSerialized = {
-  deposit: string;
-  withdraw: string;
+  shield: string;
+  unshield: string;
   nft: string;
 };
 
@@ -52,18 +52,18 @@ export enum RailgunProxyContract {
   EthereumGoerli = '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
   BNBChain = '0x590162bf4b50f6576a459b75309ee21d92178a10',
   PolygonPOS = '0x19b620929f97b7b990801496c3b361ca5def8c71',
-  Hardhat = '0x0165878A594ca255338adfa4d48449f69242Eb8F',
   PolygonMumbai = '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
+  Hardhat = '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
 }
 
 export enum RelayAdaptContract {
   Ethereum = '0x22af4EDBeA3De885dDa8f0a0653E6209e44e5B84',
   EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
-  EthereumGoerli = '0xD147B7Dfa636a1c50A52bF6A6FE910680274eE24',
+  EthereumGoerli = '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE',
   BNBChain = '0x20d868C7F1Eb706C46641ADD2f849c5DBf4dB158',
   PolygonPOS = '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC',
-  Hardhat = '0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f',
-  PolygonMumbai = '0x8B936B018CeA1c1cc14961CAdabD36E7fe9192cD',
+  PolygonMumbai = '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6',
+  Hardhat = '0xc5a5C42992dECbae36851359345FE25997F5C42d',
 }
 
 export enum RailgunProxyDeploymentBlock {
@@ -80,10 +80,10 @@ export enum BaseTokenWrappedAddress {
   EthereumWETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
   EthereumRopstenWETH = '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
   EthereumGoerliWETH = '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
-  HardhatWETH = '0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44', // (Hardhat) WETH
   BinanceWBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   PolygonWMATIC = '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
   PolygonMumbaiWMATIC = '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
+  HardhatWETH = '0x09635F643e140090A9A8Dcd712eD6285858ceBef', // (Hardhat) WETH
 }
 
 /**
@@ -222,28 +222,6 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
-  [NetworkName.Hardhat]: {
-    chain: {
-      type: ChainType.EVM,
-      id: 31337,
-    },
-    name: NetworkName.Hardhat,
-    publicName: 'Hardhat Testnet',
-    shortPublicName: 'Hardhat',
-    coingeckoId: '',
-    baseToken: {
-      symbol: 'ETH',
-      wrappedSymbol: 'WETH',
-      wrappedAddress: BaseTokenWrappedAddress.HardhatWETH,
-      decimals: 18,
-    },
-    proxyContract: RailgunProxyContract.Hardhat,
-    relayAdaptContract: RelayAdaptContract.Hardhat,
-    deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
-    isDevOnlyNetwork: true,
-    evmGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
-  },
   [NetworkName.PolygonMumbai]: {
     chain: {
       type: ChainType.EVM,
@@ -266,6 +244,29 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+  },
+  [NetworkName.Hardhat]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 31337,
+    },
+    name: NetworkName.Hardhat,
+    publicName: 'Hardhat Testnet',
+    shortPublicName: 'Hardhat',
+    coingeckoId: '',
+    baseToken: {
+      symbol: 'ETH',
+      wrappedSymbol: 'WETH',
+      wrappedAddress: BaseTokenWrappedAddress.HardhatWETH,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.Hardhat,
+    relayAdaptContract: RelayAdaptContract.Hardhat,
+    deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
+    isDevOnlyNetwork: true,
+    isTestnet: true,
+    evmGasType: EVMGasType.Type2,
+    shouldQuickSync: false,
   },
 };
 

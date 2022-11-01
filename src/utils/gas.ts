@@ -7,14 +7,13 @@ export const calculateGasLimit = (gasEstimate: BigNumber): BigNumber => {
   return gasEstimate.mul(12000).div(10000);
 };
 
-const calculateGasPrice = (gasDetails: TransactionGasDetails) => {
+export const calculateGasPrice = (gasDetails: TransactionGasDetails) => {
   switch (gasDetails.evmGasType) {
     case EVMGasType.Type0: {
       return gasDetails.gasPrice;
     }
     case EVMGasType.Type2: {
-      const { maxFeePerGas, maxPriorityFeePerGas } = gasDetails;
-      return maxFeePerGas.add(maxPriorityFeePerGas);
+      return gasDetails.maxFeePerGas;
     }
   }
 };
