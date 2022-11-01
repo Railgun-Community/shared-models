@@ -17,8 +17,8 @@ export enum NetworkName {
 }
 
 export type FeesSerialized = {
-  deposit: string;
-  withdraw: string;
+  shield: string;
+  unshield: string;
   nft: string;
 };
 

@@ -157,6 +157,7 @@ export type TransactionHistoryItem = {
   transferTokenAmounts: RailgunWalletSendTokenAmount[];
   changeTokenAmounts: RailgunWalletTokenAmount[];
   relayerFeeTokenAmount?: RailgunWalletTokenAmount;
+  unshieldTokenAmounts: RailgunWalletSendTokenAmount[];
   version: number;
 };
 
