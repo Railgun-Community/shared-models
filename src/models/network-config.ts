@@ -222,29 +222,6 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
-  [NetworkName.Hardhat]: {
-    chain: {
-      type: ChainType.EVM,
-      id: 31337,
-    },
-    name: NetworkName.Hardhat,
-    publicName: 'Hardhat Testnet',
-    shortPublicName: 'Hardhat',
-    coingeckoId: '',
-    baseToken: {
-      symbol: 'ETH',
-      wrappedSymbol: 'WETH',
-      wrappedAddress: BaseTokenWrappedAddress.HardhatWETH,
-      decimals: 18,
-    },
-    proxyContract: RailgunProxyContract.Hardhat,
-    relayAdaptContract: RelayAdaptContract.Hardhat,
-    deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
-    isDevOnlyNetwork: true,
-    isTestnet: true,
-    evmGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
-  },
   [NetworkName.PolygonMumbai]: {
     chain: {
       type: ChainType.EVM,
@@ -267,6 +244,29 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     evmGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+  },
+  [NetworkName.Hardhat]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 31337,
+    },
+    name: NetworkName.Hardhat,
+    publicName: 'Hardhat Testnet',
+    shortPublicName: 'Hardhat',
+    coingeckoId: '',
+    baseToken: {
+      symbol: 'ETH',
+      wrappedSymbol: 'WETH',
+      wrappedAddress: BaseTokenWrappedAddress.HardhatWETH,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.Hardhat,
+    relayAdaptContract: RelayAdaptContract.Hardhat,
+    deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
+    isDevOnlyNetwork: true,
+    isTestnet: true,
+    evmGasType: EVMGasType.Type2,
+    shouldQuickSync: false,
   },
 };
 
