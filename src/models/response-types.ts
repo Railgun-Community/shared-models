@@ -122,6 +122,10 @@ export type RailgunWalletTokenAmount = {
   amountString: string;
 };
 
+export type RailgunWalletTokenAmountRecipient = RailgunWalletTokenAmount & {
+  recipientAddress: string;
+};
+
 export type EncryptDataWithSharedKeyResponse = {
   encryptedData: [string, string];
   randomPubKey: string;
