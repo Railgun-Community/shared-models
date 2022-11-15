@@ -1,6 +1,25 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import { EVMGasType } from '../models/network-config';
+import {
+  EVMGasType,
+  NetworkName,
+  NETWORK_CONFIG,
+} from '../models/network-config';
 import { TransactionGasDetails } from '../models/response-types';
+
+export const getEVMGasTypeForTransaction = (
+  networkName: NetworkName,
+  sendWithPublicWallet: boolean,
+): EVMGasType => {
+  const { defaultEVMGasType } = NETWORK_CONFIG[networkName];
+
+  if (defaultEVMGasType === EVMGasType.Type2 && !sendWithPublicWallet) {
+    // Relayer transactions require overallBatchMinGasPrice.
+    // This is only supported by type 1 transactions.
+    return EVMGasType.Type1;
+  }
+
+  return defaultEVMGasType;
+};
 
 export const calculateGasLimit = (gasEstimate: BigNumber): BigNumber => {
   // Gas Limit: Add 20% to gas estimate.

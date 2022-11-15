@@ -41,7 +41,7 @@ export type Network = {
   deploymentBlock: RailgunProxyDeploymentBlock;
   isDevOnlyNetwork?: boolean;
   isTestnet?: boolean;
-  evmGasType: EVMGasType;
+  defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
 };
@@ -110,7 +110,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.Ethereum,
     relayAdaptContract: RelayAdaptContract.Ethereum,
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
   [NetworkName.Ethereum]: {
@@ -131,7 +131,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.Ethereum,
     relayAdaptContract: RelayAdaptContract.Ethereum,
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
   [NetworkName.EthereumRopsten_DEPRECATED]: {
@@ -155,7 +155,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumRopsten,
     isDevOnlyNetwork: true,
     isTestnet: true,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
   [NetworkName.EthereumGoerli]: {
@@ -178,7 +178,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
     isDevOnlyNetwork: true,
     isTestnet: true,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
   [NetworkName.BNBChain]: {
@@ -199,7 +199,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.BNBChain,
     relayAdaptContract: RelayAdaptContract.BNBChain,
     deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
-    evmGasType: EVMGasType.Type0,
+    defaultEVMGasType: EVMGasType.Type0,
     shouldQuickSync: true,
   },
   [NetworkName.Polygon]: {
@@ -220,7 +220,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.PolygonPOS,
     relayAdaptContract: RelayAdaptContract.PolygonPOS,
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
   [NetworkName.PolygonMumbai]: {
@@ -243,7 +243,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonMumbai,
     isDevOnlyNetwork: true,
     isTestnet: true,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
   [NetworkName.Hardhat]: {
@@ -266,7 +266,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
     isDevOnlyNetwork: true,
     isTestnet: true,
-    evmGasType: EVMGasType.Type2,
+    defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
 };
