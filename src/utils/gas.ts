@@ -9,7 +9,7 @@ export const calculateGasLimit = (gasEstimate: BigNumber): BigNumber => {
 
 export const calculateGasPrice = (gasDetails: TransactionGasDetails) => {
   switch (gasDetails.evmGasType) {
-    case EVMGasType.Type0: {
+    case EVMGasType.Type1: {
       return gasDetails.gasPrice;
     }
     case EVMGasType.Type2: {
