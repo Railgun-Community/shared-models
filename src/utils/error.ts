@@ -18,10 +18,10 @@ export const sanitizeError = (err: Error): Error => {
       return new Error('Could not connect.');
     }
     if (lowercaseMsg.includes('call revert exception')) {
-      return new Error('Possible bad token address.');
+      return new Error('Failed to connect to RPC.');
     }
     if (lowercaseMsg.includes('missing revert data')) {
-      return new Error('Possible bad address.');
+      return new Error('RPC connection error.');
     }
     if (
       lowercaseMsg.includes(
@@ -29,12 +29,12 @@ export const sanitizeError = (err: Error): Error => {
       )
     ) {
       return new Error(
-        'Something went wrong. Please make sure you have a valid balance for this transaction.',
+        'Something went wrong. Please make sure you have a valid gas balance for this transaction.',
       );
     }
     if (lowercaseMsg.includes('replacement fee too low')) {
       return new Error(
-        'Cancellation fee too low. Please increase your network fee to replace the current pending transaction.',
+        'Nonce is used in a pending transaction, and replacement fee is too low. Please increase your network fee to replace the pending transaction.',
       );
     }
     if (lowercaseMsg.includes('intrinsic gas too low')) {
@@ -43,21 +43,66 @@ export const sanitizeError = (err: Error): Error => {
       );
     }
     if (lowercaseMsg.includes('insufficient funds for intrinsic')) {
-      return new Error('Insufficient gas in signing wallet.');
+      return new Error('Insufficient gas to process transaction.');
     }
     if (lowercaseMsg.includes('nonce has already been used')) {
       return new Error(
-        'Nonce previously used: this transaction is already completed.',
+        'Nonce already used: the transaction was already completed.',
       );
     }
-    if (lowercaseMsg.includes('Error while dialing dial tcp')) {
-      return new Error('Error while dialing provider. Please try again.');
-    }
-    if (lowercaseMsg.includes('RailgunLogic: Invalid Merkle Root')) {
+    if (lowercaseMsg.includes('error while dialing dial tcp')) {
       return new Error(
-        'RailgunLogic: Invalid Merkle Root. Please try re-scanning your balances through Settings.',
+        'Error while connecting to RPC provider. Please try again.',
       );
     }
+
+    // Custom RAILGUN contract error messages
+    if (lowercaseMsg.includes('railgunsmartwallet')) {
+      if (lowercaseMsg.includes('invalid nft note value')) {
+        return new Error('RailgunSmartWallet: Invalid NFT Note Value.');
+      }
+      if (lowercaseMsg.includes('unsupported token')) {
+        return new Error(
+          'RailgunSmartWallet: Unsupported Token. This token cannot interact with the RAILGUN contract.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid note value')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Note Value. Please submit transaction with a corrected amount.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid adapt contract as sender')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Adapt Contract as Sender. Please update your frontend to current Adapt module versions.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid merkle root')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Merkle Root. Please sync your balances and try again.',
+        );
+      }
+      if (lowercaseMsg.includes('note already spent')) {
+        return new Error(
+          'RailgunSmartWallet: Note Already Spent. Please sync your balances and try again.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid note ciphertext array length')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Note Ciphertext Array Length. Please sync balances and re-prove your transaction.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid withdraw note')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Unshield Note. Please sync balances and re-prove your transaction.',
+        );
+      }
+      if (lowercaseMsg.includes('invalid snark proof')) {
+        return new Error(
+          'RailgunSmartWallet: Invalid Snark Proof. Please re-prove your transaction.',
+        );
+      }
+    }
+
     return new Error(
       validAscii(err.message).replace(
         `:${STRING_PREFIX_AFTER_UNICODE_REPLACEMENT}`,
