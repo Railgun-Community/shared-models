@@ -27,7 +27,7 @@ export type RelayerRawParamsTransact = {
   chainID: number;
   chainType: ChainType;
   feesID: string;
-  minGasPrice: Optional<string>;
+  minGasPrice: string;
   relayerViewingKey: string;
   useRelayAdapt: boolean;
   devLog: boolean;
