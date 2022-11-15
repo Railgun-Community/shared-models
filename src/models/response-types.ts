@@ -8,11 +8,11 @@ export type RailgunAPICiphertext = {
 };
 
 export type TransactionGasDetails =
-  | TransactionGasDetailsType0
+  | TransactionGasDetailsType1
   | TransactionGasDetailsType2;
 
-export type TransactionGasDetailsType0 = {
-  evmGasType: EVMGasType.Type0;
+export type TransactionGasDetailsType1 = {
+  evmGasType: EVMGasType.Type1;
   gasEstimate: BigNumber;
   gasPrice: BigNumber;
 };
@@ -25,11 +25,11 @@ export type TransactionGasDetailsType2 = {
 };
 
 export type TransactionGasDetailsSerialized =
-  | TransactionGasDetailsSerializedType0
+  | TransactionGasDetailsSerializedType1
   | TransactionGasDetailsSerializedType2;
 
-export type TransactionGasDetailsSerializedType0 = {
-  evmGasType: EVMGasType.Type0;
+export type TransactionGasDetailsSerializedType1 = {
+  evmGasType: EVMGasType.Type1;
   gasEstimateString: string;
   gasPriceString: string;
 };
