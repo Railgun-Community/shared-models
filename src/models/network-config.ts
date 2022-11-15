@@ -91,9 +91,7 @@ export enum BaseTokenWrappedAddress {
  * Type1 = EIP-1559 (maxFeePerGas and maxPriorityFeePerGas).
  */
 export enum EVMGasType {
-  // Opt for Type1 instead of Type0.
-  // Type0 = 0,
-
+  Type0 = 0,
   Type1 = 1,
   Type2 = 2,
 }
@@ -201,7 +199,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.BNBChain,
     relayAdaptContract: RelayAdaptContract.BNBChain,
     deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
-    evmGasType: EVMGasType.Type1,
+    evmGasType: EVMGasType.Type0,
     shouldQuickSync: true,
   },
   [NetworkName.Polygon]: {
