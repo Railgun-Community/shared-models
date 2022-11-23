@@ -87,8 +87,8 @@ export enum BaseTokenWrappedAddress {
 }
 
 /**
- * Type0 = non-EIP-1559 (gasPrice).
- * Type1 = EIP-1559 (maxFeePerGas and maxPriorityFeePerGas).
+ * Type0 / Type1 = non-EIP-1559 (gasPrice).
+ * Type2 = EIP-1559 (maxFeePerGas and maxPriorityFeePerGas).
  */
 export enum EVMGasType {
   Type0 = 0,
