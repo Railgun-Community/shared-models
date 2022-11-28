@@ -34,33 +34,37 @@ export const createFallbackProviderFromJsonConfig = (
   config: FallbackProviderJsonConfig,
   debugMessage?: (msg: string) => void,
 ): FallbackProvider => {
-  const providers = config.providers.map(json => {
-    const isWebsocket = json.provider.startsWith('wss');
-    const provider = isWebsocket
-      ? new WebSocketProvider(json.provider, Number(config.chainId))
-      : new StaticJsonRpcProvider(json.provider, Number(config.chainId));
+  try {
+    const providers = config.providers.map(json => {
+      const isWebsocket = json.provider.startsWith('wss');
+      const provider = isWebsocket
+        ? new WebSocketProvider(json.provider, Number(config.chainId))
+        : new StaticJsonRpcProvider(json.provider, Number(config.chainId));
 
-    if (debugMessage) {
-      provider.on('debug', (debug: ProviderDebug) => {
-        if (debug.backend && debug.backend.error) {
-          debugMessage(`Provider error: ${debug.backend.error}`);
-          debugMessage(
-            `Provider connection: ${
-              debug.backend.provider
-                ? debug.backend.provider.connection
-                : undefined
-            }`,
-          );
-        }
-      });
-    }
+      if (debugMessage) {
+        provider.on('debug', (debug: ProviderDebug) => {
+          if (debug.backend && debug.backend.error) {
+            debugMessage(`Provider error: ${debug.backend.error}`);
+            debugMessage(
+              `Provider connection: ${
+                debug.backend.provider
+                  ? debug.backend.provider.connection
+                  : undefined
+              }`,
+            );
+          }
+        });
+      }
 
-    return {
-      ...json,
-      provider,
-    };
-  });
+      return {
+        ...json,
+        provider,
+      };
+    });
 
-  const quorum = 1;
-  return new FallbackProvider(providers, quorum);
+    const quorum = 1;
+    return new FallbackProvider(providers, quorum);
+  } catch (err) {
+    throw new Error('Cannot load provider: invalid fallback provider config.');
+  }
 };
