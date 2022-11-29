@@ -42,6 +42,11 @@ export const sanitizeError = (err: Error): Error => {
         'Gas price rejected. Please select a higher gas price or resubmit.',
       );
     }
+    if (lowercaseMsg.includes('transaction underpriced')) {
+      return new Error(
+        'Gas fee too low. Please select a higher gas price and resubmit.',
+      );
+    }
     if (lowercaseMsg.includes('insufficient funds for intrinsic')) {
       return new Error('Insufficient gas to process transaction.');
     }
