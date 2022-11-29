@@ -1,10 +1,16 @@
 import { PopulatedTransaction } from '@ethersproject/contracts';
 import { parse, serialize, Transaction } from '@ethersproject/transactions';
 import { TransactionRequest } from '@ethersproject/providers';
+import { EVMGasType } from '../models/network-config';
 
 const validatePreserialize = (transaction: PopulatedTransaction) => {
   if (transaction.from) {
     throw new Error(`Cannot serialize 'from' field on transaction.`);
+  }
+  if (transaction.type === EVMGasType.Type0 && transaction.accessList) {
+    throw new Error(
+      `Cannot serialize 'accessList' field on Type0 transaction.`,
+    );
   }
 };
 
