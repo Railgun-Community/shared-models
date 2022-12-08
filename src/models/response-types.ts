@@ -140,6 +140,21 @@ export type RailgunWalletTokenAmountRecipient = RailgunWalletTokenAmount & {
   recipientAddress: string;
 };
 
+/**
+ * Synced from TokenType (@railgun-community/engine).
+ */
+export enum NFTTokenType {
+  ERC721 = 1,
+  ERC1155 = 2,
+}
+
+export type RailgunNFTRecipient = {
+  nftAddress: string;
+  tokenSubIDString: string;
+  nftTokenType: NFTTokenType;
+  recipientAddress: string;
+};
+
 export type EncryptDataWithSharedKeyResponse = {
   encryptedData: [string, string];
   randomPubKey: string;
