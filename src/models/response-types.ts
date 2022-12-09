@@ -117,6 +117,12 @@ export type RailgunShieldedTokenBalanceSerialized = {
   balanceString: string;
 };
 
+export type RailgunShieldedNFTSerialized = {
+  tokenAddress: string;
+  tokenType: NFTTokenType;
+  tokenSubID: string;
+};
+
 export type RailgunProveTransactionResponse = {
   error?: string;
 };
@@ -134,12 +140,6 @@ export type RailgunTransactionGasEstimateResponse = {
 export type RailgunWalletTokenAmount = {
   tokenAddress: string;
   amountString: string;
-};
-
-export type RailgunTokenDataNFT = {
-  tokenAddress: string;
-  tokenType: NFTTokenType;
-  tokenSubID: string;
 };
 
 export type RailgunWalletTokenAmountRecipient = RailgunWalletTokenAmount & {
