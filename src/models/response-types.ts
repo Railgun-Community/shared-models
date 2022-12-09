@@ -154,10 +154,13 @@ export enum NFTTokenType {
   ERC1155 = 2,
 }
 
-export type RailgunNFTRecipient = {
+export type RailgunNFT = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
   tokenSubID: string;
+};
+
+export type RailgunNFTRecipient = RailgunNFT & {
   recipientAddress: string;
 };
 
@@ -189,7 +192,7 @@ type SendAdditionalData = {
 export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount &
   SendAdditionalData;
 
-export type RailgunWalletSendNFT = RailgunNFTRecipient & SendAdditionalData;
+export type RailgunWalletSendNFT = RailgunNFT & SendAdditionalData;
 
 type ReceiveAdditionalData = {
   senderAddress?: string;
@@ -199,8 +202,7 @@ type ReceiveAdditionalData = {
 export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount &
   ReceiveAdditionalData;
 
-export type RailgunWalletReceiveNFT = RailgunNFTRecipient &
-  ReceiveAdditionalData;
+export type RailgunWalletReceiveNFT = RailgunNFT & ReceiveAdditionalData;
 
 export type TransactionHistoryItem = {
   txid: string;
