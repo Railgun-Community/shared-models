@@ -136,6 +136,12 @@ export type RailgunWalletTokenAmount = {
   amountString: string;
 };
 
+export type RailgunTokenDataNFT = {
+  tokenAddress: string;
+  tokenType: NFTTokenType;
+  tokenSubID: string;
+};
+
 export type RailgunWalletTokenAmountRecipient = RailgunWalletTokenAmount & {
   recipientAddress: string;
 };
@@ -174,16 +180,27 @@ export type ValidateCachedProvedTransactionResponse = {
 
 export type Pbkdf2Response = string;
 
-export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount & {
+type SendAdditionalData = {
   recipientAddress?: string;
   walletSource?: string;
   memoText?: string;
 };
 
-export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount & {
+export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount &
+  SendAdditionalData;
+
+export type RailgunWalletSendNFT = RailgunNFTRecipient & SendAdditionalData;
+
+type ReceiveAdditionalData = {
   senderAddress?: string;
   memoText?: string;
 };
+
+export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount &
+  ReceiveAdditionalData;
+
+export type RailgunWalletReceiveNFT = RailgunNFTRecipient &
+  ReceiveAdditionalData;
 
 export type TransactionHistoryItem = {
   txid: string;
@@ -192,6 +209,9 @@ export type TransactionHistoryItem = {
   changeTokenAmounts: RailgunWalletTokenAmount[];
   relayerFeeTokenAmount?: RailgunWalletTokenAmount;
   unshieldTokenAmounts: RailgunWalletSendTokenAmount[];
+  receiveNFTs: RailgunWalletReceiveNFT[];
+  transferNFTs: RailgunWalletSendNFT[];
+  unshieldNFTs: RailgunWalletSendNFT[];
   version: number;
 };
 
