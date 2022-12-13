@@ -70,7 +70,7 @@ export enum RelayAdaptContract {
   EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
   EthereumGoerli = '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE',
   PolygonMumbai = '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6',
-  ArbitrumGoerli = 'NEEDS_RELAY_ADAPT_ADDRESS', // TODO
+  ArbitrumGoerli = '0x7E77d890179Aa683ac2B9A608bd8121255CAa917',
   Hardhat = '0xc5a5C42992dECbae36851359345FE25997F5C42d',
 }
 
