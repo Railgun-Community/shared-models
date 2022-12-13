@@ -6,11 +6,13 @@ export enum NetworkName {
   Ethereum = 'Ethereum',
   BNBChain = 'BNB_Chain',
   Polygon = 'Polygon',
+  // Arbitrum = 'Arbitrum',
 
   // Testnets
   EthereumRopsten_DEPRECATED = 'Ethereum_Ropsten',
   EthereumGoerli = 'Ethereum_Goerli',
   PolygonMumbai = 'Polygon_Mumbai',
+  ArbitrumGoerli = 'Arbitrum_Goerli',
 
   // Dev only
   Hardhat = 'Hardhat',
@@ -48,41 +50,53 @@ export type Network = {
 
 export enum RailgunProxyContract {
   Ethereum = '0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9',
-  EthereumRopsten = '0x1c2A4092e2a436d78FcdF3a178a4E1ed87f0bB8F',
-  EthereumGoerli = '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
   BNBChain = '0x590162bf4b50f6576a459b75309ee21d92178a10',
   PolygonPOS = '0x19b620929f97b7b990801496c3b361ca5def8c71',
+
+  // Test nets
+  EthereumRopsten = '0x1c2A4092e2a436d78FcdF3a178a4E1ed87f0bB8F',
+  EthereumGoerli = '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
   PolygonMumbai = '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
+  ArbitrumGoerli = '0xA0603e598F9Ac2fc7475a3fA08D0794066615D9a',
   Hardhat = '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
 }
 
 export enum RelayAdaptContract {
   Ethereum = '0xc3f2C8F9d5F0705De706b1302B7a039e1e11aC88',
-  EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
-  EthereumGoerli = '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE',
   BNBChain = '0x25f795A8eC8aF7904aa403fF2Cc7205ce683BF52',
   PolygonPOS = '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86',
+
+  // Test nets
+  EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
+  EthereumGoerli = '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE',
   PolygonMumbai = '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6',
+  ArbitrumGoerli = 'NEEDS_RELAY_ADAPT_ADDRESS', // TODO
   Hardhat = '0xc5a5C42992dECbae36851359345FE25997F5C42d',
 }
 
 export enum RailgunProxyDeploymentBlock {
   Ethereum = 14737691,
-  EthereumRopsten = 12226000,
-  EthereumGoerli = 7795991,
   BNBChain = 17633701,
   PolygonPOS = 28083766,
-  Hardhat = 0,
+
+  // Test nets
+  EthereumRopsten = 12226000,
+  EthereumGoerli = 7795991,
   PolygonMumbai = 28697343,
+  ArbitrumGoerli = 2611949,
+  Hardhat = 0,
 }
 
 export enum BaseTokenWrappedAddress {
   EthereumWETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
-  EthereumRopstenWETH = '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
-  EthereumGoerliWETH = '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
   BinanceWBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   PolygonWMATIC = '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
+
+  // Test nets
+  EthereumRopstenWETH = '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
+  EthereumGoerliWETH = '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
   PolygonMumbaiWMATIC = '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
+  ArbitrumGoerliWETH = '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
   HardhatWETH = '0x09635F643e140090A9A8Dcd712eD6285858ceBef', // (Hardhat) WETH
 }
 
@@ -134,6 +148,50 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
+  [NetworkName.BNBChain]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 56,
+    },
+    name: NetworkName.BNBChain,
+    publicName: 'BNB Smart Chain',
+    shortPublicName: 'BSC',
+    coingeckoId: 'binance-smart-chain',
+    baseToken: {
+      symbol: 'BNB',
+      wrappedSymbol: 'WBNB',
+      wrappedAddress: BaseTokenWrappedAddress.BinanceWBNB,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.BNBChain,
+    relayAdaptContract: RelayAdaptContract.BNBChain,
+    deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
+    defaultEVMGasType: EVMGasType.Type0,
+    shouldQuickSync: true,
+  },
+  [NetworkName.Polygon]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 137,
+    },
+    name: NetworkName.Polygon,
+    publicName: 'Polygon PoS',
+    shortPublicName: 'Polygon',
+    coingeckoId: 'polygon-pos',
+    baseToken: {
+      symbol: 'MATIC',
+      wrappedSymbol: 'WMATIC',
+      wrappedAddress: BaseTokenWrappedAddress.PolygonWMATIC,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.PolygonPOS,
+    relayAdaptContract: RelayAdaptContract.PolygonPOS,
+    deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
+    defaultEVMGasType: EVMGasType.Type2,
+    shouldQuickSync: true,
+  },
+
+  // TEST NETS
   [NetworkName.EthereumRopsten_DEPRECATED]: {
     deprecated: true,
     chain: {
@@ -181,48 +239,6 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
   },
-  [NetworkName.BNBChain]: {
-    chain: {
-      type: ChainType.EVM,
-      id: 56,
-    },
-    name: NetworkName.BNBChain,
-    publicName: 'BNB Chain',
-    shortPublicName: 'BSC',
-    coingeckoId: 'binance-smart-chain',
-    baseToken: {
-      symbol: 'BNB',
-      wrappedSymbol: 'WBNB',
-      wrappedAddress: BaseTokenWrappedAddress.BinanceWBNB,
-      decimals: 18,
-    },
-    proxyContract: RailgunProxyContract.BNBChain,
-    relayAdaptContract: RelayAdaptContract.BNBChain,
-    deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
-    defaultEVMGasType: EVMGasType.Type0,
-    shouldQuickSync: true,
-  },
-  [NetworkName.Polygon]: {
-    chain: {
-      type: ChainType.EVM,
-      id: 137,
-    },
-    name: NetworkName.Polygon,
-    publicName: 'Polygon PoS',
-    shortPublicName: 'Polygon',
-    coingeckoId: 'polygon-pos',
-    baseToken: {
-      symbol: 'MATIC',
-      wrappedSymbol: 'WMATIC',
-      wrappedAddress: BaseTokenWrappedAddress.PolygonWMATIC,
-      decimals: 18,
-    },
-    proxyContract: RailgunProxyContract.PolygonPOS,
-    relayAdaptContract: RelayAdaptContract.PolygonPOS,
-    deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
-    defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
-  },
   [NetworkName.PolygonMumbai]: {
     chain: {
       type: ChainType.EVM,
@@ -241,6 +257,29 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     proxyContract: RailgunProxyContract.PolygonMumbai,
     relayAdaptContract: RelayAdaptContract.PolygonMumbai,
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonMumbai,
+    isDevOnlyNetwork: true,
+    isTestnet: true,
+    defaultEVMGasType: EVMGasType.Type2,
+    shouldQuickSync: true,
+  },
+  [NetworkName.ArbitrumGoerli]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 421613,
+    },
+    name: NetworkName.PolygonMumbai,
+    publicName: 'Arbitrum Görli Testnet',
+    shortPublicName: 'Arbitrum Görli',
+    coingeckoId: 'arbitrum-one',
+    baseToken: {
+      symbol: 'ETH',
+      wrappedSymbol: 'WETH',
+      wrappedAddress: BaseTokenWrappedAddress.ArbitrumGoerliWETH,
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract.ArbitrumGoerli,
+    relayAdaptContract: RelayAdaptContract.ArbitrumGoerli,
+    deploymentBlock: RailgunProxyDeploymentBlock.ArbitrumGoerli,
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
