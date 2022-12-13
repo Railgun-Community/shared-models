@@ -267,7 +267,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
       type: ChainType.EVM,
       id: 421613,
     },
-    name: NetworkName.PolygonMumbai,
+    name: NetworkName.ArbitrumGoerli,
     publicName: 'Arbitrum Görli Testnet',
     shortPublicName: 'Arbitrum Görli',
     coingeckoId: 'arbitrum-one',
