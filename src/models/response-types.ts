@@ -157,6 +157,7 @@ export type RailgunNFT = {
 
 export type RailgunNFTRecipient = RailgunNFT & {
   recipientAddress: string;
+  amountString: string;
 };
 
 export type EncryptDataWithSharedKeyResponse = {
