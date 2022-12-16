@@ -155,7 +155,7 @@ export type RailgunNFT = {
   tokenSubID: string;
 };
 
-export type RailgunNFTRecipient = RailgunNFT & {
+export type RailgunNFTAmountRecipient = RailgunNFT & {
   recipientAddress: string;
   amountString: string;
 };
