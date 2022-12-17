@@ -74,8 +74,8 @@ export type Chain = {
 
 export type RailgunBalancesEvent = {
   chain: Chain;
-  erc20Balances: RailgunERC20Balance[];
-  nfts: RailgunNFTAmount[];
+  erc20Amounts: RailgunERC20Amount[];
+  nftAmounts: RailgunNFTAmount[];
   railgunWalletID: string;
 };
 
@@ -111,11 +111,6 @@ export type RailgunWalletAddressDataSerialized = {
 
 export type RailgunBalanceResponse = {
   error?: string;
-};
-
-export type RailgunERC20Balance = {
-  tokenAddress: string;
-  balanceString: string;
 };
 
 export type RailgunProveTransactionResponse = {
