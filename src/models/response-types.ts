@@ -75,7 +75,7 @@ export type Chain = {
 export type RailgunBalancesEvent = {
   chain: Chain;
   erc20Balances: RailgunERC20Balance[];
-  nfts: RailgunNFT[];
+  nfts: RailgunNFTAmount[];
   railgunWalletID: string;
 };
 
@@ -132,12 +132,12 @@ export type RailgunTransactionGasEstimateResponse = {
   error?: string;
 };
 
-export type RailgunWalletTokenAmount = {
+export type RailgunERC20Amount = {
   tokenAddress: string;
   amountString: string;
 };
 
-export type RailgunWalletTokenAmountRecipient = RailgunWalletTokenAmount & {
+export type RailgunERC20AmountRecipient = RailgunERC20Amount & {
   recipientAddress: string;
 };
 
@@ -149,14 +149,14 @@ export enum NFTTokenType {
   ERC1155 = 2,
 }
 
-export type RailgunNFT = {
+export type RailgunNFTAmount = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
   tokenSubID: string;
   amountString: string;
 };
 
-export type RailgunNFTAmountRecipient = RailgunNFT & {
+export type RailgunNFTAmountRecipient = RailgunNFTAmount & {
   recipientAddress: string;
 };
 
@@ -185,31 +185,31 @@ type SendAdditionalData = {
   memoText?: string;
 };
 
-export type RailgunWalletSendTokenAmount = RailgunWalletTokenAmount &
-  SendAdditionalData;
+export type RailgunSendERC20Amount = RailgunERC20Amount & SendAdditionalData;
 
-export type RailgunWalletSendNFT = RailgunNFT & SendAdditionalData;
+export type RailgunSendNFTAmount = RailgunNFTAmount & SendAdditionalData;
 
 type ReceiveAdditionalData = {
   senderAddress?: string;
   memoText?: string;
 };
 
-export type RailgunWalletReceiveTokenAmount = RailgunWalletTokenAmount &
+export type RailgunWalletReceiveERC20Amount = RailgunERC20Amount &
   ReceiveAdditionalData;
 
-export type RailgunWalletReceiveNFT = RailgunNFT & ReceiveAdditionalData;
+export type RailgunWalletReceiveNFTAmount = RailgunNFTAmount &
+  ReceiveAdditionalData;
 
 export type TransactionHistoryItem = {
   txid: string;
-  receiveTokenAmounts: RailgunWalletReceiveTokenAmount[];
-  transferTokenAmounts: RailgunWalletSendTokenAmount[];
-  changeTokenAmounts: RailgunWalletTokenAmount[];
-  relayerFeeTokenAmount?: RailgunWalletTokenAmount;
-  unshieldTokenAmounts: RailgunWalletSendTokenAmount[];
-  receiveNFTs: RailgunWalletReceiveNFT[];
-  transferNFTs: RailgunWalletSendNFT[];
-  unshieldNFTs: RailgunWalletSendNFT[];
+  receiveERC20Amounts: RailgunWalletReceiveERC20Amount[];
+  transferERC20Amounts: RailgunSendERC20Amount[];
+  changeERC20Amounts: RailgunERC20Amount[];
+  relayerFeeERC20Amount?: RailgunERC20Amount;
+  unshieldERC20Amounts: RailgunSendERC20Amount[];
+  receiveNFTAmounts: RailgunWalletReceiveNFTAmount[];
+  transferNFTAmounts: RailgunSendNFTAmount[];
+  unshieldNFTAmounts: RailgunSendNFTAmount[];
   version: number;
 };
 
