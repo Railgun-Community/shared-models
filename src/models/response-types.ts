@@ -189,20 +189,19 @@ type ReceiveAdditionalData = {
   memoText?: string;
 };
 
-export type RailgunWalletReceiveERC20Amount = RailgunERC20Amount &
+export type RailgunReceiveERC20Amount = RailgunERC20Amount &
   ReceiveAdditionalData;
 
-export type RailgunWalletReceiveNFTAmount = RailgunNFTAmount &
-  ReceiveAdditionalData;
+export type RailgunReceiveNFTAmount = RailgunNFTAmount & ReceiveAdditionalData;
 
 export type TransactionHistoryItem = {
   txid: string;
-  receiveERC20Amounts: RailgunWalletReceiveERC20Amount[];
+  receiveERC20Amounts: RailgunReceiveERC20Amount[];
   transferERC20Amounts: RailgunSendERC20Amount[];
   changeERC20Amounts: RailgunERC20Amount[];
   relayerFeeERC20Amount?: RailgunERC20Amount;
   unshieldERC20Amounts: RailgunSendERC20Amount[];
-  receiveNFTAmounts: RailgunWalletReceiveNFTAmount[];
+  receiveNFTAmounts: RailgunReceiveNFTAmount[];
   transferNFTAmounts: RailgunSendNFTAmount[];
   unshieldNFTAmounts: RailgunSendNFTAmount[];
   version: number;
