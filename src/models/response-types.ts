@@ -74,7 +74,7 @@ export type Chain = {
 
 export type RailgunBalancesEvent = {
   chain: Chain;
-  tokenBalances: RailgunShieldedTokenBalanceSerialized[];
+  erc20Balances: RailgunERC20Balance[];
   nfts: RailgunNFT[];
   railgunWalletID: string;
 };
@@ -113,7 +113,7 @@ export type RailgunBalanceResponse = {
   error?: string;
 };
 
-export type RailgunShieldedTokenBalanceSerialized = {
+export type RailgunERC20Balance = {
   tokenAddress: string;
   balanceString: string;
 };
@@ -153,11 +153,11 @@ export type RailgunNFT = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
   tokenSubID: string;
+  amountString: string;
 };
 
 export type RailgunNFTAmountRecipient = RailgunNFT & {
   recipientAddress: string;
-  amountString: string;
 };
 
 export type EncryptDataWithSharedKeyResponse = {
