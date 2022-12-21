@@ -28,9 +28,7 @@ export const sanitizeError = (err: Error): Error => {
         'transaction may fail or may require manual gas limit',
       )
     ) {
-      return new Error(
-        'Something went wrong. Please make sure you have a valid gas balance for this transaction.',
-      );
+      return new Error('Unknown error. Transaction failed.');
     }
     if (lowercaseMsg.includes('replacement fee too low')) {
       return new Error(
