@@ -54,24 +54,24 @@ export enum RailgunProxyContract {
   PolygonPOS = '0x19b620929f97b7b990801496c3b361ca5def8c71',
 
   // Test nets
-  EthereumRopsten = '0x1c2A4092e2a436d78FcdF3a178a4E1ed87f0bB8F',
+  EthereumRopsten = '',
   EthereumGoerli = '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
   PolygonMumbai = '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
   ArbitrumGoerli = '0xA0603e598F9Ac2fc7475a3fA08D0794066615D9a',
-  Hardhat = '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
+  Hardhat = '',
 }
 
 export enum RelayAdaptContract {
-  Ethereum = '0xc3f2C8F9d5F0705De706b1302B7a039e1e11aC88',
-  BNBChain = '0x25f795A8eC8aF7904aa403fF2Cc7205ce683BF52',
-  PolygonPOS = '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86',
+  Ethereum = '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
+  BNBChain = '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
+  PolygonPOS = '0xc7FfA542736321A3dd69246d73987566a5486968',
 
   // Test nets
-  EthereumRopsten = '0x95abeff80554b23cefe1d3f8dcff3b7d90e28045',
-  EthereumGoerli = '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE',
-  PolygonMumbai = '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6',
-  ArbitrumGoerli = '0x7E77d890179Aa683ac2B9A608bd8121255CAa917',
-  Hardhat = '0xc5a5C42992dECbae36851359345FE25997F5C42d',
+  EthereumRopsten = '',
+  EthereumGoerli = '0x6E9C59F042acB1577A297eDE607c21Ff284846F3',
+  PolygonMumbai = '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837',
+  ArbitrumGoerli = '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6',
+  Hardhat = '',
 }
 
 export enum RailgunProxyDeploymentBlock {
