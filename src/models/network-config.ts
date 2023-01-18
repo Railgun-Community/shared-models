@@ -68,7 +68,7 @@ export enum RelayAdaptContract {
 
   // Test nets
   EthereumRopsten = '',
-  EthereumGoerli = '0x6E9C59F042acB1577A297eDE607c21Ff284846F3',
+  EthereumGoerli = '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4',
   PolygonMumbai = '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837',
   ArbitrumGoerli = '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6',
   Hardhat = '',
