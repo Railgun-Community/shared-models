@@ -5,6 +5,7 @@ export type RelayerFeeMessageData = {
   feeExpiration: number;
   feesID: string;
   railgunAddress: string;
+  identifier: Optional<string>;
   availableWallets: number;
   version: string;
   relayAdapt: string;
