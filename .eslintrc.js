@@ -48,6 +48,12 @@ module.exports = {
     'no-promise-executor-return': 0,
     '@typescript-eslint/no-floating-promises': 2,
     '@typescript-eslint/no-non-null-assertion': 2,
+      'eslint-comments/no-unused-disable': 0,
+      'require-await': 0,
+      '@typescript-eslint/no-floating-promises': 2,
+      'no-warning-comments': 1,
+      '@typescript-eslint/no-empty-function': 0,
+      '@typescript-eslint/no-inferrable-types': 0,
   },
   overrides: [
     {
