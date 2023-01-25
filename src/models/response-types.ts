@@ -117,6 +117,11 @@ export type RailgunProveTransactionResponse = {
   error?: string;
 };
 
+export declare type RailgunTxidFromNullifiersResponse = {
+  txid?: string;
+  error?: string;
+};
+
 export type RailgunPopulateTransactionResponse = {
   serializedTransaction?: string;
   nullifiers?: string[];
