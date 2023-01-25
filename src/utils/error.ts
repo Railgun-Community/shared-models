@@ -50,6 +50,7 @@ export const sanitizeError = (err: Error): Error => {
     }
     if (lowercaseMsg.includes('nonce has already been used')) {
       return new Error(
+        // Do not change 'Nonce already used' string of Error message.
         'Nonce already used: the transaction was already completed.',
       );
     }

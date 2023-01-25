@@ -119,6 +119,7 @@ export type RailgunProveTransactionResponse = {
 
 export type RailgunPopulateTransactionResponse = {
   serializedTransaction?: string;
+  nullifiers?: string[];
   error?: string;
 };
 
