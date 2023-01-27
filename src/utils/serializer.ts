@@ -40,5 +40,15 @@ export const deserializeTransaction = (
     type: transaction.type ?? undefined,
     nonce,
     chainId,
+
+    // Set gas-related vars as undefined if they're zero.
+    gasLimit: transaction.gasLimit?.eq(0) ? undefined : transaction.gasLimit,
+    gasPrice: transaction.gasPrice?.eq(0) ? undefined : transaction.gasPrice,
+    maxFeePerGas: transaction.maxFeePerGas?.eq(0)
+      ? undefined
+      : transaction.maxFeePerGas,
+    maxPriorityFeePerGas: transaction.maxPriorityFeePerGas?.eq(0)
+      ? undefined
+      : transaction.maxPriorityFeePerGas,
   };
 };
