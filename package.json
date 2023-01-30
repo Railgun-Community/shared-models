@@ -9,6 +9,18 @@
   "exports": {
     ".": "./dist/index.js"
   },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "prepare": "npm run build",
+    "check-circular-deps": "madge --circular --extensions tsx .",
+    "eslint": "eslint src --ext .ts,.tsx --fix",
+    "lint": "npm run check-circular-deps && npm run eslint",
+    "tsc-test": "tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json",
+    "compile-test": "npm run clean && npm run tsc-test",
+    "test-coverage": "npm run compile-test && nyc mocha 'src/**/__tests__/*.test.ts'",
+    "test": "npm run compile-test && mocha 'src/**/__tests__/*.test.ts'"
+  },
   "peerDependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "@ethersproject/providers": "^5.7.1"
@@ -16,23 +28,23 @@
   "devDependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "@ethersproject/providers": "^5.7.1",
+    "@types/chai": "^4.3.4",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^10.0.1",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.26.0",
     "madge": "^5.0.1",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.2",
     "typescript": "^4.8.3"
-  },
-  "scripts": {
-    "clean": "rm -rf dist",
-    "build": "npm run clean && tsc",
-    "prepare": "npm run build",
-    "check-circular-deps": "madge --circular --extensions tsx .",
-    "eslint": "eslint src --ext .ts,.tsx --fix",
-    "lint": "npm run check-circular-deps && npm run eslint"
   },
   "dependencies": {
     "@ethersproject/contracts": "^5.7.0",
