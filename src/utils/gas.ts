@@ -1,10 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber';
-import {
-  EVMGasType,
-  NetworkName,
-  NETWORK_CONFIG,
-} from '../models/network-config';
-import { TransactionGasDetails } from '../models/response-types';
+import { NetworkName, NETWORK_CONFIG } from '../models/network-config';
+import { EVMGasType, TransactionGasDetails } from '../models/response-types';
 
 export const getEVMGasTypeForTransaction = (
   networkName: NetworkName,

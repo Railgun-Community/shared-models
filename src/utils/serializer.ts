@@ -1,7 +1,7 @@
 import { PopulatedTransaction } from '@ethersproject/contracts';
 import { parse, serialize, Transaction } from '@ethersproject/transactions';
 import { TransactionRequest } from '@ethersproject/providers';
-import { EVMGasType } from '../models/network-config';
+import { EVMGasType } from '../models/response-types';
 
 const validatePreserialize = (transaction: PopulatedTransaction) => {
   if (transaction.from) {

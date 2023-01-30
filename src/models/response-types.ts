@@ -1,11 +1,21 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { MerkletreeScanStatus } from './merkletree-scan';
-import { EVMGasType, FeesSerialized } from './network-config';
+import { FeesSerialized } from './network-config';
 
 export type RailgunAPICiphertext = {
   iv: string;
   data: string[];
 };
+
+/**
+ * Type0 / Type1 = non-EIP-1559 (gasPrice).
+ * Type2 = EIP-1559 (maxFeePerGas and maxPriorityFeePerGas).
+ */
+export enum EVMGasType {
+  Type0 = 0,
+  Type1 = 1,
+  Type2 = 2,
+}
 
 export type TransactionGasDetails =
   | TransactionGasDetailsType0

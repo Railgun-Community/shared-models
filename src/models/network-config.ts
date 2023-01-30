@@ -1,4 +1,4 @@
-import { Chain, ChainType } from './response-types';
+import { Chain, ChainType, EVMGasType } from './response-types';
 
 export enum NetworkName {
   // Mainnets
@@ -98,16 +98,6 @@ export enum BaseTokenWrappedAddress {
   PolygonMumbaiWMATIC = '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
   ArbitrumGoerliWETH = '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
   HardhatWETH = '0x09635F643e140090A9A8Dcd712eD6285858ceBef', // (Hardhat) WETH
-}
-
-/**
- * Type0 / Type1 = non-EIP-1559 (gasPrice).
- * Type2 = EIP-1559 (maxFeePerGas and maxPriorityFeePerGas).
- */
-export enum EVMGasType {
-  Type0 = 0,
-  Type1 = 1,
-  Type2 = 2,
 }
 
 export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
@@ -308,11 +298,4 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
   },
-};
-
-export const networkForChain = (chain: Chain): Optional<Network> => {
-  return Object.values(NETWORK_CONFIG).find(
-    network =>
-      network.chain.type === chain.type && network.chain.id === chain.id,
-  );
 };
