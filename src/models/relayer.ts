@@ -35,3 +35,17 @@ export type RelayerRawParamsTransact = {
   minVersion: string;
   maxVersion: string;
 };
+
+export type CachedTokenFee = {
+  feePerUnitGas: string;
+  expiration: number;
+  feesID: string;
+  availableWallets: number;
+  relayAdapt: string;
+};
+
+export type SelectedRelayer = {
+  railgunAddress: string;
+  tokenAddress: string;
+  tokenFee: CachedTokenFee;
+};
