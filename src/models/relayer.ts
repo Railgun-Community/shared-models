@@ -49,3 +49,11 @@ export type SelectedRelayer = {
   tokenAddress: string;
   tokenFee: CachedTokenFee;
 };
+
+export enum RelayerConnectionStatus {
+  Error = 'Error',
+  Searching = 'Searching',
+  Connected = 'Connected',
+  Disconnected = 'Disconnected',
+  AllUnavailable = 'AllUnavailable',
+}
