@@ -55,7 +55,7 @@ export enum RailgunProxyContract {
   Ethereum = '0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9',
   BNBChain = '0x590162bf4b50f6576a459b75309ee21d92178a10',
   PolygonPOS = '0x19b620929f97b7b990801496c3b361ca5def8c71',
-  Arbitrum = '',
+  Arbitrum = '0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9',
 
   // Test nets
   EthereumRopsten = '',
@@ -69,7 +69,7 @@ export enum RelayAdaptContract {
   Ethereum = '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
   BNBChain = '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
   PolygonPOS = '0xc7FfA542736321A3dd69246d73987566a5486968',
-  Arbitrum = '',
+  Arbitrum = '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
 
   // Test nets
   EthereumRopsten = '',
@@ -83,7 +83,7 @@ export enum RailgunProxyDeploymentBlock {
   Ethereum = 14737691,
   BNBChain = 17633701,
   PolygonPOS = 28083766,
-  Arbitrum = 0,
+  Arbitrum = 56109834,
 
   // Test nets
   EthereumRopsten = 12226000,
@@ -97,7 +97,7 @@ export enum BaseTokenWrappedAddress {
   EthereumWETH = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
   BinanceWBNB = '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   PolygonWMATIC = '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
-  ArbitrumWETH = '', // (Arbitrum) WETH
+  ArbitrumWETH = '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // (Arbitrum) WETH
 
   // Test nets
   EthereumRopstenWETH = '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
