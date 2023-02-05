@@ -35,7 +35,7 @@ export const deserializeTransaction = (
   chainId: number,
 ): TransactionRequest => {
   const transaction: Transaction = parse(rawTransaction);
-  return {
+  return cleanTransaction({
     ...transaction,
     type: transaction.type ?? undefined,
     nonce,
@@ -50,5 +50,12 @@ export const deserializeTransaction = (
     maxPriorityFeePerGas: transaction.maxPriorityFeePerGas?.eq(0)
       ? undefined
       : transaction.maxPriorityFeePerGas,
-  };
+  });
+};
+
+const cleanTransaction = (tx: TransactionRequest): TransactionRequest => {
+  // Remove keys that have an undefined value
+  return Object.fromEntries(
+    Object.entries(tx).filter(([_k, v]) => v !== undefined),
+  );
 };
