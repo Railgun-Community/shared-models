@@ -35,7 +35,7 @@ export const deserializeTransaction = (
   chainId: number,
 ): TransactionRequest => {
   const transaction: Transaction = parse(rawTransaction);
-  return cleanTransaction({
+  return removeUndefinedValues({
     ...transaction,
     type: transaction.type ?? undefined,
     nonce,
@@ -53,9 +53,9 @@ export const deserializeTransaction = (
   });
 };
 
-const cleanTransaction = (tx: TransactionRequest): TransactionRequest => {
-  // Remove keys that have an undefined value
+const removeUndefinedValues = (tx: TransactionRequest): TransactionRequest => {
   return Object.fromEntries(
-    Object.entries(tx).filter(([_k, v]) => v !== undefined),
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    Object.entries(tx).filter(([_key, value]) => value !== undefined),
   );
 };
