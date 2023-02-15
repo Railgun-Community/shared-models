@@ -62,7 +62,7 @@ export const createFallbackProviderFromJsonConfig = (
       };
     });
 
-    const quorum = 2;
+    const quorum = 1;
     return new FallbackProvider(providers, quorum);
   } catch (err) {
     if (!(err instanceof Error)) {
