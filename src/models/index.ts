@@ -1,6 +1,5 @@
 export * from './artifact';
 export * from './blocked-address';
-export * from './fallback-provider';
 export * from './fee-token';
 export * from './function-types';
 export * from './merkletree-scan';

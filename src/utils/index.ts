@@ -1,4 +1,5 @@
 export * from './compare';
+export * from './fallback-provider';
 export * from './error';
 export * from './format';
 export * from './gas';

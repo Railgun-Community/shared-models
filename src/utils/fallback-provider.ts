@@ -62,7 +62,7 @@ export const createFallbackProviderFromJsonConfig = (
       };
     });
 
-    const quorum = 1;
+    const quorum = 2;
     return new FallbackProvider(providers, quorum);
   } catch (err) {
     throw new Error('Cannot load provider: invalid fallback provider config.');
