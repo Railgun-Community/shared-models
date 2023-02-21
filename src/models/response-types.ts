@@ -191,18 +191,29 @@ export type ValidateCachedProvedTransactionResponse = {
 export type Pbkdf2Response = string;
 
 type SendAdditionalData = {
-  recipientAddress?: string;
-  walletSource?: string;
-  memoText?: string;
+  recipientAddress: Optional<string>;
+  walletSource: Optional<string>;
+  memoText: Optional<string>;
 };
 
 export type RailgunSendERC20Amount = RailgunERC20Amount & SendAdditionalData;
 
 export type RailgunSendNFTAmount = RailgunNFTAmount & SendAdditionalData;
 
+type UnshieldAdditonalData = {
+  unshieldFee: Optional<string>;
+};
+
+export type RailgunUnshieldERC20Amount = RailgunSendERC20Amount &
+  UnshieldAdditonalData;
+
+export type RailgunUnshieldNFTAmount = RailgunSendNFTAmount &
+  UnshieldAdditonalData;
+
 type ReceiveAdditionalData = {
-  senderAddress?: string;
-  memoText?: string;
+  senderAddress: Optional<string>;
+  memoText: Optional<string>;
+  shieldFee: Optional<string>;
 };
 
 export type RailgunReceiveERC20Amount = RailgunERC20Amount &
@@ -216,10 +227,10 @@ export type TransactionHistoryItem = {
   transferERC20Amounts: RailgunSendERC20Amount[];
   changeERC20Amounts: RailgunERC20Amount[];
   relayerFeeERC20Amount?: RailgunERC20Amount;
-  unshieldERC20Amounts: RailgunSendERC20Amount[];
+  unshieldERC20Amounts: RailgunUnshieldERC20Amount[];
   receiveNFTAmounts: RailgunReceiveNFTAmount[];
   transferNFTAmounts: RailgunSendNFTAmount[];
-  unshieldNFTAmounts: RailgunSendNFTAmount[];
+  unshieldNFTAmounts: RailgunUnshieldNFTAmount[];
   version: number;
 };
 
