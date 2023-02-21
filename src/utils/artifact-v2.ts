@@ -1,4 +1,4 @@
-import ArtifactsMetadata from '../json/artifact.json';
+import ArtifactsMetadata from '../json/artifacts.json';
 
 export const artifactExists = (
   nullifiers: number,
@@ -24,19 +24,4 @@ export const assertArtifactExists = (
     return;
   }
   throw artifactError(nullifiers, commitments);
-};
-
-export const ipfsHashForArtifact = (
-  nullifiers: number,
-  commitments: number,
-): string => {
-  const artifact = ArtifactsMetadata.find(
-    artifact =>
-      artifact.nullifiers === nullifiers &&
-      artifact.commitments === commitments,
-  );
-  if (!artifact) {
-    throw artifactError(nullifiers, commitments);
-  }
-  return artifact.contractVKey.artifactsIPFSHash;
 };
