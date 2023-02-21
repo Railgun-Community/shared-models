@@ -54,6 +54,7 @@ module.exports = {
     'no-warning-comments': 1,
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-inferrable-types': 0,
+    '@typescript-eslint/no-duplicate-enum-values': 1,
   },
   overrides: [
     {
