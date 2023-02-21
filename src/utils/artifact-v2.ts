@@ -12,6 +12,10 @@ export const artifactExists = (
   return found != null;
 };
 
+const artifactError = (nullifiers: number, commitments: number) => {
+  return new Error(`No artifacts for inputs: ${nullifiers}-${commitments}`);
+};
+
 export const assertArtifactExists = (
   nullifiers: number,
   commitments: number,
@@ -19,7 +23,7 @@ export const assertArtifactExists = (
   if (artifactExists(nullifiers, commitments)) {
     return;
   }
-  throw new Error(`No artifacts for inputs: ${nullifiers}-${commitments}`);
+  throw artifactError(nullifiers, commitments);
 };
 
 export const ipfsHashForArtifact = (
@@ -32,7 +36,7 @@ export const ipfsHashForArtifact = (
       artifact.commitments === commitments,
   );
   if (!artifact) {
-    throw new Error(`No artifacts for inputs: ${nullifiers}-${commitments}`);
+    throw artifactError(nullifiers, commitments);
   }
   return artifact.contractVKey.artifactsIPFSHash;
 };
