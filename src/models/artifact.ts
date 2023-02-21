@@ -1,3 +1,10 @@
+export type Artifact = {
+  zkey: ArrayLike<number>;
+  wasm: Optional<ArrayLike<number>>;
+  dat: Optional<ArrayLike<number>>;
+  vkey: object;
+};
+
 export enum ArtifactName {
   ZKEY = 'zkey',
   WASM = 'wasm',
