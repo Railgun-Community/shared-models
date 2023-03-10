@@ -1,4 +1,5 @@
 export * from './artifact-v2';
+export * from './available-rpc';
 export * from './compare';
 export * from './fallback-provider';
 export * from './error';
