@@ -222,11 +222,10 @@ export type RailgunReceiveERC20Amount = RailgunERC20Amount &
 export type RailgunReceiveNFTAmount = RailgunNFTAmount & ReceiveAdditionalData;
 
 export enum TransactionHistoryItemCategory {
-  Shield = 'Shield',
-  Unshield = 'Unshield',
-  TransferSend = 'TransferSend',
-  TransferReceive = 'TransferReceive',
-  NFTTransfer = 'NFTTransfer',
+  ShieldERC20s = 'ShieldERC20s',
+  UnshieldERC20s = 'UnshieldERC20s',
+  TransferSendERC20s = 'TransferSendERC20s',
+  TransferReceiveERC20s = 'TransferReceiveERC20s',
   Unknown = 'Unknown',
 }
 
