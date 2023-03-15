@@ -226,6 +226,7 @@ export enum TransactionHistoryItemCategory {
   Unshield = 'Unshield',
   TransferSend = 'TransferSend',
   TransferReceive = 'TransferReceive',
+  NFTTransfer = 'NFTTransfer',
   Unknown = 'Unknown',
 }
 
