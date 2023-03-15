@@ -221,8 +221,16 @@ export type RailgunReceiveERC20Amount = RailgunERC20Amount &
 
 export type RailgunReceiveNFTAmount = RailgunNFTAmount & ReceiveAdditionalData;
 
+export enum TransactionHistoryItemCategory {
+  Shield = 'Shield',
+  Unshield = 'Unshield',
+  Transfer = 'Transfer',
+  Unknown = 'Unknown',
+}
+
 export type TransactionHistoryItem = {
   txid: string;
+  version: number;
   receiveERC20Amounts: RailgunReceiveERC20Amount[];
   transferERC20Amounts: RailgunSendERC20Amount[];
   changeERC20Amounts: RailgunERC20Amount[];
@@ -231,7 +239,7 @@ export type TransactionHistoryItem = {
   receiveNFTAmounts: RailgunReceiveNFTAmount[];
   transferNFTAmounts: RailgunSendNFTAmount[];
   unshieldNFTAmounts: RailgunUnshieldNFTAmount[];
-  version: number;
+  category: TransactionHistoryItemCategory;
 };
 
 export type TransactionHistorySerializedResponse = {
