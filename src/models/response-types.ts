@@ -224,7 +224,8 @@ export type RailgunReceiveNFTAmount = RailgunNFTAmount & ReceiveAdditionalData;
 export enum TransactionHistoryItemCategory {
   Shield = 'Shield',
   Unshield = 'Unshield',
-  Transfer = 'Transfer',
+  TransferSend = 'TransferSend',
+  TransferReceive = 'TransferReceive',
   Unknown = 'Unknown',
 }
 
