@@ -5,7 +5,7 @@ import { promiseTimeout } from './promises';
 
 type LogError = (err: string) => void;
 
-const BLOCK_NUMBER_TIMEOUT_MS = 1500;
+const BLOCK_NUMBER_TIMEOUT_MS = 5000;
 
 /**
  * Health checks ProviderJson inputs, and returns an array of available RPC providers.
