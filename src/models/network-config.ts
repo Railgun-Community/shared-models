@@ -110,7 +110,7 @@ export enum BaseTokenWrappedAddress {
 export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
   [NetworkName.Railgun]: {
     chain: {
-      type: -1,
+      type: ChainType.EVM,
       id: -1,
     },
     name: NetworkName.Railgun,
