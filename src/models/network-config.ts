@@ -49,6 +49,7 @@ export type Network = {
   defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
+  enableKoinlyTaxExport: boolean;
 };
 
 export enum RailgunProxyContract {
@@ -123,6 +124,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
+    enableKoinlyTaxExport: true,
   },
   [NetworkName.Ethereum]: {
     chain: {
@@ -144,6 +146,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: true,
   },
   [NetworkName.BNBChain]: {
     chain: {
@@ -165,6 +168,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
     defaultEVMGasType: EVMGasType.Type0,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: true,
   },
   [NetworkName.Polygon]: {
     chain: {
@@ -186,6 +190,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: true,
   },
   [NetworkName.Arbitrum]: {
     chain: {
@@ -207,6 +212,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     deploymentBlock: RailgunProxyDeploymentBlock.Arbitrum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: true,
   },
 
   // TEST NETS
@@ -233,6 +239,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
+    enableKoinlyTaxExport: false,
   },
   [NetworkName.EthereumGoerli]: {
     chain: {
@@ -256,6 +263,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: false,
   },
   [NetworkName.PolygonMumbai]: {
     chain: {
@@ -279,6 +287,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: false,
   },
   [NetworkName.ArbitrumGoerli]: {
     chain: {
@@ -302,6 +311,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    enableKoinlyTaxExport: false,
   },
   [NetworkName.Hardhat]: {
     chain: {
@@ -325,5 +335,6 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
+    enableKoinlyTaxExport: false,
   },
 };
