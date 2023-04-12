@@ -49,7 +49,7 @@ export type Network = {
   defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
-  enableKoinlyTaxExport: boolean;
+  enableKoinlyTaxExport: boolean; // Let Koinly engineers know to add this network (hardcoded in their Railway Tax parser)
 };
 
 export enum RailgunProxyContract {
