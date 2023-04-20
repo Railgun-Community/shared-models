@@ -232,6 +232,7 @@ export enum TransactionHistoryItemCategory {
 export type TransactionHistoryItem = {
   txid: string;
   version: number;
+  timestamp: Optional<number>;
   blockNumber: Optional<number>;
   receiveERC20Amounts: RailgunReceiveERC20Amount[];
   transferERC20Amounts: RailgunSendERC20Amount[];
