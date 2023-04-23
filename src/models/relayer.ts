@@ -23,17 +23,51 @@ export type RelayerMethodParamsTransact = {
   encryptedData: EncryptedData;
 };
 
-export type RelayerRawParamsTransact = {
-  serializedTransaction: string;
+type RelayerRawParamsShared = {
   chainID: number;
   chainType: ChainType;
   feesID: string;
-  minGasPrice: string;
   relayerViewingKey: string;
-  useRelayAdapt: boolean;
   devLog: boolean;
   minVersion: string;
   maxVersion: string;
+};
+
+export type RelayerRawParamsTransact = RelayerRawParamsShared & {
+  serializedTransaction: string;
+  minGasPrice: string;
+  useRelayAdapt: boolean;
+};
+
+type Ciphertext = {
+  iv: string;
+  tag: string;
+  data: string[];
+};
+
+type CommitmentCiphertext = {
+  ciphertext: Ciphertext;
+  blindedSenderViewingKey: string;
+  blindedReceiverViewingKey: string;
+  annotationData: string;
+  memo: string;
+};
+
+export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {
+  gasLimit: string;
+  commitmentCiphertext: CommitmentCiphertext;
+  commitmentHash: string;
+};
+
+export type RelayerPreAuthorization = {
+  chainID: number;
+  gasLimit: string;
+  commitmentHash: string;
+  expiration: number;
+};
+
+export type RelayerSignedPreAuthorization = RelayerPreAuthorization & {
+  signature: string;
 };
 
 export type CachedTokenFee = {
