@@ -18,7 +18,7 @@ export type RelayerFeeMessage = {
 
 type EncryptedData = [string, string];
 
-export type RelayerMethodParamsTransact = {
+export type RelayerEncryptedMethodParams = {
   pubkey: string;
   encryptedData: EncryptedData;
 };
