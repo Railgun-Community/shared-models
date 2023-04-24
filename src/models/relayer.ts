@@ -46,7 +46,6 @@ export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {
 };
 
 export type RelayerPreAuthorization = {
-  chainID: number;
   gasLimit: string;
   commitmentHash: string;
   expiration: number;
