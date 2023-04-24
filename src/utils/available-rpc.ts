@@ -15,7 +15,7 @@ export const getAvailableProviderJSONs = async (
   providerJsons: ProviderJson[],
   logError: LogError,
 ): Promise<ProviderJson[]> => {
-  const blockNumbers: number[] = await Promise.all(
+  const blockNumbers: Optional<number>[] = await Promise.all(
     providerJsons.map(
       async providerJson =>
         await getBlockNumber(providerJson.provider, logError),
@@ -23,15 +23,15 @@ export const getAvailableProviderJSONs = async (
   );
 
   const nonZeroBlockNumbers = blockNumbers.filter(
-    blockNumber => blockNumber > 0,
-  );
+    blockNumber => blockNumber != null && blockNumber > 0,
+  ) as number[];
   const medianBlockNumber = getUpperBoundMedian(nonZeroBlockNumbers);
   const lowerBoundRange = medianBlockNumber - 100;
   const upperBoundRange = medianBlockNumber + 100;
 
   return providerJsons.filter((providerJson, index) => {
     const blockNumber = blockNumbers[index];
-    if (blockNumber === 0) {
+    if (blockNumber == null) {
       logError(
         `RPC Health Check failed for ${providerJson.provider}: No Block Number`,
       );
@@ -60,7 +60,7 @@ export const getAvailableProviderJSONs = async (
 const getBlockNumber = async (
   provider: string,
   logError: LogError,
-): Promise<number> => {
+): Promise<Optional<number>> => {
   try {
     const rpcProvider = new JsonRpcProvider(provider);
     const blockNumber = await promiseTimeout(
@@ -73,6 +73,6 @@ const getBlockNumber = async (
       throw err;
     }
     logError(err.message);
-    return 0;
+    return undefined;
   }
 };
