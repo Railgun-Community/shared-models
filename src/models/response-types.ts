@@ -140,6 +140,7 @@ export type RailgunPopulateTransactionResponse = {
 
 export type RailgunTransactionGasEstimateResponse = {
   gasEstimateString?: string;
+  relayerFeeCommitment?: CommitmentSummary;
   error?: string;
 };
 
@@ -248,4 +249,23 @@ export type TransactionHistoryItem = {
 export type TransactionHistorySerializedResponse = {
   items?: TransactionHistoryItem[];
   error?: string;
+};
+
+type Ciphertext = {
+  iv: string;
+  tag: string;
+  data: string[];
+};
+
+export type CommitmentCiphertext = {
+  ciphertext: Ciphertext;
+  blindedSenderViewingKey: string;
+  blindedReceiverViewingKey: string;
+  annotationData: string;
+  memo: string;
+};
+
+export type CommitmentSummary = {
+  commitmentCiphertext: CommitmentCiphertext;
+  commitmentHash: string;
 };

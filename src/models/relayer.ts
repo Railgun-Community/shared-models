@@ -1,4 +1,4 @@
-import { ChainType } from './response-types';
+import { ChainType, CommitmentCiphertext } from './response-types';
 
 export type RelayerFeeMessageData = {
   fees: MapType<string>;
@@ -37,20 +37,6 @@ export type RelayerRawParamsTransact = RelayerRawParamsShared & {
   serializedTransaction: string;
   minGasPrice: string;
   useRelayAdapt: boolean;
-};
-
-type Ciphertext = {
-  iv: string;
-  tag: string;
-  data: string[];
-};
-
-type CommitmentCiphertext = {
-  ciphertext: Ciphertext;
-  blindedSenderViewingKey: string;
-  blindedReceiverViewingKey: string;
-  annotationData: string;
-  memo: string;
 };
 
 export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {
