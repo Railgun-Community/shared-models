@@ -65,14 +65,6 @@ export type TransactionGasDetailsSerializedType2 = {
   maxPriorityFeePerGasString: string;
 };
 
-export type StartRailgunEngineResponse = {
-  error?: string;
-};
-
-export type DownloadInitialArtifactsResponse = {
-  error?: string;
-};
-
 export enum ChainType {
   EVM = 0,
 }
@@ -97,7 +89,6 @@ export type MerkletreeScanUpdateEvent = {
 
 export type LoadProviderResponse = {
   feesSerialized?: FeesSerialized;
-  error?: string;
 };
 
 export type RailgunWalletInfo = {
@@ -107,11 +98,6 @@ export type RailgunWalletInfo = {
 
 export type LoadRailgunWalletResponse = {
   railgunWalletInfo?: RailgunWalletInfo;
-  error?: string;
-};
-
-export type UnloadRailgunWalletResponse = {
-  error?: string;
 };
 
 export type RailgunWalletAddressDataSerialized = {
@@ -119,29 +105,18 @@ export type RailgunWalletAddressDataSerialized = {
   viewingPublicKey: string;
 };
 
-export type RailgunBalanceResponse = {
-  error?: string;
-};
-
-export type RailgunProveTransactionResponse = {
-  error?: string;
-};
-
 export declare type RailgunTxidFromNullifiersResponse = {
   txid?: string;
-  error?: string;
 };
 
 export type RailgunPopulateTransactionResponse = {
   serializedTransaction?: string;
   nullifiers?: string[];
-  error?: string;
 };
 
 export type RailgunTransactionGasEstimateResponse = {
   gasEstimateString?: string;
   relayerFeeCommitment?: CommitmentSummary;
-  error?: string;
 };
 
 export type RailgunERC20Amount = {
@@ -248,7 +223,6 @@ export type TransactionHistoryItem = {
 
 export type TransactionHistorySerializedResponse = {
   items?: TransactionHistoryItem[];
-  error?: string;
 };
 
 type Ciphertext = {
