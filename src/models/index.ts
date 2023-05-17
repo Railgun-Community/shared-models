@@ -1,4 +1,5 @@
 export * from './artifact';
+export * from './bridge';
 export * from './blocked-address';
 export * from './fee-token';
 export * from './function-types';
