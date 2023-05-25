@@ -88,16 +88,12 @@ export type MerkletreeScanUpdateEvent = {
 };
 
 export type LoadProviderResponse = {
-  feesSerialized?: FeesSerialized;
+  feesSerialized: FeesSerialized;
 };
 
 export type RailgunWalletInfo = {
   id: string;
   railgunAddress: string;
-};
-
-export type LoadRailgunWalletResponse = {
-  railgunWalletInfo: RailgunWalletInfo;
 };
 
 export type RailgunWalletAddressDataSerialized = {
