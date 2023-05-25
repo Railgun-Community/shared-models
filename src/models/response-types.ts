@@ -97,7 +97,7 @@ export type RailgunWalletInfo = {
 };
 
 export type LoadRailgunWalletResponse = {
-  railgunWalletInfo?: RailgunWalletInfo;
+  railgunWalletInfo: RailgunWalletInfo;
 };
 
 export type RailgunWalletAddressDataSerialized = {
@@ -105,17 +105,17 @@ export type RailgunWalletAddressDataSerialized = {
   viewingPublicKey: string;
 };
 
-export declare type RailgunTxidFromNullifiersResponse = {
+export type RailgunTxidFromNullifiersResponse = {
   txid?: string;
 };
 
 export type RailgunPopulateTransactionResponse = {
-  serializedTransaction?: string;
+  serializedTransaction: string;
   nullifiers?: string[];
 };
 
 export type RailgunTransactionGasEstimateResponse = {
-  gasEstimateString?: string;
+  gasEstimateString: string;
   relayerFeeCommitment?: CommitmentSummary;
 };
 
@@ -157,11 +157,6 @@ export type EncryptDataWithSharedKeySerialized = {
   encryptedData: [string, string];
   randomPubKey: string;
   sharedKey: string;
-};
-
-export type ValidateCachedProvedTransactionResponse = {
-  isValid: boolean;
-  error?: string;
 };
 
 export type Pbkdf2Response = string;
@@ -222,7 +217,7 @@ export type TransactionHistoryItem = {
 };
 
 export type TransactionHistorySerializedResponse = {
-  items?: TransactionHistoryItem[];
+  items: TransactionHistoryItem[];
 };
 
 type Ciphertext = {
