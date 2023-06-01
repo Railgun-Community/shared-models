@@ -1,4 +1,5 @@
-import { BigNumber } from '@ethersproject/bignumber';
+/// <reference types="../types/global" />
+import { PreparedTransactionRequest } from 'ethers';
 import { MerkletreeScanStatus } from './merkletree-scan';
 import { FeesSerialized } from './network-config';
 
@@ -24,45 +25,21 @@ export type TransactionGasDetails =
 
 export type TransactionGasDetailsType0 = {
   evmGasType: EVMGasType.Type0;
-  gasEstimate: BigNumber;
-  gasPrice: BigNumber;
+  gasEstimate: bigint;
+  gasPrice: bigint;
 };
 
 export type TransactionGasDetailsType1 = {
   evmGasType: EVMGasType.Type1;
-  gasEstimate: BigNumber;
-  gasPrice: BigNumber;
+  gasEstimate: bigint;
+  gasPrice: bigint;
 };
 
 export type TransactionGasDetailsType2 = {
   evmGasType: EVMGasType.Type2;
-  gasEstimate: BigNumber;
-  maxFeePerGas: BigNumber;
-  maxPriorityFeePerGas: BigNumber;
-};
-
-export type TransactionGasDetailsSerialized =
-  | TransactionGasDetailsSerializedType0
-  | TransactionGasDetailsSerializedType1
-  | TransactionGasDetailsSerializedType2;
-
-export type TransactionGasDetailsSerializedType0 = {
-  evmGasType: EVMGasType.Type0;
-  gasEstimateString: string;
-  gasPriceString: string;
-};
-
-export type TransactionGasDetailsSerializedType1 = {
-  evmGasType: EVMGasType.Type1;
-  gasEstimateString: string;
-  gasPriceString: string;
-};
-
-export type TransactionGasDetailsSerializedType2 = {
-  evmGasType: EVMGasType.Type2;
-  gasEstimateString: string;
-  maxFeePerGasString: string;
-  maxPriorityFeePerGasString: string;
+  gasEstimate: bigint;
+  maxFeePerGas: bigint;
+  maxPriorityFeePerGas: bigint;
 };
 
 export enum ChainType {
@@ -96,9 +73,9 @@ export type RailgunWalletInfo = {
   railgunAddress: string;
 };
 
-export type RailgunWalletAddressDataSerialized = {
-  masterPublicKey: string;
-  viewingPublicKey: string;
+export type RailgunWalletAddressData = {
+  masterPublicKey: bigint;
+  viewingPublicKey: bigint;
 };
 
 export type RailgunTxidFromNullifiersResponse = {
@@ -106,18 +83,18 @@ export type RailgunTxidFromNullifiersResponse = {
 };
 
 export type RailgunPopulateTransactionResponse = {
-  serializedTransaction: string;
+  transaction: PreparedTransactionRequest;
   nullifiers?: string[];
 };
 
 export type RailgunTransactionGasEstimateResponse = {
-  gasEstimateString: string;
+  gasEstimate: bigint;
   relayerFeeCommitment?: CommitmentSummary;
 };
 
 export type RailgunERC20Amount = {
   tokenAddress: string;
-  amountString: string;
+  amount: bigint;
 };
 
 export type RailgunERC20AmountRecipient = RailgunERC20Amount & {
@@ -136,7 +113,7 @@ export type RailgunNFTAmount = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
   tokenSubID: string;
-  amountString: string;
+  amount: bigint;
 };
 
 export type RailgunNFTAmountRecipient = RailgunNFTAmount & {
@@ -210,10 +187,6 @@ export type TransactionHistoryItem = {
   transferNFTAmounts: RailgunSendNFTAmount[];
   unshieldNFTAmounts: RailgunUnshieldNFTAmount[];
   category: TransactionHistoryItemCategory;
-};
-
-export type TransactionHistorySerializedResponse = {
-  items: TransactionHistoryItem[];
 };
 
 type Ciphertext = {

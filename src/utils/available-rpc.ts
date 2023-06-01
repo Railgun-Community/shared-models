@@ -1,4 +1,4 @@
-import { JsonRpcProvider } from '@ethersproject/providers';
+import { JsonRpcProvider } from 'ethers';
 import { ProviderJson } from './fallback-provider';
 import { getUpperBoundMedian } from './median';
 import { promiseTimeout } from './promises';
