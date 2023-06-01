@@ -42,6 +42,11 @@ export type TransactionGasDetailsType2 = {
   maxPriorityFeePerGas: bigint;
 };
 
+export type FeeTokenDetails = {
+  tokenAddress: string;
+  feePerUnitGas: bigint;
+};
+
 export enum ChainType {
   EVM = 0,
 }
