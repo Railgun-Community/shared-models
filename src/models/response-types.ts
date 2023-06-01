@@ -1,5 +1,5 @@
 /// <reference types="../types/global" />
-import { PreparedTransactionRequest } from 'ethers';
+import { ContractTransaction } from 'ethers';
 import { MerkletreeScanStatus } from './merkletree-scan';
 import { FeesSerialized } from './network-config';
 
@@ -83,7 +83,7 @@ export type RailgunTxidFromNullifiersResponse = {
 };
 
 export type RailgunPopulateTransactionResponse = {
-  transaction: PreparedTransactionRequest;
+  transaction: ContractTransaction;
   nullifiers?: string[];
 };
 
