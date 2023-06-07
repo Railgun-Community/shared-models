@@ -34,7 +34,8 @@ type RelayerRawParamsShared = {
 };
 
 export type RelayerRawParamsTransact = RelayerRawParamsShared & {
-  serializedTransaction: string;
+  to: string;
+  data: string;
   minGasPrice: string;
   useRelayAdapt: boolean;
 };
