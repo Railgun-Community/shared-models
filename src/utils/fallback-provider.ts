@@ -10,6 +10,7 @@ export type ProviderJson = {
   priority: number;
   weight: number;
   provider: string;
+  stallTimeout?: number;
 };
 
 export const createFallbackProviderFromJsonConfig = (
