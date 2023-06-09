@@ -19,6 +19,16 @@ export const createFallbackProviderFromJsonConfig = (
   config: FallbackProviderJsonConfig,
 ): FallbackProvider => {
   try {
+    const totalWeight = config.providers.reduce(
+      (acc, { weight }) => acc + weight,
+      0,
+    );
+    if (totalWeight < 2) {
+      throw new Error(
+        'Total weight across providers must be >= 2 for fallback quorum.',
+      );
+    }
+
     const network = Network.from(Number(config.chainId));
 
     const providers: FallbackProviderConfig[] = config.providers.map(
@@ -49,6 +59,8 @@ export const createFallbackProviderFromJsonConfig = (
     if (!(err instanceof Error)) {
       throw err;
     }
-    throw new Error(`Invalid fallback provider config: ${err.message}`);
+    throw new Error(
+      `Invalid fallback provider config for chain ${config.chainId}: ${err.message}`,
+    );
   }
 };
