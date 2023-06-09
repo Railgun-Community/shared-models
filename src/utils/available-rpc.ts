@@ -63,11 +63,14 @@ const getBlockNumber = async (
 ): Promise<Optional<number>> => {
   try {
     const rpcProvider = new JsonRpcProvider(provider);
-    const blockNumber = await promiseTimeout(
-      rpcProvider.getBlockNumber(),
+    const block = await promiseTimeout(
+      rpcProvider.getBlock('latest'),
       BLOCK_NUMBER_TIMEOUT_MS,
     );
-    return blockNumber;
+    if (block == null) {
+      throw new Error('Block is null');
+    }
+    return block.number;
   } catch (err) {
     if (!(err instanceof Error)) {
       throw err;
