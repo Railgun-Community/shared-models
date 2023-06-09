@@ -118,7 +118,7 @@ export type NFTAmount = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
   tokenSubID: string;
-  amountString: bigint;
+  amountString: string;
 };
 
 export type NFTAmountRecipient = NFTAmount & {
