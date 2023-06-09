@@ -114,6 +114,17 @@ export enum NFTTokenType {
   ERC1155 = 2,
 }
 
+export type NFTAmount = {
+  nftAddress: string;
+  nftTokenType: NFTTokenType;
+  tokenSubID: string;
+  amountString: bigint;
+};
+
+export type NFTAmountRecipient = NFTAmount & {
+  recipientAddress: string;
+};
+
 export type RailgunNFTAmount = {
   nftAddress: string;
   nftTokenType: NFTTokenType;
