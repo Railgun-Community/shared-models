@@ -11,6 +11,7 @@ export type ProviderJson = {
   weight: number;
   provider: string;
   stallTimeout?: number;
+  disableBatching?: boolean;
 };
 
 export const createFallbackProviderFromJsonConfig = (
@@ -22,7 +23,11 @@ export const createFallbackProviderFromJsonConfig = (
       const isWebsocket = json.provider.startsWith('wss');
       const provider = isWebsocket
         ? new WebSocketProvider(json.provider, network)
-        : new PollingJsonRpcProvider(json.provider, network);
+        : new PollingJsonRpcProvider(
+            json.provider,
+            network,
+            json.disableBatching,
+          );
       return {
         ...json,
         provider,
