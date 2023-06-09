@@ -1,4 +1,4 @@
-import { FallbackProvider, Networkish, WebSocketProvider } from 'ethers';
+import { FallbackProvider, Network, WebSocketProvider } from 'ethers';
 import { PollingJsonRpcProvider } from './polling-json-rpc-provider';
 
 export type FallbackProviderJsonConfig = {
@@ -17,8 +17,8 @@ export type ProviderJson = {
 export const createFallbackProviderFromJsonConfig = (
   config: FallbackProviderJsonConfig,
 ): FallbackProvider => {
-  const network: Networkish = Number(config.chainId);
   try {
+    const network = Network.from(Number(config.chainId));
     const providers = config.providers.map(json => {
       const isWebsocket = json.provider.startsWith('wss');
       const provider = isWebsocket
