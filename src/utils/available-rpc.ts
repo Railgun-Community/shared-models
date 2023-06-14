@@ -1,4 +1,4 @@
-import { JsonRpcProvider } from 'ethers';
+import { JsonRpcProvider, Network } from 'ethers';
 import { ProviderJson } from './fallback-provider';
 import { getUpperBoundMedian } from './median';
 import { promiseTimeout } from './promises';
@@ -12,13 +12,14 @@ const BLOCK_NUMBER_TIMEOUT_MS = 5000;
  * Available means that they respond to getBlockNumber(), and they are +/- 100 blocks from the median.
  */
 export const getAvailableProviderJSONs = async (
+  chainId: number,
   providerJsons: ProviderJson[],
   logError: LogError,
 ): Promise<ProviderJson[]> => {
   const blockNumbers: Optional<number>[] = await Promise.all(
     providerJsons.map(
       async providerJson =>
-        await getBlockNumber(providerJson.provider, logError),
+        await getBlockNumber(chainId, providerJson.provider, logError),
     ),
   );
 
@@ -58,11 +59,13 @@ export const getAvailableProviderJSONs = async (
 };
 
 const getBlockNumber = async (
+  chainId: number,
   provider: string,
   logError: LogError,
 ): Promise<Optional<number>> => {
   try {
-    const rpcProvider = new JsonRpcProvider(provider);
+    const network = Network.from(chainId);
+    const rpcProvider = new JsonRpcProvider(provider, network);
     const block = await promiseTimeout(
       rpcProvider.getBlock('latest'),
       BLOCK_NUMBER_TIMEOUT_MS,
