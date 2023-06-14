@@ -14,5 +14,6 @@ export class PollingJsonRpcProvider extends JsonRpcProvider {
       options.batchMaxCount = 1;
     }
     super(url, network, options);
+    this.pollingInterval = 30000;
   }
 }
