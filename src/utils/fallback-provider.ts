@@ -1,6 +1,9 @@
 import { FallbackProvider, Network, WebSocketProvider } from 'ethers';
-import { PollingJsonRpcProvider } from './polling-json-rpc-provider';
-import { FallbackProviderConfig } from 'ethers/lib.commonjs/providers/provider-fallback';
+import { ConfiguredJsonRpcProvider } from './configured-json-rpc-provider';
+import {
+  FallbackProviderConfig,
+  FallbackProviderOptions,
+} from 'ethers/lib.commonjs/providers/provider-fallback';
 
 export type FallbackProviderJsonConfig = {
   chainId: number;
@@ -42,7 +45,11 @@ export const createFallbackProviderFromJsonConfig = (
         const isWebsocket = providerURL.startsWith('wss');
         const provider = isWebsocket
           ? new WebSocketProvider(providerURL, network)
-          : new PollingJsonRpcProvider(providerURL, network, disableBatching);
+          : new ConfiguredJsonRpcProvider(
+              providerURL,
+              network,
+              disableBatching,
+            );
 
         const fallbackProviderConfig: FallbackProviderConfig = {
           provider,
@@ -54,7 +61,15 @@ export const createFallbackProviderFromJsonConfig = (
       },
     );
 
-    return new FallbackProvider(providers, network);
+    const fallbackProviderOptions: FallbackProviderOptions = {
+      pollingInterval: 10000, // Default 400ms
+
+      quorum: 2, // Default
+      eventQuorum: 1, // Default
+      eventWorkers: 1, // Default
+    };
+
+    return new FallbackProvider(providers, network, fallbackProviderOptions);
   } catch (err) {
     if (!(err instanceof Error)) {
       throw err;

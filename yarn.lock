@@ -1021,10 +1021,10 @@ esutils@^2.0.2:
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
   integrity sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
 
-ethers@^6.5.1:
-  version "6.5.1"
-  resolved "https://registry.yarnpkg.com/ethers/-/ethers-6.5.1.tgz#7beeeea2156dc4227da1176cb164007018b85c63"
-  integrity sha512-jDpCnUGcyn39hnRUEtrulDZOtJcIPEz4Whccl3N9qhwdLsn1ELuDM9TgGgGJq6ph0p8/Uri+Wezmo/r69E+xkA==
+"ethers@npm:@therealjmj/ethers@6.6.0-patched-2":
+  version "6.6.0-patched-2"
+  resolved "https://registry.yarnpkg.com/@therealjmj/ethers/-/ethers-6.6.0-patched-2.tgz#68afe597144f0eae4745e2fe7fff9ae520553271"
+  integrity sha512-MJ1MKjHLOLsk5zNwkBQh5Bh0S3Q0SK4MMxPefeyOt+5bGMO8Cv0sNDpPxmXgknHXzX2m3A94nHdyLz8q7I3ChA==
   dependencies:
     "@adraffy/ens-normalize" "1.9.2"
     "@noble/hashes" "1.1.2"
