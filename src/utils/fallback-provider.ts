@@ -1,9 +1,6 @@
 import { FallbackProvider, Network, WebSocketProvider } from 'ethers';
 import { ConfiguredJsonRpcProvider } from './configured-json-rpc-provider';
-import {
-  FallbackProviderConfig,
-  FallbackProviderOptions,
-} from 'ethers/lib.commonjs/providers/provider-fallback';
+import { FallbackProviderConfig } from 'ethers/lib.commonjs/providers/provider-fallback';
 
 export type FallbackProviderJsonConfig = {
   chainId: number;
@@ -15,7 +12,7 @@ export type ProviderJson = {
   weight: number;
   provider: string;
   stallTimeout?: number;
-  disableBatching?: boolean;
+  maxLogsPerBatch?: number;
 };
 
 export const createFallbackProviderFromJsonConfig = (
@@ -40,7 +37,7 @@ export const createFallbackProviderFromJsonConfig = (
         priority,
         weight,
         stallTimeout,
-        disableBatching,
+        maxLogsPerBatch,
       }) => {
         const isWebsocket = providerURL.startsWith('wss');
         const provider = isWebsocket
@@ -48,7 +45,7 @@ export const createFallbackProviderFromJsonConfig = (
           : new ConfiguredJsonRpcProvider(
               providerURL,
               network,
-              disableBatching,
+              maxLogsPerBatch,
             );
 
         const fallbackProviderConfig: FallbackProviderConfig = {
