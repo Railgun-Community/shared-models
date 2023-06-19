@@ -1,3 +1,4 @@
+/// <reference types="../types/global" />
 import { JsonRpcProvider, Network } from 'ethers';
 import { ProviderJson } from './fallback-provider';
 import { getUpperBoundMedian } from './median';
