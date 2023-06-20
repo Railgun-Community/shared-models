@@ -1,3 +1,5 @@
+import { isDefined } from './util';
+
 const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
 
 const validAscii = (str: string) => {
@@ -9,7 +11,7 @@ const validAscii = (str: string) => {
 };
 
 export const sanitizeError = (err: Error): Error => {
-  if (err && err.message) {
+  if (isDefined(err) && err.message) {
     const lowercaseMsg = err.message.toLowerCase();
     if (
       lowercaseMsg.includes('quorum') ||

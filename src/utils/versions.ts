@@ -1,8 +1,10 @@
+import { isDefined } from './util';
+
 export const versionCompare = (
   appVersion?: string,
   minVersion?: string,
 ): number => {
-  if (!appVersion || !minVersion) {
+  if (!isDefined(appVersion) || !isDefined(minVersion)) {
     throw new Error('Requires two version numbers to compare.');
   }
 
