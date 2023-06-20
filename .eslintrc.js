@@ -55,6 +55,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 0,
     '@typescript-eslint/no-inferrable-types': 0,
     '@typescript-eslint/no-duplicate-enum-values': 1,
+    '@typescript-eslint/strict-boolean-expressions': 2,
   },
   overrides: [
     {
