@@ -1,6 +1,6 @@
 {
   "name": "@railgun-community/shared-models",
-  "version": "5.2.3",
+  "version": "5.2.4",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
