@@ -1,7 +1,7 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { isHistoricalRelayAdaptContractAddress } from '../network';
-import { NetworkName } from '../../models/network-config';
+import { NETWORK_CONFIG, NetworkName } from '../../models/network-config';
 
 chai.use(chaiAsPromised);
 const { expect } = chai;
@@ -23,5 +23,26 @@ describe('network', () => {
         '0xC3F2C8F9d5F0705De706b1302B7a039e1e11aC88',
       ),
     ).to.equal(true);
+  });
+
+  it('Should find current relay adapt contract in history for all networks', () => {
+    Object.values(NETWORK_CONFIG).forEach(network => {
+      if (
+        network.name === NetworkName.Railgun ||
+        network.name === NetworkName.EthereumRopsten_DEPRECATED ||
+        network.name === NetworkName.Hardhat
+      ) {
+        return;
+      }
+      expect(
+        isHistoricalRelayAdaptContractAddress(
+          network.name,
+          network.relayAdaptContract,
+        ),
+      ).to.equal(
+        true,
+        `Did not find current relay adapt contract in history for ${network.name}`,
+      );
+    });
   });
 });

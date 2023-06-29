@@ -275,7 +275,8 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     relayAdaptHistory: [
       '0xD147B7Dfa636a1c50A52bF6A6FE910680274eE24', // Initial deployment
       '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE', // V3.0 Update - Nov 2022
-      '0x6E9C59F042acB1577A297eDE607c21Ff284846F3', // V3.1 Update - Jan 2023
+      '0x6E9C59F042acB1577A297eDE607c21Ff284846F3', // V3.1 partial update - Jan 2023
+      '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4', // V3.1 Update - Jan 2023
     ],
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
     isDevOnlyNetwork: true,
