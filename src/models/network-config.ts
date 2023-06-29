@@ -43,6 +43,7 @@ export type Network = {
   baseToken: BaseToken;
   proxyContract: RailgunProxyContract;
   relayAdaptContract: RelayAdaptContract;
+  relayAdaptHistory: string[];
   deploymentBlock: RailgunProxyDeploymentBlock;
   isDevOnlyNetwork?: boolean;
   isTestnet?: boolean;
@@ -120,6 +121,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     baseToken: {} as BaseToken,
     proxyContract: RailgunProxyContract.Ethereum,
     relayAdaptContract: RelayAdaptContract.Ethereum,
+    relayAdaptHistory: [],
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
@@ -141,6 +143,11 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.Ethereum,
     relayAdaptContract: RelayAdaptContract.Ethereum,
+    relayAdaptHistory: [
+      '0x22af4EDBeA3De885dDa8f0a0653E6209e44e5B84', // Initial deployment
+      '0xc3f2C8F9d5F0705De706b1302B7a039e1e11aC88', // V3.0 Update - Nov 2022
+      '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
@@ -162,6 +169,11 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.BNBChain,
     relayAdaptContract: RelayAdaptContract.BNBChain,
+    relayAdaptHistory: [
+      '0x20d868C7F1Eb706C46641ADD2f849c5DBf4dB158', // Initial deployment
+      '0x25f795A8eC8aF7904aa403fF2Cc7205ce683BF52', // V3.0 Update - Nov 2022
+      '0x741936fb83DDf324636D3048b3E6bC800B8D9e12', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.BNBChain,
     defaultEVMGasType: EVMGasType.Type0,
     shouldQuickSync: true,
@@ -183,6 +195,11 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.PolygonPOS,
     relayAdaptContract: RelayAdaptContract.PolygonPOS,
+    relayAdaptHistory: [
+      '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC', // Initial deployment
+      '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86', // V3.0 Update - Nov 2022
+      '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonPOS,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
@@ -204,6 +221,9 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.Arbitrum,
     relayAdaptContract: RelayAdaptContract.Arbitrum,
+    relayAdaptHistory: [
+      '0x5aD95C537b002770a39dea342c4bb2b68B1497aA', // Initial deployment - Feb 2023 post v3.1
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.Arbitrum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
@@ -228,6 +248,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.EthereumRopsten,
     relayAdaptContract: RelayAdaptContract.EthereumRopsten,
+    relayAdaptHistory: [''],
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumRopsten,
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -251,6 +272,11 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.EthereumGoerli,
     relayAdaptContract: RelayAdaptContract.EthereumGoerli,
+    relayAdaptHistory: [
+      '0xD147B7Dfa636a1c50A52bF6A6FE910680274eE24', // Initial deployment
+      '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE', // V3.0 Update - Nov 2022
+      '0x6E9C59F042acB1577A297eDE607c21Ff284846F3', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -274,6 +300,11 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.PolygonMumbai,
     relayAdaptContract: RelayAdaptContract.PolygonMumbai,
+    relayAdaptHistory: [
+      '0x8B936B018CeA1c1cc14961CAdabD36E7fe9192cD', // Initial deployment
+      '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6', // V3.0 Update - Nov 2022
+      '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.PolygonMumbai,
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -297,6 +328,10 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.ArbitrumGoerli,
     relayAdaptContract: RelayAdaptContract.ArbitrumGoerli,
+    relayAdaptHistory: [
+      '0x7E77d890179Aa683ac2B9A608bd8121255CAa917', // Initial deployment (post v3.0)
+      '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6', // V3.1 Update - Jan 2023
+    ],
     deploymentBlock: RailgunProxyDeploymentBlock.ArbitrumGoerli,
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -320,6 +355,7 @@ export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
     },
     proxyContract: RailgunProxyContract.Hardhat,
     relayAdaptContract: RelayAdaptContract.Hardhat,
+    relayAdaptHistory: [''],
     deploymentBlock: RailgunProxyDeploymentBlock.Hardhat,
     isDevOnlyNetwork: true,
     isTestnet: true,
