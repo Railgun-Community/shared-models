@@ -65,7 +65,9 @@ const getBlockNumber = async (
   logError: LogError,
 ): Promise<Optional<number>> => {
   const network = Network.from(chainId);
-  const rpcProvider = new JsonRpcProvider(provider, network);
+  const rpcProvider = new JsonRpcProvider(provider, network, {
+    staticNetwork: network,
+  });
   try {
     const blockNumber = await promiseTimeout(
       rpcProvider.getBlockNumber(),
