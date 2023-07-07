@@ -67,14 +67,11 @@ const getBlockNumber = async (
   const network = Network.from(chainId);
   const rpcProvider = new JsonRpcProvider(provider, network);
   try {
-    const block = await promiseTimeout(
-      rpcProvider.getBlock('latest'),
+    const blockNumber = await promiseTimeout(
+      rpcProvider.getBlockNumber(),
       BLOCK_NUMBER_TIMEOUT_MS,
     );
-    if (block == null) {
-      throw new Error('Block is null');
-    }
-    return block.number;
+    return blockNumber;
   } catch (err) {
     if (!(err instanceof Error)) {
       throw err;
