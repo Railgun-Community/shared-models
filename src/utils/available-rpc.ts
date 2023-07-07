@@ -69,11 +69,14 @@ const getBlockNumber = async (
     staticNetwork: network,
   });
   try {
-    const blockNumber = await promiseTimeout(
-      rpcProvider.getBlockNumber(),
+    const block = await promiseTimeout(
+      rpcProvider.getBlock('latest'),
       BLOCK_NUMBER_TIMEOUT_MS,
     );
-    return blockNumber;
+    if (block == null) {
+      throw new Error('Block is null');
+    }
+    return block.number;
   } catch (err) {
     if (!(err instanceof Error)) {
       throw err;
