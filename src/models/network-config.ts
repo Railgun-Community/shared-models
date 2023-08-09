@@ -108,7 +108,7 @@ export enum BaseTokenWrappedAddress {
   HardhatWETH = '0x09635F643e140090A9A8Dcd712eD6285858ceBef', // (Hardhat) WETH
 }
 
-export const NETWORK_CONFIG: { [name in NetworkName]: Network } = {
+export const NETWORK_CONFIG: Record<NetworkName, Network> = {
   [NetworkName.Railgun]: {
     chain: {
       type: ChainType.EVM,
