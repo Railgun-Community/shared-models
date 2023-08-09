@@ -97,6 +97,11 @@ export type RailgunTransactionGasEstimateResponse = {
   relayerFeeCommitment?: CommitmentSummary;
 };
 
+export type RailgunERC20Recipient = {
+  tokenAddress: string;
+  recipientAddress: string;
+};
+
 export type RailgunERC20Amount = {
   tokenAddress: string;
   amount: bigint;
