@@ -250,7 +250,6 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptContract: RelayAdaptContract.EthereumRopsten,
     relayAdaptHistory: [''],
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumRopsten,
-    isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: false,
@@ -279,7 +278,6 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4', // V3.1 Update - Jan 2023
     ],
     deploymentBlock: RailgunProxyDeploymentBlock.EthereumGoerli,
-    isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
@@ -334,7 +332,6 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6', // V3.1 Update - Jan 2023
     ],
     deploymentBlock: RailgunProxyDeploymentBlock.ArbitrumGoerli,
-    isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
