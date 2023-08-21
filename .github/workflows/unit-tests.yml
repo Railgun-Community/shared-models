@@ -7,7 +7,7 @@ on:
     branches: [main]
   schedule:
     # - cron: '0 13,23 * * *'
-    - cron: '48 8 * * *'
+    - cron: '9 9 * * *'
 
 jobs:
   unit-tests:
@@ -22,10 +22,12 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: install
-      - name: Yarn test at least 3 times
+      - name: Yarn test up to 3 times
         shell: bash
         run: # Try yarn test 3 times before failing
           r=3;while ! yarn test ; do ((--r))||exit;sleep 1;done
+      - name: Debug github eventname
+        run: echo "${{ github.event_name }}"
 
   fail-report:
     if: ${{ failure() && github.event_name == 'schedule' }}
