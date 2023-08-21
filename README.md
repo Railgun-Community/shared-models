@@ -1,4 +1,4 @@
-[![CI Tests](https://github.com/Railgun-Community/shared-models/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Railgun-Community/shared-models/actions)
+[![Unit Tests](https://github.com/Railgun-Community/shared-models/actions/workflows/unit-tests.yml/badge.svg?branch=main)](https://github.com/Railgun-Community/shared-models/actions)
 
 # Shared TypeScript models, types and various utils for RAILGUN SDKs
 
