@@ -6,7 +6,8 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '0 13,23 * * *'
+    # - cron: '0 13,23 * * *'
+    - cron: '16 11 * * *'
 
 jobs:
   unit-tests:
@@ -25,6 +26,8 @@ jobs:
         shell: bash
         run: # Try yarn test 3 times before failing
           r=3;while ! yarn test ; do ((--r))||exit;sleep 1;done
+      - name: Pseudo fail
+        run: exit 1
 
   fail-report:
     if: ${{ failure() && github.event_name == 'schedule' }}
