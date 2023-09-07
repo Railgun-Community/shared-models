@@ -50,6 +50,7 @@ export type Network = {
   defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
+  poiEnabled?: boolean;
 };
 
 export enum RailgunProxyContract {
@@ -281,6 +282,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    poiEnabled: true,
   },
   [NetworkName.PolygonMumbai]: {
     chain: {
