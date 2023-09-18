@@ -1,3 +1,4 @@
+import { POINetworkStatus } from './proof-of-innocence';
 import { Chain, ChainType, EVMGasType } from './response-types';
 
 /**
@@ -50,7 +51,7 @@ export type Network = {
   defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
-  poiEnabled?: boolean;
+  poi?: POINetworkStatus;
 };
 
 export enum RailgunProxyContract {
@@ -282,7 +283,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
-    poiEnabled: true,
+    poi: POINetworkStatus.Gather,
   },
   [NetworkName.PolygonMumbai]: {
     chain: {

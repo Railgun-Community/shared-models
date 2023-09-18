@@ -4,6 +4,7 @@ export * from './function-types';
 export * from './merkletree-scan';
 export * from './network-config';
 export * from './proof';
+export * from './proof-of-innocence';
 export * from './relayer';
 export * from './response-types';
 export * from './transaction';
