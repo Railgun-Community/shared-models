@@ -33,7 +33,7 @@ describe('available-rpc', () => {
     const fallbackProvider = createFallbackProviderFromJsonConfig(config);
 
     await fallbackProvider.getBlockNumber();
-  });
+  }).timeout(5000);
 
   it('Should sort ascending and descending', () => {
     const allConfigs = [

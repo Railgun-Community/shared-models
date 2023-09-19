@@ -26,8 +26,18 @@ export type MerkleProof = {
   root: string;
 };
 
-export type POIEventListStatus = {
-  length: number;
+export type ShieldQueueStatus = {
+  pending: number;
+  allowed: number;
+  blocked: number;
+  addedPOI: number;
+  latestPendingShield: Optional<string>;
+};
+
+export type POIListStatus = {
+  poiEvents: number;
+  pendingTransactProofs: number;
+  blockedShields: number;
 };
 
 export type GetTransactProofsParams = {
@@ -112,5 +122,6 @@ export type NodeStatusAllNetworks = {
 
 export type NodeStatusForNetwork = {
   txidStatus: RailgunTxidStatus;
-  eventListStatuses: Record<string, POIEventListStatus>;
+  shieldQueueStatus: ShieldQueueStatus;
+  listStatuses: Record<string, POIListStatus>;
 };
