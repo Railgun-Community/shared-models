@@ -34,6 +34,10 @@ export type GetTransactProofsParams = {
   bloomFilterSerialized: string;
 };
 
+export type GetBlockedShieldsParams = {
+  bloomFilterSerialized: string;
+};
+
 export type SubmitTransactProofParams = {
   listKey: string;
   transactProofData: TransactProofData;
