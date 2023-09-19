@@ -5,12 +5,6 @@ export enum POINetworkStatus {
   Gather = 'Gather',
 }
 
-export type ShieldProofData = {
-  snarkProof: SnarkProof;
-  commitmentHash: string;
-  blindedCommitment: string;
-};
-
 export type TransactProofData = {
   snarkProof: SnarkProof;
   poiMerkleroots: string[];
@@ -36,16 +30,8 @@ export type POIEventListStatus = {
   length: number;
 };
 
-export type GetShieldProofsParams = {
-  bloomFilterSerialized: string;
-};
-
 export type GetTransactProofsParams = {
   bloomFilterSerialized: string;
-};
-
-export type SubmitShieldProofParams = {
-  shieldProofData: ShieldProofData;
 };
 
 export type SubmitTransactProofParams = {
@@ -53,9 +39,19 @@ export type SubmitTransactProofParams = {
   transactProofData: TransactProofData;
 };
 
+export enum BlindedCommitmentType {
+  Shield = 'Shield',
+  Transact = 'Transact',
+}
+
+export type BlindedCommitmentData = {
+  blindedCommitment: string;
+  type: BlindedCommitmentType;
+};
+
 export type GetPOIsPerListParams = {
   listKeys: string[];
-  blindedCommitments: string[];
+  blindedCommitmentDatas: BlindedCommitmentData[];
 };
 
 export type GetMerkleProofsParams = {
@@ -72,8 +68,12 @@ export type ValidateTxidMerklerootParams = {
 export enum POIStatus {
   // POI valdated in event list
   Valid = 'Valid',
-  // Proof submitted, but not validated yet
-  Pending = 'Pending',
+  // Shield indexed, but not allowed or blocked yet
+  ShieldPending = 'ShieldPending',
+  // Shield blocked
+  ShieldBlocked = 'ShieldBlocked',
+  // Transact proof submitted, but not validated yet
+  TransactProofSubmitted = 'TransactProofSubmitted',
   // No proof
   Missing = 'Missing',
 }
