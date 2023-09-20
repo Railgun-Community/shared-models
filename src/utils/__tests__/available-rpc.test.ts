@@ -20,11 +20,6 @@ describe('available-rpc', () => {
           weight: 2,
           stallTimeout: 2500,
         },
-        {
-          provider: 'https://railwayapi.xyz/rpc/alchemy/eth-mainnet',
-          priority: 2,
-          weight: 1,
-        },
         { provider: 'https://cloudflare-eth.com/', priority: 3, weight: 1 },
         { provider: 'https://rpc.ankr.com/eth', priority: 3, weight: 1 },
       ],
