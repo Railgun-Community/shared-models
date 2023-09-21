@@ -1,10 +1,5 @@
 import { NetworkName } from './network-config';
 
-export enum POINetworkStatus {
-  Screen = 'Screen',
-  Gather = 'Gather',
-}
-
 export type TransactProofData = {
   snarkProof: SnarkProof;
   poiMerkleroots: string[];

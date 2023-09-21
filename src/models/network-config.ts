@@ -1,4 +1,3 @@
-import { POINetworkStatus } from './proof-of-innocence';
 import { Chain, ChainType, EVMGasType } from './response-types';
 
 /**
@@ -35,6 +34,10 @@ type BaseToken = {
   decimals: number;
 };
 
+type POISettings = {
+  launchBlock: number;
+};
+
 export type Network = {
   chain: Chain;
   name: NetworkName;
@@ -51,7 +54,7 @@ export type Network = {
   defaultEVMGasType: EVMGasType;
   shouldQuickSync: boolean;
   deprecated?: boolean;
-  poi?: POINetworkStatus;
+  poi?: POISettings;
 };
 
 export enum RailgunProxyContract {
@@ -283,7 +286,9 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
-    poi: POINetworkStatus.Gather,
+    poi: {
+      launchBlock: 9802000, // Oct 3, 2023
+    },
   },
   [NetworkName.PolygonMumbai]: {
     chain: {
