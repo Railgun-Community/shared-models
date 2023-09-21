@@ -92,8 +92,12 @@ export enum POIStatus {
   Missing = 'Missing',
 }
 
-export type POIStatusListMap = {
-  [listKey: string]: POIStatus[];
+export type POIsPerList = {
+  [listKey: string]: POIStatus;
+};
+
+export type POIsPerListMap = {
+  [blindedCommitment: string]: POIsPerList;
 };
 
 export type TxidMerkletreeSyncStatus = {
