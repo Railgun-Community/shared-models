@@ -22,11 +22,12 @@ export type MerkleProof = {
 };
 
 export type ShieldQueueStatus = {
+  unknown: number;
   pending: number;
   allowed: number;
   blocked: number;
   addedPOI: number;
-  latestPendingShield: Optional<string>;
+  latestShield: Optional<string>;
 };
 
 export type POIListStatus = {
