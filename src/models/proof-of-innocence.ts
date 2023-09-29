@@ -82,6 +82,10 @@ export type ValidateTxidMerklerootParams = {
   merkleroot: string;
 };
 
+export type GetLatestValidatedRailgunTxidParams = {
+  txidVersion: TXIDVersion;
+};
+
 export enum POIStatus {
   // POI valdated in event list
   Valid = 'Valid',
