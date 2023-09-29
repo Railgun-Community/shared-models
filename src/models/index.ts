@@ -10,3 +10,4 @@ export * from './relayer';
 export * from './response-types';
 export * from './transaction';
 export * from './wallet';
+export * from './balance';
