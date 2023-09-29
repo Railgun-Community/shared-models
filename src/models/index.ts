@@ -1,5 +1,6 @@
 export * from './artifact';
 export * from './blocked-address';
+export * from './engine';
 export * from './function-types';
 export * from './merkletree-scan';
 export * from './network-config';
