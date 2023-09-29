@@ -2,6 +2,7 @@
 import { ContractTransaction } from 'ethers';
 import { MerkletreeScanStatus } from './merkletree-scan';
 import { FeesSerialized } from './network-config';
+import { TXIDVersion } from './engine';
 
 export type RailgunAPICiphertext = {
   iv: string;
@@ -57,6 +58,7 @@ export type Chain = {
 };
 
 export type RailgunBalancesEvent = {
+  txidVersion: TXIDVersion;
   chain: Chain;
   erc20Amounts: RailgunERC20Amount[];
   nftAmounts: RailgunNFTAmount[];

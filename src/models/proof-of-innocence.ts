@@ -1,3 +1,4 @@
+import { TXIDVersion } from './engine';
 import { NetworkName } from './network-config';
 
 export type TransactProofData = {
@@ -37,14 +38,17 @@ export type POIListStatus = {
 };
 
 export type GetTransactProofsParams = {
+  txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
 };
 
 export type GetBlockedShieldsParams = {
+  txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
 };
 
 export type SubmitTransactProofParams = {
+  txidVersion: TXIDVersion;
   listKey: string;
   transactProofData: TransactProofData;
 };
@@ -60,16 +64,19 @@ export type BlindedCommitmentData = {
 };
 
 export type GetPOIsPerListParams = {
+  txidVersion: TXIDVersion;
   listKeys: string[];
   blindedCommitmentDatas: BlindedCommitmentData[];
 };
 
 export type GetMerkleProofsParams = {
+  txidVersion: TXIDVersion;
   listKey: string;
   blindedCommitments: string[];
 };
 
 export type ValidateTxidMerklerootParams = {
+  txidVersion: TXIDVersion;
   tree: number;
   index: number;
   merkleroot: string;
