@@ -40,11 +40,13 @@ export type POIListStatus = {
 export type GetTransactProofsParams = {
   txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
+  listKey: string;
 };
 
 export type GetBlockedShieldsParams = {
   txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
+  listKey: string;
 };
 
 export type SubmitTransactProofParams = {
