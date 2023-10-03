@@ -6,7 +6,8 @@ export type TransactProofData = {
   poiMerkleroots: string[];
   txidMerkleroot: string;
   txidMerklerootIndex: number;
-  blindedCommitmentOutputs: string[];
+  blindedCommitmentsOut: string[];
+  railgunTxidIfHasUnshield: string;
 };
 
 export type SnarkProof = {
