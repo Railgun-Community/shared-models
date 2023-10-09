@@ -1,6 +1,7 @@
-export enum RailgunWalletBalanceStatus {
+export enum RailgunWalletBalanceBucket {
   Spendable = 'Spendable',
-  ShieldPending = 'ShieldPending',
   ShieldBlocked = 'ShieldBlocked',
+  ShieldPending = 'ShieldPending',
+  TransactProofSubmitted = 'TransactProofSubmitted',
   MissingPOI = 'MissingPOI',
 }
