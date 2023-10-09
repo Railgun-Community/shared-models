@@ -3,5 +3,6 @@ export enum RailgunWalletBalanceBucket {
   ShieldBlocked = 'ShieldBlocked',
   ShieldPending = 'ShieldPending',
   TransactProofSubmitted = 'TransactProofSubmitted',
-  MissingPOI = 'MissingPOI',
+  MissingInternalPOI = 'MissingInternalPOI', // Change or DeFi interaction (Swap receipt)
+  MissingExternalPOI = 'MissingExternalPOI',
 }
