@@ -65,6 +65,18 @@ export type RailgunBalancesEvent = {
   railgunWalletID: string;
 };
 
+export type POIProofProgressEvent = {
+  txidVersion: TXIDVersion;
+  chain: Chain;
+  railgunWalletID: string;
+  progress: number;
+  listKey: string;
+  txid: string;
+  railgunTxid: string;
+  index: number;
+  totalCount: number;
+};
+
 export type MerkletreeScanUpdateEvent = {
   chain: Chain;
   scanStatus: MerkletreeScanStatus;
