@@ -75,6 +75,7 @@ export type POIProofProgressEvent = {
   railgunTxid: string;
   index: number;
   totalCount: number;
+  errMessage: Optional<string>;
 };
 
 export type MerkletreeScanUpdateEvent = {
