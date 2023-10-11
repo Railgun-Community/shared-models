@@ -139,3 +139,6 @@ export type NodeStatusForNetwork = {
   shieldQueueStatus: ShieldQueueStatus;
   listStatuses: Record<string, POIListStatus>;
 };
+
+export const POI_SHIELD_PENDING_SEC = 3 * 24 * 60 * 60; // 3 days
+export const POI_SHIELD_PENDING_SEC_TEST_NET = 5 * 60; // 3 days
