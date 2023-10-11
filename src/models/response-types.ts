@@ -3,6 +3,7 @@ import { ContractTransaction } from 'ethers';
 import { MerkletreeScanStatus } from './merkletree-scan';
 import { FeesSerialized } from './network-config';
 import { TXIDVersion } from './engine';
+import { RailgunWalletBalanceBucket } from './balance';
 
 export type RailgunAPICiphertext = {
   iv: string;
@@ -65,7 +66,15 @@ export type RailgunBalancesEvent = {
   railgunWalletID: string;
 };
 
+export enum POIProofEventStatus {
+  LoadingNextBatch = 'LoadingNextBatch',
+  InProgress = 'InProgress',
+  Error = 'Error',
+  AllProofsCompleted = 'AllProofsCompleted',
+}
+
 export type POIProofProgressEvent = {
+  status: POIProofEventStatus;
   txidVersion: TXIDVersion;
   chain: Chain;
   railgunWalletID: string;
@@ -174,32 +183,48 @@ type SendAdditionalData = {
   recipientAddress: Optional<string>;
   walletSource: Optional<string>;
   memoText: Optional<string>;
+  hasValidPOIForActiveLists: boolean;
 };
 
-export type RailgunSendERC20Amount = RailgunERC20Amount & SendAdditionalData;
+type HistoryAdditionalData = {
+  hasValidPOIForActiveLists: boolean;
+};
 
-export type RailgunSendNFTAmount = RailgunNFTAmount & SendAdditionalData;
+export type RailgunHistoryERC20Amount = RailgunERC20Amount &
+  HistoryAdditionalData;
+
+export type RailgunHistoryNFTAmount = RailgunNFTAmount & HistoryAdditionalData;
+
+export type RailgunHistorySendERC20Amount = RailgunHistoryERC20Amount &
+  SendAdditionalData;
+
+export type RailgunHistorySendNFTAmount = RailgunHistoryNFTAmount &
+  SendAdditionalData;
 
 type UnshieldAdditonalData = {
   unshieldFee: Optional<string>;
+  hasValidPOIForActiveLists: boolean;
 };
 
-export type RailgunUnshieldERC20Amount = RailgunSendERC20Amount &
+export type RailgunHistoryUnshieldERC20Amount = RailgunHistorySendERC20Amount &
   UnshieldAdditonalData;
 
-export type RailgunUnshieldNFTAmount = RailgunSendNFTAmount &
+export type RailgunHistoryUnshieldNFTAmount = RailgunHistorySendNFTAmount &
   UnshieldAdditonalData;
 
 type ReceiveAdditionalData = {
   senderAddress: Optional<string>;
   memoText: Optional<string>;
   shieldFee: Optional<string>;
+  hasValidPOIForActiveLists: boolean;
+  balanceBucket: RailgunWalletBalanceBucket;
 };
 
-export type RailgunReceiveERC20Amount = RailgunERC20Amount &
+export type RailgunHistoryReceiveERC20Amount = RailgunHistoryERC20Amount &
   ReceiveAdditionalData;
 
-export type RailgunReceiveNFTAmount = RailgunNFTAmount & ReceiveAdditionalData;
+export type RailgunHistoryReceiveNFTAmount = RailgunHistoryNFTAmount &
+  ReceiveAdditionalData;
 
 export enum TransactionHistoryItemCategory {
   ShieldERC20s = 'ShieldERC20s',
@@ -214,14 +239,14 @@ export type TransactionHistoryItem = {
   version: number;
   timestamp: Optional<number>;
   blockNumber: Optional<number>;
-  receiveERC20Amounts: RailgunReceiveERC20Amount[];
-  transferERC20Amounts: RailgunSendERC20Amount[];
-  changeERC20Amounts: RailgunERC20Amount[];
-  relayerFeeERC20Amount?: RailgunERC20Amount;
-  unshieldERC20Amounts: RailgunUnshieldERC20Amount[];
-  receiveNFTAmounts: RailgunReceiveNFTAmount[];
-  transferNFTAmounts: RailgunSendNFTAmount[];
-  unshieldNFTAmounts: RailgunUnshieldNFTAmount[];
+  receiveERC20Amounts: RailgunHistoryReceiveERC20Amount[];
+  transferERC20Amounts: RailgunHistorySendERC20Amount[];
+  changeERC20Amounts: RailgunHistoryERC20Amount[];
+  relayerFeeERC20Amount?: RailgunHistoryERC20Amount;
+  unshieldERC20Amounts: RailgunHistoryUnshieldERC20Amount[];
+  receiveNFTAmounts: RailgunHistoryReceiveNFTAmount[];
+  transferNFTAmounts: RailgunHistorySendNFTAmount[];
+  unshieldNFTAmounts: RailgunHistoryUnshieldNFTAmount[];
   category: TransactionHistoryItemCategory;
 };
 
