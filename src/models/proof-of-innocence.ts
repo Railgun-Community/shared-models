@@ -50,10 +50,24 @@ export type GetBlockedShieldsParams = {
   listKey: string;
 };
 
+export type LegacyTransactProofData = {
+  txidIndex: string;
+  npk: string;
+  value: string;
+  tokenHash: string;
+  blindedCommitment: string;
+};
+
 export type SubmitTransactProofParams = {
   txidVersion: TXIDVersion;
   listKey: string;
   transactProofData: TransactProofData;
+};
+
+export type SubmitLegacyTransactProofParams = {
+  txidVersion: TXIDVersion;
+  listKeys: string[];
+  legacyTransactProofDatas: LegacyTransactProofData[];
 };
 
 export enum BlindedCommitmentType {
