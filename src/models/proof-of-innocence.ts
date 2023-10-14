@@ -152,6 +152,7 @@ export type NodeStatusForNetwork = {
   txidStatus: RailgunTxidStatus;
   shieldQueueStatus: ShieldQueueStatus;
   listStatuses: Record<string, POIListStatus>;
+  legacyTransactProofs: number;
 };
 
 export const POI_SHIELD_PENDING_SEC = 3 * 24 * 60 * 60; // 3 days
