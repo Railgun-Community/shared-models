@@ -156,6 +156,9 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock.Ethereum,
     defaultEVMGasType: EVMGasType.Type2,
     shouldQuickSync: true,
+    poi: {
+      launchBlock: 18470420, // Oct 31, 2023 - ~9:45am ET
+    },
   },
   [NetworkName.BNBChain]: {
     chain: {
