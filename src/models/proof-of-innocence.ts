@@ -85,6 +85,11 @@ export enum BlindedCommitmentType {
   Unshield = 'Unshield',
 }
 
+export type ValidatePOIMerklerootsParams = {
+  txidVersion: TXIDVersion;
+  poiMerkleroots: string[];
+};
+
 export type BlindedCommitmentData = {
   blindedCommitment: string;
   type: BlindedCommitmentType;
