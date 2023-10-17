@@ -32,6 +32,15 @@ export type ShieldQueueStatus = {
   latestShield: Optional<string>;
 };
 
+export enum POIEventType {
+  Shield = 'Shield',
+  Transact = 'Transact',
+  Unshield = 'Unshield',
+  LegacyTransact = 'LegacyTransact',
+}
+
+export type POIEventLengths = Record<POIEventType, number>;
+
 export type POIListStatus = {
   poiEvents: number;
   pendingTransactProofs: number;
