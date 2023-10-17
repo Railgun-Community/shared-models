@@ -9,6 +9,7 @@ export type RelayerFeeMessageData = {
   availableWallets: number;
   version: string;
   relayAdapt: string;
+  requiredPOIListKeys: string[];
 };
 
 export type RelayerFeeMessage = {
