@@ -1,4 +1,8 @@
-import { ChainType, CommitmentCiphertext } from './response-types';
+import {
+  ChainType,
+  CommitmentCiphertext,
+  PreTransactionPOIsPerTxidLeafPerList,
+} from './response-types';
 
 export type RelayerFeeMessageData = {
   fees: MapType<string>;
@@ -39,6 +43,7 @@ export type RelayerRawParamsTransact = RelayerRawParamsShared & {
   data: string;
   minGasPrice: string;
   useRelayAdapt: boolean;
+  preTransactionPOIsPerTxidLeafPerList: PreTransactionPOIsPerTxidLeafPerList;
 };
 
 export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {

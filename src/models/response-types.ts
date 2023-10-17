@@ -112,9 +112,32 @@ export type RailgunTxidFromNullifiersResponse = {
   txid?: string;
 };
 
+export type Proof = {
+  pi_a: [string, string];
+  pi_b: [[string, string], [string, string]];
+  pi_c: [string, string];
+};
+
+export type PreTransactionPOI = {
+  snarkProof: Proof;
+  txidMerkleroot: string;
+  poiMerkleroots: string[];
+  blindedCommitmentsOut: string[];
+  railgunTxidIfHasUnshield: string;
+};
+
+export type PreTransactionPOIsPerTxidLeafPerList = Record<
+  string, // listKey
+  Record<
+    string, // txidLeafHash
+    PreTransactionPOI
+  >
+>;
+
 export type RailgunPopulateTransactionResponse = {
   transaction: ContractTransaction;
   nullifiers?: string[];
+  preTransactionPOIsPerTxidLeafPerList: PreTransactionPOIsPerTxidLeafPerList;
 };
 
 export type RailgunTransactionGasEstimateResponse = {
