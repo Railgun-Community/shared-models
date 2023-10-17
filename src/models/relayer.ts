@@ -1,3 +1,4 @@
+import { TXIDVersion } from './engine';
 import {
   ChainType,
   CommitmentCiphertext,
@@ -29,6 +30,7 @@ export type RelayerEncryptedMethodParams = {
 };
 
 type RelayerRawParamsShared = {
+  txidVersion: TXIDVersion;
   chainID: number;
   chainType: ChainType;
   feesID: string;
