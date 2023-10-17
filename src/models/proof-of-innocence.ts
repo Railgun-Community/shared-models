@@ -87,6 +87,7 @@ export enum BlindedCommitmentType {
 
 export type ValidatePOIMerklerootsParams = {
   txidVersion: TXIDVersion;
+  listKey: string;
   poiMerkleroots: string[];
 };
 
