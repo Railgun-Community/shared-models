@@ -115,13 +115,11 @@ export type GetLatestValidatedRailgunTxidParams = {
 export enum POIStatus {
   // POI valdated in event list
   Valid = 'Valid',
-  // Shield indexed, but not allowed or blocked yet
-  ShieldPending = 'ShieldPending',
   // Shield blocked
   ShieldBlocked = 'ShieldBlocked',
-  // Transact proof submitted, but not validated yet
-  TransactProofSubmitted = 'TransactProofSubmitted',
-  // No proof
+  // Transact/Unshield proof submitted, but not validated yet
+  ProofSubmitted = 'ProofSubmitted',
+  // Missing internal/external transact/unshield proof, or ShieldPending
   Missing = 'Missing',
 }
 
