@@ -42,7 +42,7 @@ export enum POIEventType {
 export type POIEventLengths = Record<POIEventType, number>;
 
 export type POIListStatus = {
-  poiEvents: number;
+  poiEventLengths: POIEventLengths;
   pendingTransactProofs: number;
   blockedShields: number;
 };
