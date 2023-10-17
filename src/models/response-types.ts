@@ -61,9 +61,10 @@ export type Chain = {
 export type RailgunBalancesEvent = {
   txidVersion: TXIDVersion;
   chain: Chain;
+  railgunWalletID: string;
+  balanceBucket: RailgunWalletBalanceBucket;
   erc20Amounts: RailgunERC20Amount[];
   nftAmounts: RailgunNFTAmount[];
-  railgunWalletID: string;
 };
 
 export enum POIProofEventStatus {
