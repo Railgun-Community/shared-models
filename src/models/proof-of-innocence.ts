@@ -1,5 +1,6 @@
 import { TXIDVersion } from './engine';
 import { NetworkName } from './network-config';
+import { PreTransactionPOIsPerTxidLeafPerList } from './response-types';
 
 export type TransactProofData = {
   snarkProof: SnarkProof;
@@ -67,6 +68,14 @@ export type LegacyTransactProofData = {
   blindedCommitment: string;
 };
 
+export type SingleCommitmentProofsData = {
+  commitment: string;
+  npk: string;
+  utxoTree: number;
+  utxoPosition: number;
+  pois: PreTransactionPOIsPerTxidLeafPerList;
+};
+
 export type SubmitTransactProofParams = {
   txidVersion: TXIDVersion;
   listKey: string;
@@ -77,6 +86,11 @@ export type SubmitLegacyTransactProofParams = {
   txidVersion: TXIDVersion;
   listKeys: string[];
   legacyTransactProofDatas: LegacyTransactProofData[];
+};
+
+export type SubmitSingleCommitmentProofsParams = {
+  txidVersion: TXIDVersion;
+  singleCommitmentProofData: SingleCommitmentProofsData;
 };
 
 export enum BlindedCommitmentType {
