@@ -92,7 +92,7 @@ export type SubmitLegacyTransactProofParams = {
 
 export type SubmitSingleCommitmentProofsParams = {
   txidVersion: TXIDVersion;
-  singleCommitmentProofData: SingleCommitmentProofsData;
+  singleCommitmentProofsData: SingleCommitmentProofsData;
 };
 
 export enum BlindedCommitmentType {
