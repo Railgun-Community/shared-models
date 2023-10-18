@@ -71,8 +71,10 @@ export type LegacyTransactProofData = {
 export type SingleCommitmentProofsData = {
   commitment: string;
   npk: string;
-  utxoTree: number;
-  utxoPosition: number;
+  utxoTreeIn: number;
+  utxoTreeOut: number;
+  utxoPositionOut: number;
+  railgunTxid: string;
   pois: PreTransactionPOIsPerTxidLeafPerList;
 };
 
