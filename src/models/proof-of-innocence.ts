@@ -187,3 +187,24 @@ export type NodeStatusForNetwork = {
 
 export const POI_SHIELD_PENDING_SEC = 60 * 60 * 60; // 60 hours
 export const POI_SHIELD_PENDING_SEC_TEST_NET = 5 * 60; // 5 minutes
+
+export type POIList = {
+  key: string;
+  type: POIListType;
+  name: string;
+  description: string;
+};
+export declare enum POIListType {
+  Active = 'Active',
+  Gather = 'Gather',
+}
+
+export const POI_REQUIRED_LISTS: POIList[] = [
+  {
+    key: 'efc6ddb59c098a13fb2b618fdae94c1c3a807abc8fb1837c93620c9143ee9e88',
+    type: POIListType.Active,
+    name: 'Chainalysis OFAC Sanctions API',
+    description:
+      'API which is used to restrict bad actors designated by the US Department of the Treasury. See: https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools.',
+  },
+];
