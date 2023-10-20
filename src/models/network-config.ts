@@ -56,7 +56,7 @@ export type Network = {
   isDevOnlyNetwork?: boolean;
   isTestnet?: boolean;
   defaultEVMGasType: EVMGasType;
-  shouldQuickSync: boolean;
+  hasGraphQuickSync: boolean;
   deprecated?: boolean;
   poi?: POISettings;
 };
@@ -146,7 +146,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptHistory: [],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
+    hasGraphQuickSync: false,
   },
   [NetworkName.Ethereum]: {
     chain: {
@@ -172,7 +172,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
     poi: {
       launchBlock: 18470420, // Oct 31, 2023 - ~9:45am ET
     },
@@ -201,7 +201,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.BNBChain],
     defaultEVMGasType: EVMGasType.Type0,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
   },
   [NetworkName.Polygon]: {
     chain: {
@@ -227,7 +227,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
   },
   [NetworkName.Arbitrum]: {
     chain: {
@@ -251,7 +251,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Arbitrum],
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
   },
 
   // TEST NETS
@@ -280,7 +280,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       RailgunProxyDeploymentBlock[NetworkName.EthereumRopsten_DEPRECATED],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
+    hasGraphQuickSync: false,
   },
   [NetworkName.EthereumGoerli]: {
     chain: {
@@ -308,7 +308,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
     poi: {
       launchBlock: 9802000, // Oct 3, 2023
     },
@@ -337,7 +337,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: false, // Graph is not supported on this network
   },
   [NetworkName.PolygonMumbai]: {
     chain: {
@@ -365,7 +365,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
   },
   [NetworkName.ArbitrumGoerli]: {
     chain: {
@@ -391,7 +391,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: true,
+    hasGraphQuickSync: true,
   },
   [NetworkName.Hardhat]: {
     chain: {
@@ -415,6 +415,6 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    shouldQuickSync: false,
+    hasGraphQuickSync: false,
   },
 };
