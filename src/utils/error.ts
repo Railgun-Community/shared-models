@@ -22,6 +22,11 @@ export const sanitizeError = (err: Error): Error => {
     if (lowercaseMsg.includes('call revert exception')) {
       return new Error('Failed to connect to RPC.');
     }
+    if (lowercaseMsg.includes('already known')) {
+      return new Error(
+        'Transaction successful but ethers request for TXID failed.',
+      );
+    }
     if (lowercaseMsg.includes('missing revert data')) {
       return new Error('RPC connection error.');
     }
