@@ -88,6 +88,11 @@ export type POIProofProgressEvent = {
   errMessage: Optional<string>;
 };
 
+export type ProofProgressEvent = {
+  progress: number;
+  status: string;
+};
+
 export type MerkletreeScanUpdateEvent = {
   chain: Chain;
   scanStatus: MerkletreeScanStatus;
