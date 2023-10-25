@@ -185,7 +185,7 @@ export type NodeStatusForNetwork = {
   legacyTransactProofs: number;
 };
 
-export const POI_SHIELD_PENDING_SEC = 60 * 60 * 60; // 60 hours
+export const POI_SHIELD_PENDING_SEC = 60 * 60; // 1 hour
 export const POI_SHIELD_PENDING_SEC_TEST_NET = 5 * 60; // 5 minutes
 
 export enum POIListType {
