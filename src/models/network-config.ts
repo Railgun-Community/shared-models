@@ -174,7 +174,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     defaultEVMGasType: EVMGasType.Type2,
     hasGraphQuickSync: true,
     poi: {
-      launchBlock: 18470420, // Oct 31, 2023 - ~9:45am ET
+      launchBlock: 18514200, // Nov 06, 2023 - ~12:00pm ET
     },
   },
   [NetworkName.BNBChain]: {
