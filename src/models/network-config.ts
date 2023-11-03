@@ -54,10 +54,14 @@ export type Network = {
   relayAdaptContract: string;
   relayAdaptHistory: string[];
   deploymentBlock: number;
+  poseidonMerkleAccumulatorV3Contract: string;
+  poseidonMerkleVerifierV3Contract: string;
+  tokenVaultV3Contract: string;
+  deploymentBlockPoseidonMerkleAccumulatorV3: number;
   isDevOnlyNetwork?: boolean;
   isTestnet?: boolean;
   defaultEVMGasType: EVMGasType;
-  hasGraphQuickSync: boolean;
+  supportsV3: boolean;
   deprecated?: boolean;
   poi?: POISettings;
 };
@@ -128,7 +132,84 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
   [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
   [NetworkName.PolygonMumbai]: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
   [NetworkName.ArbitrumGoerli]: '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
-  [NetworkName.Hardhat]: '0x09635F643e140090A9A8Dcd712eD6285858ceBef', // (Hardhat) WETH
+  [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
+};
+
+export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
+  NetworkName,
+  string
+> = {
+  [NetworkName.Railgun]: '', // TODO
+
+  [NetworkName.Ethereum]: '', // TODO
+  [NetworkName.BNBChain]: '', // TODO
+  [NetworkName.Polygon]: '', // TODO
+  [NetworkName.Arbitrum]: '', // TODO
+
+  // Test nets
+  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
+  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
+};
+
+export const RailgunPoseidonMerkleVerifierV3Contract: Record<
+  NetworkName,
+  string
+> = {
+  [NetworkName.Railgun]: '', // TODO
+
+  [NetworkName.Ethereum]: '', // TODO
+  [NetworkName.BNBChain]: '', // TODO
+  [NetworkName.Polygon]: '', // TODO
+  [NetworkName.Arbitrum]: '', // TODO
+
+  // Test nets
+  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
+  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
+};
+
+export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
+  [NetworkName.Railgun]: '', // TODO
+
+  [NetworkName.Ethereum]: '', // TODO
+  [NetworkName.BNBChain]: '', // TODO
+  [NetworkName.Polygon]: '', // TODO
+  [NetworkName.Arbitrum]: '', // TODO
+
+  // Test nets
+  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
+  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
+};
+
+export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
+  NetworkName,
+  number
+> = {
+  [NetworkName.Ethereum]: 0, // TODO
+  [NetworkName.BNBChain]: 0, // TODO
+  [NetworkName.Polygon]: 0, // TODO
+  [NetworkName.Arbitrum]: 0, // TODO
+
+  // Test nets
+  [NetworkName.EthereumGoerli]: 0, // TODO
+  [NetworkName.EthereumSepolia]: 0, // TODO
+  [NetworkName.PolygonMumbai]: 0, // TODO
+  [NetworkName.ArbitrumGoerli]: 0, // TODO
+
+  [NetworkName.EthereumRopsten_DEPRECATED]: 0,
+  [NetworkName.Railgun]: 0,
+  [NetworkName.Hardhat]: 0,
 };
 
 export const NETWORK_CONFIG: Record<NetworkName, Network> = {
@@ -146,8 +227,14 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptContract: RelayAdaptContract[NetworkName.Ethereum],
     relayAdaptHistory: [],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Ethereum],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Ethereum],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Ethereum],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: false,
   },
   [NetworkName.Ethereum]: {
     chain: {
@@ -172,8 +259,9 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a', // V3.1 Update - Jan 2023
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
     poi: {
       launchBlock: 18514200, // Nov 06, 2023 - ~12:00pm ET
       launchTimestamp: 1383760800, // Unix timestamp in seconds — Nov 06, 2023, 12:00pm ET
@@ -203,7 +291,14 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.BNBChain],
     defaultEVMGasType: EVMGasType.Type0,
-    hasGraphQuickSync: true,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.BNBChain],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.BNBChain],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.BNBChain],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.BNBChain],
+    supportsV3: false,
   },
   [NetworkName.Polygon]: {
     chain: {
@@ -229,7 +324,14 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Polygon],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Polygon],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Polygon],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Polygon],
+    supportsV3: false,
   },
   [NetworkName.Arbitrum]: {
     chain: {
@@ -253,7 +355,14 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Arbitrum],
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Arbitrum],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Arbitrum],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Arbitrum],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Arbitrum],
+    supportsV3: false,
   },
 
   // TEST NETS
@@ -282,7 +391,21 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       RailgunProxyDeploymentBlock[NetworkName.EthereumRopsten_DEPRECATED],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: false,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[
+        NetworkName.EthereumRopsten_DEPRECATED
+      ],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[
+        NetworkName.EthereumRopsten_DEPRECATED
+      ],
+    tokenVaultV3Contract:
+      RailgunTokenVaultV3Contract[NetworkName.EthereumRopsten_DEPRECATED],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.EthereumRopsten_DEPRECATED
+      ],
+    supportsV3: false,
   },
   [NetworkName.EthereumGoerli]: {
     chain: {
@@ -310,11 +433,21 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
     poi: {
       launchBlock: 9802000, // Oct 3, 2023
       launchTimestamp: 1380794400, // Unix timestamp in seconds — Oct 3, 2023, 12:00pm ET
     },
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.EthereumGoerli],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.EthereumGoerli],
+    tokenVaultV3Contract:
+      RailgunTokenVaultV3Contract[NetworkName.EthereumGoerli],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.EthereumGoerli
+      ],
+    supportsV3: false,
   },
   [NetworkName.EthereumSepolia]: {
     chain: {
@@ -340,7 +473,17 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: false, // Graph is not supported on this network
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.EthereumSepolia],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.EthereumSepolia],
+    tokenVaultV3Contract:
+      RailgunTokenVaultV3Contract[NetworkName.EthereumSepolia],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.EthereumSepolia
+      ],
+    supportsV3: false,
   },
   [NetworkName.PolygonMumbai]: {
     chain: {
@@ -368,7 +511,17 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.PolygonMumbai],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.PolygonMumbai],
+    tokenVaultV3Contract:
+      RailgunTokenVaultV3Contract[NetworkName.PolygonMumbai],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.PolygonMumbai
+      ],
+    supportsV3: false,
   },
   [NetworkName.ArbitrumGoerli]: {
     chain: {
@@ -394,7 +547,17 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: true,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.ArbitrumGoerli],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.ArbitrumGoerli],
+    tokenVaultV3Contract:
+      RailgunTokenVaultV3Contract[NetworkName.ArbitrumGoerli],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.ArbitrumGoerli
+      ],
+    supportsV3: false,
   },
   [NetworkName.Hardhat]: {
     chain: {
@@ -418,6 +581,13 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
-    hasGraphQuickSync: false,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Hardhat],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Hardhat],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Hardhat],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Hardhat],
+    supportsV3: true,
   },
 };
