@@ -26,9 +26,10 @@ export enum NetworkName {
 }
 
 export type FeesSerialized = {
-  shield: string;
-  unshield: string;
-  nft: string;
+  shieldFeeV2: string;
+  unshieldFeeV2: string;
+  shieldFeeV3: Optional<string>;
+  unshieldFeeV3: Optional<string>;
 };
 
 type BaseToken = {
