@@ -1,7 +1,8 @@
 import { TXIDVersion } from './engine';
 import {
   ChainType,
-  CommitmentCiphertext,
+  CommitmentCiphertextV2,
+  CommitmentCiphertextV3,
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 
@@ -50,7 +51,7 @@ export type RelayerRawParamsTransact = RelayerRawParamsShared & {
 
 export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {
   gasLimit: string;
-  commitmentCiphertext: CommitmentCiphertext;
+  commitmentCiphertext: CommitmentCiphertextV2 | CommitmentCiphertextV3;
   commitmentHash: string;
 };
 
