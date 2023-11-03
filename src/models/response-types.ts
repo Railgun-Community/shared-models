@@ -285,7 +285,12 @@ type Ciphertext = {
   data: string[];
 };
 
-export type CommitmentCiphertext = {
+type CiphertextIVData = {
+  iv: string;
+  data: string[];
+};
+
+export type CommitmentCiphertextV2 = {
   ciphertext: Ciphertext;
   blindedSenderViewingKey: string;
   blindedReceiverViewingKey: string;
@@ -293,7 +298,13 @@ export type CommitmentCiphertext = {
   memo: string;
 };
 
+export type CommitmentCiphertextV3 = {
+  ciphertext: CiphertextIVData;
+  blindedSenderViewingKey: string;
+  blindedReceiverViewingKey: string;
+};
+
 export type CommitmentSummary = {
-  commitmentCiphertext: CommitmentCiphertext;
+  commitmentCiphertext: CommitmentCiphertextV2 | CommitmentCiphertextV3;
   commitmentHash: string;
 };
