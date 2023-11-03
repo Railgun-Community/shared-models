@@ -235,6 +235,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
+    supportsV3: false,
   },
   [NetworkName.Ethereum]: {
     chain: {
@@ -261,11 +262,17 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Ethereum],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Ethereum],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Ethereum],
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
       launchBlock: 18514200, // Nov 06, 2023 - ~12:00pm ET
       launchTimestamp: 1383760800, // Unix timestamp in seconds — Nov 06, 2023, 12:00pm ET
     },
+    supportsV3: false,
   },
   [NetworkName.BNBChain]: {
     chain: {
