@@ -285,9 +285,15 @@ type Ciphertext = {
   data: string[];
 };
 
-type CiphertextIVData = {
-  iv: string;
-  data: string[];
+export enum XChaChaEncryptionAlgorithm {
+  XChaCha = 'XChaCha',
+  XChaChaPoly1305 = 'XChaChaPoly1305',
+}
+
+export type CiphertextXChaCha = {
+  algorithm: XChaChaEncryptionAlgorithm;
+  nonce: string;
+  bundle: string;
 };
 
 export type CommitmentCiphertextV2 = {
@@ -299,7 +305,7 @@ export type CommitmentCiphertextV2 = {
 };
 
 export type CommitmentCiphertextV3 = {
-  ciphertext: CiphertextIVData;
+  ciphertext: CiphertextXChaCha;
   blindedSenderViewingKey: string;
   blindedReceiverViewingKey: string;
 };
