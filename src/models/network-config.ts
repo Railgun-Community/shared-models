@@ -530,7 +530,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
         NetworkName.PolygonMumbai
       ],
-    supportsV3: false,
+    supportsV3: true,
   },
   [NetworkName.ArbitrumGoerli]: {
     chain: {
