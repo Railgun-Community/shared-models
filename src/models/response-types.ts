@@ -264,6 +264,7 @@ export enum TransactionHistoryItemCategory {
 }
 
 export type TransactionHistoryItem = {
+  txidVersion: TXIDVersion;
   txid: string;
   version: number;
   timestamp: Optional<number>;
