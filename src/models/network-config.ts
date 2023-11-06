@@ -151,7 +151,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
   [NetworkName.EthereumGoerli]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
-  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.PolygonMumbai]: '0xc7212d4efBf7425Ea07f4d9770f5809578557bC0',
   [NetworkName.ArbitrumGoerli]: '', // TODO
   [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
 };
@@ -171,7 +171,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
   [NetworkName.EthereumGoerli]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
-  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.PolygonMumbai]: '0x86CcC111692422173D8b36F693E2525606438E43',
   [NetworkName.ArbitrumGoerli]: '', // TODO
   [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
 };
@@ -188,7 +188,8 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
   [NetworkName.EthereumGoerli]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
-  [NetworkName.PolygonMumbai]: '', // TODO
+  [NetworkName.PolygonMumbai]:
+    '0x0D420823887A2Fe88552eFEDEdb3798308a49ddB202982ef',
   [NetworkName.ArbitrumGoerli]: '', // TODO
   [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
 };
@@ -205,7 +206,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   // Test nets
   [NetworkName.EthereumGoerli]: 0, // TODO
   [NetworkName.EthereumSepolia]: 0, // TODO
-  [NetworkName.PolygonMumbai]: 0, // TODO
+  [NetworkName.PolygonMumbai]: 42082388,
   [NetworkName.ArbitrumGoerli]: 0, // TODO
 
   [NetworkName.EthereumRopsten_DEPRECATED]: 0,
