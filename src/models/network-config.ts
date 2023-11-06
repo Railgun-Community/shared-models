@@ -187,8 +187,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
   [NetworkName.EthereumGoerli]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
-  [NetworkName.PolygonMumbai]:
-    '0x0D420823887A2Fe88552eFEDEdb3798308a49ddB202982ef',
+  [NetworkName.PolygonMumbai]: '0x0D7A2Fe88552eFEDEdb3798308a49ddB202982ef',
   [NetworkName.ArbitrumGoerli]: '', // TODO
   [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
 };
