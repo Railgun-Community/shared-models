@@ -46,6 +46,8 @@ export type POIListStatus = {
   poiEventLengths: POIEventLengths;
   pendingTransactProofs: number;
   blockedShields: number;
+  historicalMerklerootsLength: number;
+  latestHistoricalMerkleroot: string;
 };
 
 export type GetTransactProofsParams = {
