@@ -40,6 +40,7 @@ type BaseToken = {
 
 type POISettings = {
   launchBlock: number;
+  launchTimestamp: number;
 };
 
 export type Network = {
@@ -175,6 +176,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     hasGraphQuickSync: true,
     poi: {
       launchBlock: 18514200, // Nov 06, 2023 - ~12:00pm ET
+      launchTimestamp: 1383760800, // Unix timestamp in seconds — Nov 06, 2023, 12:00pm ET
     },
   },
   [NetworkName.BNBChain]: {
@@ -311,6 +313,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     hasGraphQuickSync: true,
     poi: {
       launchBlock: 9802000, // Oct 3, 2023
+      launchTimestamp: 1380794400, // Unix timestamp in seconds — Oct 3, 2023, 12:00pm ET
     },
   },
   [NetworkName.EthereumSepolia]: {
