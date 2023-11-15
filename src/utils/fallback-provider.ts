@@ -59,12 +59,16 @@ export const createFallbackProviderFromJsonConfig = (
     );
 
     return new FallbackProvider(providers, network);
-  } catch (err) {
-    if (!(err instanceof Error)) {
-      throw err;
+  } catch (cause) {
+    if (!(cause instanceof Error)) {
+      throw new Error(
+        'Non-error thrown from createFallbackProviderFromJsonConfig',
+        { cause },
+      );
     }
     throw new Error(
-      `Invalid fallback provider config for chain ${config.chainId}: ${err.message}`,
+      `Invalid fallback provider config for chain ${config.chainId}`,
+      { cause },
     );
   }
 };
