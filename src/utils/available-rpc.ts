@@ -77,12 +77,12 @@ const getBlockNumber = async (
       throw new Error('Block is null');
     }
     return block.number;
-  } catch (err) {
-    if (!(err instanceof Error)) {
-      throw err;
+  } catch (cause) {
+    if (!(cause instanceof Error)) {
+      throw new Error('Non-error thrown from getBlockNumber', { cause });
     }
     rpcProvider.destroy();
-    logError(err.message);
+    logError(cause.message);
     return undefined;
   }
 };
