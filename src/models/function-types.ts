@@ -1,3 +1,9 @@
+import { TXIDVersion } from './engine';
 import { Chain } from './response-types';
 
-export type RailgunBalanceRefreshTrigger = (chain: Chain) => Promise<void>;
+export type RailgunBalanceRefreshTrigger = (
+  txidVersion: TXIDVersion,
+  chain: Chain,
+  railgunWalletID: string,
+  fullRescan: boolean,
+) => Promise<void>;
