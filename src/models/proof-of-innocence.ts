@@ -44,6 +44,7 @@ export type POIEventLengths = Record<POIEventType, number>;
 
 export type POIListStatus = {
   poiEventLengths: POIEventLengths;
+  listProviderPOIEventQueueLength: number;
   pendingTransactProofs: number;
   blockedShields: number;
   historicalMerklerootsLength: number;
