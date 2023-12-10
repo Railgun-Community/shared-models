@@ -4,8 +4,6 @@ import { Chain, ChainType, EVMGasType } from './response-types';
  * DO NOT CHANGE THESE ENUM STRINGS.
  */
 export enum NetworkName {
-  Railgun = 'Railgun', // TODO: Remove this
-
   // Mainnets
   Ethereum = 'Ethereum',
   BNBChain = 'BNB_Chain',
@@ -68,8 +66,6 @@ export type Network = {
 };
 
 export const RailgunProxyContract: Record<NetworkName, string> = {
-  [NetworkName.Railgun]: '',
-
   [NetworkName.Ethereum]: '0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9',
   [NetworkName.BNBChain]: '0x590162bf4b50f6576a459b75309ee21d92178a10',
   [NetworkName.Polygon]: '0x19b620929f97b7b990801496c3b361ca5def8c71',
@@ -85,8 +81,6 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
 };
 
 export const RelayAdaptContract: Record<NetworkName, string> = {
-  [NetworkName.Railgun]: '',
-
   [NetworkName.Ethereum]: '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
   [NetworkName.BNBChain]: '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
   [NetworkName.Polygon]: '0xc7FfA542736321A3dd69246d73987566a5486968',
@@ -114,13 +108,10 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.PolygonMumbai]: 28697343,
   [NetworkName.ArbitrumGoerli]: 2611949,
 
-  [NetworkName.Railgun]: 0,
   [NetworkName.Hardhat]: 0,
 };
 
 export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
-  [NetworkName.Railgun]: '',
-
   [NetworkName.Ethereum]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
   [NetworkName.BNBChain]: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   [NetworkName.Polygon]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
@@ -140,8 +131,6 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   NetworkName,
   string
 > = {
-  [NetworkName.Railgun]: '', // TODO
-
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
@@ -160,8 +149,6 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   NetworkName,
   string
 > = {
-  [NetworkName.Railgun]: '', // TODO
-
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
@@ -177,8 +164,6 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
 };
 
 export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
-  [NetworkName.Railgun]: '', // TODO
-
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
@@ -209,35 +194,10 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.ArbitrumGoerli]: 0, // TODO
 
   [NetworkName.EthereumRopsten_DEPRECATED]: 0,
-  [NetworkName.Railgun]: 0,
   [NetworkName.Hardhat]: 0,
 };
 
 export const NETWORK_CONFIG: Record<NetworkName, Network> = {
-  [NetworkName.Railgun]: {
-    chain: {
-      type: ChainType.EVM,
-      id: -1,
-    },
-    name: NetworkName.Railgun,
-    publicName: 'RAILGUN',
-    shortPublicName: '',
-    coingeckoId: '',
-    baseToken: {} as BaseToken,
-    proxyContract: RailgunProxyContract[NetworkName.Ethereum],
-    relayAdaptContract: RelayAdaptContract[NetworkName.Ethereum],
-    relayAdaptHistory: [],
-    deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
-    poseidonMerkleAccumulatorV3Contract:
-      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Ethereum],
-    poseidonMerkleVerifierV3Contract:
-      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Ethereum],
-    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Ethereum],
-    deploymentBlockPoseidonMerkleAccumulatorV3:
-      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
-    defaultEVMGasType: EVMGasType.Type2,
-    supportsV3: false,
-  },
   [NetworkName.Ethereum]: {
     chain: {
       type: ChainType.EVM,
