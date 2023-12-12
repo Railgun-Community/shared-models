@@ -135,7 +135,6 @@ export const sanitizeError = (cause: Error): Error => {
         `:${STRING_PREFIX_AFTER_UNICODE_REPLACEMENT}`,
         ': ',
       ),
-      { cause },
     );
   }
 
