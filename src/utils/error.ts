@@ -72,6 +72,14 @@ export const sanitizeError = (cause: Error): Error => {
         { cause },
       );
     }
+    if (
+      lowercaseMsg.includes('spendable private balance too low') &&
+      lowercaseMsg.includes('relayer fee')
+    ) {
+      return new Error('Private balance too low to pay relayer fee.', {
+        cause,
+      });
+    }
 
     // Custom RAILGUN contract error messages
     if (lowercaseMsg.includes('railgunsmartwallet')) {
