@@ -214,3 +214,24 @@ export const POI_REQUIRED_LISTS: POIList[] = [
       'API which is used to restrict bad actors designated by the US Department of the Treasury. See: https://www.chainalysis.com/free-cryptocurrency-sanctions-screening-tools.',
   },
 ];
+
+export enum POIJSONRPCMethod {
+  NodeStatus = 'ppoi_node_status',
+  POIEvents = 'ppoi_poi_events',
+  POIMerkletreeLeaves = 'ppoi_poi_merkletree_leaves',
+  TransactProofs = 'ppoi_transact_proofs',
+  LegacyTransactProofs = 'ppoi_legacy_transact_proofs',
+  BlockedShields = 'ppoi_blocked_shields',
+  SubmitPOIEvents = 'ppoi_submit_poi_events',
+  SubmitValidatedTXID = 'ppoi_submit_validated_txid',
+  RemoveTransactProof = 'ppoi_remove_transact_proof',
+  SubmitTransactProof = 'ppoi_submit_transact_proof',
+  SubmitLegacyTransactProofs = 'ppoi_submit_legacy_transact_proofs',
+  SubmitSingleCommitmentProofs = 'ppoi_submit_single_commitment_proofs',
+  POIsPerList = 'ppoi_pois_per_list',
+  POIsPerBlindedCommitment = 'ppoi_pois_per_blinded_commitment',
+  MerkleProofs = 'ppoi_merkle_proofs',
+  ValidatedTXID = 'ppoi_validated_txid',
+  ValidateTXIDMerkleroot = 'ppoi_validate_txid_merkleroot',
+  ValidatePOIMerkleroots = 'ppoi_validate_poi_merkleroots',
+}
