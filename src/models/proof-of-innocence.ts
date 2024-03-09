@@ -82,18 +82,24 @@ export type SingleCommitmentProofsData = {
 };
 
 export type SubmitTransactProofParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   listKey: string;
   transactProofData: TransactProofData;
 };
 
 export type SubmitLegacyTransactProofParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   listKeys: string[];
   legacyTransactProofDatas: LegacyTransactProofData[];
 };
 
 export type SubmitSingleCommitmentProofsParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   singleCommitmentProofsData: SingleCommitmentProofsData;
 };
@@ -105,6 +111,8 @@ export enum BlindedCommitmentType {
 }
 
 export type ValidatePOIMerklerootsParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   listKey: string;
   poiMerkleroots: string[];
@@ -116,18 +124,24 @@ export type BlindedCommitmentData = {
 };
 
 export type GetPOIsPerListParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   listKeys: string[];
   blindedCommitmentDatas: BlindedCommitmentData[];
 };
 
 export type GetMerkleProofsParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   listKey: string;
   blindedCommitments: string[];
 };
 
 export type ValidateTxidMerklerootParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
   tree: number;
   index: number;
@@ -135,6 +149,8 @@ export type ValidateTxidMerklerootParams = {
 };
 
 export type GetLatestValidatedRailgunTxidParams = {
+  chainType: string;
+  chainID: string;
   txidVersion: TXIDVersion;
 };
 
