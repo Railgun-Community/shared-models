@@ -11,7 +11,6 @@ export enum NetworkName {
   Arbitrum = 'Arbitrum',
 
   // Testnets
-  EthereumGoerli = 'Ethereum_Goerli',
   EthereumSepolia = 'Ethereum_Sepolia',
   PolygonMumbai = 'Polygon_Mumbai',
   ArbitrumGoerli = 'Arbitrum_Goerli',
@@ -21,6 +20,7 @@ export enum NetworkName {
 
   // Deprecated
   EthereumRopsten_DEPRECATED = 'Ethereum_Ropsten',
+  EthereumGoerli_DEPRECATED = 'Ethereum_Goerli',
 }
 
 export type FeesSerialized = {
@@ -73,7 +73,7 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: '',
-  [NetworkName.EthereumGoerli]: '0xe8bEa99BB438C2f3D533604D33258d74d5eE4824',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0x942D5026b421cf2705363A525897576cFAdA5964',
   [NetworkName.PolygonMumbai]: '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
   [NetworkName.ArbitrumGoerli]: '0xA0603e598F9Ac2fc7475a3fA08D0794066615D9a',
@@ -88,7 +88,7 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: '',
-  [NetworkName.EthereumGoerli]: '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0xCc1C4D2B362c3a0Fb19f734A896A58C81A062dc8',
   [NetworkName.PolygonMumbai]: '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837',
   [NetworkName.ArbitrumGoerli]: '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6',
@@ -103,7 +103,7 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: 12226000,
-  [NetworkName.EthereumGoerli]: 7795991,
+  [NetworkName.EthereumGoerli_DEPRECATED]: 7795991,
   [NetworkName.EthereumSepolia]: 4495479,
   [NetworkName.PolygonMumbai]: 28697343,
   [NetworkName.ArbitrumGoerli]: 2611949,
@@ -120,7 +120,8 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]:
     '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
-  [NetworkName.EthereumGoerli]: '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
+  [NetworkName.EthereumGoerli_DEPRECATED]:
+    '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
   [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
   [NetworkName.PolygonMumbai]: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
   [NetworkName.ArbitrumGoerli]: '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
@@ -138,7 +139,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0xc7212d4efBf7425Ea07f4d9770f5809578557bC0',
   [NetworkName.ArbitrumGoerli]: '', // TODO
@@ -156,7 +157,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x86CcC111692422173D8b36F693E2525606438E43',
   [NetworkName.ArbitrumGoerli]: '', // TODO
@@ -171,7 +172,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli]: '', // TODO
+  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x0D7A2Fe88552eFEDEdb3798308a49ddB202982ef',
   [NetworkName.ArbitrumGoerli]: '', // TODO
@@ -188,7 +189,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.Arbitrum]: 0, // TODO
 
   // Test nets
-  [NetworkName.EthereumGoerli]: 0, // TODO
+  [NetworkName.EthereumGoerli_DEPRECATED]: 0, // TODO
   [NetworkName.EthereumSepolia]: 0, // TODO
   [NetworkName.PolygonMumbai]: 42082388,
   [NetworkName.ArbitrumGoerli]: 0, // TODO
@@ -375,30 +376,34 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       ],
     supportsV3: false,
   },
-  [NetworkName.EthereumGoerli]: {
+  [NetworkName.EthereumGoerli_DEPRECATED]: {
+    deprecated: true,
     chain: {
       type: ChainType.EVM,
       id: 5,
     },
-    name: NetworkName.EthereumGoerli,
+    name: NetworkName.EthereumGoerli_DEPRECATED,
     publicName: 'Görli Testnet',
     shortPublicName: 'Görli',
     coingeckoId: 'ethereum',
     baseToken: {
       symbol: 'ETH',
       wrappedSymbol: 'WETH',
-      wrappedAddress: BaseTokenWrappedAddress[NetworkName.EthereumGoerli],
+      wrappedAddress:
+        BaseTokenWrappedAddress[NetworkName.EthereumGoerli_DEPRECATED],
       decimals: 18,
     },
-    proxyContract: RailgunProxyContract[NetworkName.EthereumGoerli],
-    relayAdaptContract: RelayAdaptContract[NetworkName.EthereumGoerli],
+    proxyContract: RailgunProxyContract[NetworkName.EthereumGoerli_DEPRECATED],
+    relayAdaptContract:
+      RelayAdaptContract[NetworkName.EthereumGoerli_DEPRECATED],
     relayAdaptHistory: [
       '0xD147B7Dfa636a1c50A52bF6A6FE910680274eE24', // Initial deployment
       '0x57F5925FeB79B1fd7Cc491F858D7fBc65502D3FE', // V3.0 Update - Nov 2022
       '0x6E9C59F042acB1577A297eDE607c21Ff284846F3', // V3.1 partial update - Jan 2023
       '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4', // V3.1 Update - Jan 2023
     ],
-    deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli],
+    deploymentBlock:
+      RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli_DEPRECATED],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
@@ -406,14 +411,18 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       launchTimestamp: 1380794400, // Unix timestamp in seconds — Oct 3, 2023, 12:00pm ET
     },
     poseidonMerkleAccumulatorV3Contract:
-      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.EthereumGoerli],
+      RailgunPoseidonMerkleAccumulatorV3Contract[
+        NetworkName.EthereumGoerli_DEPRECATED
+      ],
     poseidonMerkleVerifierV3Contract:
-      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.EthereumGoerli],
+      RailgunPoseidonMerkleVerifierV3Contract[
+        NetworkName.EthereumGoerli_DEPRECATED
+      ],
     tokenVaultV3Contract:
-      RailgunTokenVaultV3Contract[NetworkName.EthereumGoerli],
+      RailgunTokenVaultV3Contract[NetworkName.EthereumGoerli_DEPRECATED],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
-        NetworkName.EthereumGoerli
+        NetworkName.EthereumGoerli_DEPRECATED
       ],
     supportsV3: false,
   },
