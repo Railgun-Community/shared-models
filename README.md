@@ -5,3 +5,5 @@
 Compatible with browser, node and React environments.
 
 `yarn add @railgun-community/shared-models`
+
+.
