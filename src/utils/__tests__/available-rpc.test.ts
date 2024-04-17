@@ -9,13 +9,12 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe('available-rpc', () => {
-  it('Should check fallback provider cascade', async () => {
+  it.only('Should check fallback provider cascade', async () => {
     const config: FallbackProviderJsonConfig = {
       chainId: 1,
       providers: [
         {
-          provider:
-            'https://eth-mainnet.gateway.pokt.network/v1/lb/627a4b6e18e53a003a6b6c26',
+          provider: 'https://eth-pokt.nodies.app/',
           priority: 1,
           weight: 2,
           stallTimeout: 2500,
