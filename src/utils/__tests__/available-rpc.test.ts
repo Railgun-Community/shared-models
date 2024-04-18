@@ -9,7 +9,7 @@ chai.use(chaiAsPromised);
 const { expect } = chai;
 
 describe('available-rpc', () => {
-  it.only('Should check fallback provider cascade', async () => {
+  it('Should check fallback provider cascade', async () => {
     const config: FallbackProviderJsonConfig = {
       chainId: 1,
       providers: [
