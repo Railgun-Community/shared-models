@@ -13,7 +13,6 @@ export enum NetworkName {
   // Testnets
   EthereumSepolia = 'Ethereum_Sepolia',
   PolygonMumbai = 'Polygon_Mumbai',
-  ArbitrumGoerli = 'Arbitrum_Goerli',
 
   // Dev only
   Hardhat = 'Hardhat',
@@ -21,6 +20,7 @@ export enum NetworkName {
   // Deprecated
   EthereumRopsten_DEPRECATED = 'Ethereum_Ropsten',
   EthereumGoerli_DEPRECATED = 'Ethereum_Goerli',
+  ArbitrumGoerli_DEPRECATED = 'Arbitrum_Goerli',
 }
 
 export type FeesSerialized = {
@@ -76,7 +76,7 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
   [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0x942D5026b421cf2705363A525897576cFAdA5964',
   [NetworkName.PolygonMumbai]: '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
-  [NetworkName.ArbitrumGoerli]: '0xA0603e598F9Ac2fc7475a3fA08D0794066615D9a',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
   [NetworkName.Hardhat]: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
 };
 
@@ -91,7 +91,7 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
   [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0xCc1C4D2B362c3a0Fb19f734A896A58C81A062dc8',
   [NetworkName.PolygonMumbai]: '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837',
-  [NetworkName.ArbitrumGoerli]: '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
   [NetworkName.Hardhat]: '0x0355B7B8cb128fA5692729Ab3AAa199C1753f726',
 };
 
@@ -106,7 +106,7 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.EthereumGoerli_DEPRECATED]: 7795991,
   [NetworkName.EthereumSepolia]: 4495479,
   [NetworkName.PolygonMumbai]: 28697343,
-  [NetworkName.ArbitrumGoerli]: 2611949,
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: 2611949,
 
   [NetworkName.Hardhat]: 0,
 };
@@ -124,7 +124,8 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
     '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
   [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
   [NetworkName.PolygonMumbai]: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
-  [NetworkName.ArbitrumGoerli]: '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
+  [NetworkName.ArbitrumGoerli_DEPRECATED]:
+    '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
   [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
 };
 
@@ -142,7 +143,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0xc7212d4efBf7425Ea07f4d9770f5809578557bC0',
-  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
   [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
 };
 
@@ -160,7 +161,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x86CcC111692422173D8b36F693E2525606438E43',
-  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
   [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
 };
 
@@ -175,7 +176,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
   [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x0D7A2Fe88552eFEDEdb3798308a49ddB202982ef',
-  [NetworkName.ArbitrumGoerli]: '', // TODO
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
   [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
 };
 
@@ -192,7 +193,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.EthereumGoerli_DEPRECATED]: 0, // TODO
   [NetworkName.EthereumSepolia]: 0, // TODO
   [NetworkName.PolygonMumbai]: 42082388,
-  [NetworkName.ArbitrumGoerli]: 0, // TODO
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: 0,
 
   [NetworkName.EthereumRopsten_DEPRECATED]: 0,
   [NetworkName.Hardhat]: 0,
@@ -500,39 +501,47 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       ],
     supportsV3: true,
   },
-  [NetworkName.ArbitrumGoerli]: {
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: {
+    deprecated: true,
     chain: {
       type: ChainType.EVM,
       id: 421613,
     },
-    name: NetworkName.ArbitrumGoerli,
+    name: NetworkName.ArbitrumGoerli_DEPRECATED,
     publicName: 'Arbitrum Görli Testnet',
     shortPublicName: 'Arbitrum Görli',
     coingeckoId: 'arbitrum-one',
     baseToken: {
       symbol: 'ETH',
       wrappedSymbol: 'WETH',
-      wrappedAddress: BaseTokenWrappedAddress[NetworkName.ArbitrumGoerli],
+      wrappedAddress:
+        BaseTokenWrappedAddress[NetworkName.ArbitrumGoerli_DEPRECATED],
       decimals: 18,
     },
-    proxyContract: RailgunProxyContract[NetworkName.ArbitrumGoerli],
-    relayAdaptContract: RelayAdaptContract[NetworkName.ArbitrumGoerli],
+    proxyContract: RailgunProxyContract[NetworkName.ArbitrumGoerli_DEPRECATED],
+    relayAdaptContract:
+      RelayAdaptContract[NetworkName.ArbitrumGoerli_DEPRECATED],
     relayAdaptHistory: [
       '0x7E77d890179Aa683ac2B9A608bd8121255CAa917', // Initial deployment (post v3.0)
       '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6', // V3.1 Update - Jan 2023
     ],
-    deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli],
+    deploymentBlock:
+      RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli_DEPRECATED],
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
     poseidonMerkleAccumulatorV3Contract:
-      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.ArbitrumGoerli],
+      RailgunPoseidonMerkleAccumulatorV3Contract[
+        NetworkName.ArbitrumGoerli_DEPRECATED
+      ],
     poseidonMerkleVerifierV3Contract:
-      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.ArbitrumGoerli],
+      RailgunPoseidonMerkleVerifierV3Contract[
+        NetworkName.ArbitrumGoerli_DEPRECATED
+      ],
     tokenVaultV3Contract:
-      RailgunTokenVaultV3Contract[NetworkName.ArbitrumGoerli],
+      RailgunTokenVaultV3Contract[NetworkName.ArbitrumGoerli_DEPRECATED],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
-        NetworkName.ArbitrumGoerli
+        NetworkName.ArbitrumGoerli_DEPRECATED
       ],
     supportsV3: false,
   },
