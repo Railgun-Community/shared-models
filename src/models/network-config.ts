@@ -116,8 +116,8 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.Arbitrum]: 56109834,
 
   // Test nets
-  [NetworkName.EthereumSepolia]: 5762000,
-  [NetworkName.PolygonAmoy]: 28083766,
+  [NetworkName.EthereumSepolia]: 5784774,
+  [NetworkName.PolygonAmoy]: 6666136,
 
   // Dev only
   [NetworkName.Hardhat]: 0,
@@ -530,9 +530,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     proxyContract: RailgunProxyContract[NetworkName.PolygonAmoy],
     relayAdaptContract: RelayAdaptContract[NetworkName.PolygonAmoy],
     relayAdaptHistory: [
-      '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC', // Initial deployment
-      '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86', // V3.0 Update - Nov 2022
-      '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
+      '0xc7FfA542736321A3dd69246d73987566a5486968', // Initial deployment
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
     isDevOnlyNetwork: true,
