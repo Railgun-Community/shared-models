@@ -66,137 +66,175 @@ export type Network = {
 };
 
 export const RailgunProxyContract: Record<NetworkName, string> = {
+  // Main nets
   [NetworkName.Ethereum]: '0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9',
   [NetworkName.BNBChain]: '0x590162bf4b50f6576a459b75309ee21d92178a10',
   [NetworkName.Polygon]: '0x19b620929f97b7b990801496c3b361ca5def8c71',
   [NetworkName.Arbitrum]: '0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9',
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: '',
-  [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0x942D5026b421cf2705363A525897576cFAdA5964',
   [NetworkName.PolygonMumbai]: '0x3ee8306321d992483BDC9c69B8F622Ba3FFF05B6',
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+
+  // Dev only
   [NetworkName.Hardhat]: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
 };
 
 export const RelayAdaptContract: Record<NetworkName, string> = {
+  // Main nets
   [NetworkName.Ethereum]: '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
   [NetworkName.BNBChain]: '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
   [NetworkName.Polygon]: '0xc7FfA542736321A3dd69246d73987566a5486968',
   [NetworkName.Arbitrum]: '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: '',
-  [NetworkName.EthereumGoerli_DEPRECATED]: '',
   [NetworkName.EthereumSepolia]: '0xCc1C4D2B362c3a0Fb19f734A896A58C81A062dc8',
   [NetworkName.PolygonMumbai]: '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837',
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+
+  // Dev only
   [NetworkName.Hardhat]: '0x0355B7B8cb128fA5692729Ab3AAa199C1753f726',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
 };
 
 export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
+  // Main nets
   [NetworkName.Ethereum]: 14737691,
   [NetworkName.BNBChain]: 17633701,
   [NetworkName.Polygon]: 28083766,
   [NetworkName.Arbitrum]: 56109834,
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: 12226000,
-  [NetworkName.EthereumGoerli_DEPRECATED]: 7795991,
   [NetworkName.EthereumSepolia]: 4495479,
   [NetworkName.PolygonMumbai]: 28697343,
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: 2611949,
 
+  // Dev only
   [NetworkName.Hardhat]: 0,
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: 12226000,
+  [NetworkName.EthereumGoerli_DEPRECATED]: 7795991,
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: 2611949,
 };
 
 export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
+  // Main nets
   [NetworkName.Ethereum]: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2', // WETH
   [NetworkName.BNBChain]: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   [NetworkName.Polygon]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
   [NetworkName.Arbitrum]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // (Arbitrum) WETH
 
   // Test nets
+  [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
+  [NetworkName.PolygonMumbai]: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
+
+  // Dev only
+  [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
+
+  // Deprecated
   [NetworkName.EthereumRopsten_DEPRECATED]:
     '0xc778417e063141139fce010982780140aa0cd5ab', // (Ropsten) WETH
   [NetworkName.EthereumGoerli_DEPRECATED]:
     '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // (Goerli) WETH
-  [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
-  [NetworkName.PolygonMumbai]: '0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889', // (Mumbai) WMATIC
   [NetworkName.ArbitrumGoerli_DEPRECATED]:
     '0xe39Ab88f8A4777030A534146A9Ca3B52bd5D43A3', // (Arbitrum Goerli) WETH
-  [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
 };
 
 export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   NetworkName,
   string
 > = {
+  // Main nets
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0xc7212d4efBf7425Ea07f4d9770f5809578557bC0',
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+
+  // Dev only
   [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
 };
 
 export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   NetworkName,
   string
 > = {
+  // Main nets
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x86CcC111692422173D8b36F693E2525606438E43',
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+
+  // Dev only
   [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
 };
 
 export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
+  // Main nets
   [NetworkName.Ethereum]: '', // TODO
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
 
   // Test nets
-  [NetworkName.EthereumRopsten_DEPRECATED]: '', // TODO
-  [NetworkName.EthereumGoerli_DEPRECATED]: '', // TODO
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonMumbai]: '0x0D7A2Fe88552eFEDEdb3798308a49ddB202982ef',
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+
+  // Dev only
   [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
 };
 
 export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   NetworkName,
   number
 > = {
+  // Main nets
   [NetworkName.Ethereum]: 0, // TODO
   [NetworkName.BNBChain]: 0, // TODO
   [NetworkName.Polygon]: 0, // TODO
   [NetworkName.Arbitrum]: 0, // TODO
 
   // Test nets
-  [NetworkName.EthereumGoerli_DEPRECATED]: 0, // TODO
   [NetworkName.EthereumSepolia]: 0, // TODO
   [NetworkName.PolygonMumbai]: 42082388,
-  [NetworkName.ArbitrumGoerli_DEPRECATED]: 0,
 
-  [NetworkName.EthereumRopsten_DEPRECATED]: 0,
+  // Dev only
   [NetworkName.Hardhat]: 0,
+
+  // Deprecated
+  [NetworkName.EthereumGoerli_DEPRECATED]: 0,
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: 0,
+  [NetworkName.EthereumRopsten_DEPRECATED]: 0,
 };
 
 export const NETWORK_CONFIG: Record<NetworkName, Network> = {
