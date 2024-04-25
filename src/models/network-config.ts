@@ -530,9 +530,9 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     proxyContract: RailgunProxyContract[NetworkName.PolygonAmoy],
     relayAdaptContract: RelayAdaptContract[NetworkName.PolygonAmoy],
     relayAdaptHistory: [
-      '0x8B936B018CeA1c1cc14961CAdabD36E7fe9192cD', // Initial deployment
-      '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6', // V3.0 Update - Nov 2022
-      '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837', // V3.1 Update - Jan 2023
+      '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC', // Initial deployment
+      '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86', // V3.0 Update - Nov 2022
+      '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
     isDevOnlyNetwork: true,
