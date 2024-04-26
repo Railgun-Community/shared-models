@@ -13,6 +13,7 @@ export enum NetworkName {
   // Testnets
   EthereumSepolia = 'Ethereum_Sepolia',
   PolygonAmoy = 'Polygon_Amoy',
+  PolygonAmoy = 'Polygon_Amoy',
 
   // Dev only
   Hardhat = 'Hardhat',
@@ -167,6 +168,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonAmoy]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
   [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
@@ -191,6 +193,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
   [NetworkName.PolygonAmoy]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
   [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
@@ -211,6 +214,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
   [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
@@ -235,6 +239,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
 
   // Test nets
   [NetworkName.EthereumSepolia]: 0, // TODO
+  [NetworkName.PolygonAmoy]: 0, // TODO
   [NetworkName.PolygonAmoy]: 0, // TODO
 
   // Dev only
