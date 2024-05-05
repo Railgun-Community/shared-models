@@ -75,7 +75,7 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0xeCFCf3b4eC647c4Ca6D49108b311b7a7C9543fea',
-  [NetworkName.PolygonAmoy]: '0x19b620929f97b7b990801496c3b361ca5def8c71',
+  [NetworkName.PolygonAmoy]: '0xD1aC80208735C7f963Da560C42d6BD82A8b175B5',
 
   // Dev only
   [NetworkName.Hardhat]: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
@@ -96,7 +96,7 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D',
-  [NetworkName.PolygonAmoy]: '0xc7FfA542736321A3dd69246d73987566a5486968',
+  [NetworkName.PolygonAmoy]: '0xc340f7E17A42154674d6B50190386C9a2982D12E',
 
   // Dev only
   [NetworkName.Hardhat]: '0x0355B7B8cb128fA5692729Ab3AAa199C1753f726',
@@ -116,7 +116,7 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.Arbitrum]: 56109834,
 
   // Test nets
-  [NetworkName.EthereumSepolia]: 5784774,
+  [NetworkName.EthereumSepolia]: 5784866,
   [NetworkName.PolygonAmoy]: 6666136,
 
   // Dev only
@@ -138,7 +138,7 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
-  [NetworkName.PolygonAmoy]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // (Amoy) WMATIC
+  [NetworkName.PolygonAmoy]: '0x21d4Ec3C9a2408C5535ecc26a09d94dC7B7f5c10', // (Amoy) WMATIC
 
   // Dev only
   [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
@@ -530,7 +530,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     proxyContract: RailgunProxyContract[NetworkName.PolygonAmoy],
     relayAdaptContract: RelayAdaptContract[NetworkName.PolygonAmoy],
     relayAdaptHistory: [
-      '0xc7FfA542736321A3dd69246d73987566a5486968', // Initial deployment
+      '0xc340f7E17A42154674d6B50190386C9a2982D12E', // Initial deployment
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
     isDevOnlyNetwork: true,
