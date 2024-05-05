@@ -6,4 +6,7 @@ Compatible with browser, node and React environments.
 
 `yarn add @railgun-community/shared-models`
 
-.
+## Releases
+
+When ready to create a new version, run `./release` or `./release patch` or `./release minor` or `./release major`.
+
