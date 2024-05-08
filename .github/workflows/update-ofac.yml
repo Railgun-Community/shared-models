@@ -3,7 +3,7 @@ name: Update OFAC Sanctions List
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '10 23 * * *'
 jobs:
   update:
     name: Update OFAC Sanctions List
@@ -17,7 +17,8 @@ jobs:
       - name: Run script
         run: node update.cjs
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
+
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'chore: update OFAC sanctions list'
@@ -26,5 +27,3 @@ jobs:
           branch: 'update-ofac-sanctions-list'
           base: 'main'
           labels: 'automated'
-          reviewers: 'octocat'
-          assignees: 'octocat'
