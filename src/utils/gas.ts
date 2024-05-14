@@ -8,7 +8,7 @@ export const getEVMGasTypeForTransaction = (
   const { defaultEVMGasType } = NETWORK_CONFIG[networkName];
 
   if (defaultEVMGasType === EVMGasType.Type2 && !sendWithPublicWallet) {
-    // Relayer transactions require overallBatchMinGasPrice.
+    // Broadcaster transactions require overallBatchMinGasPrice.
     // This is only supported by type 1 transactions.
     return EVMGasType.Type1;
   }
