@@ -35,7 +35,7 @@ type BroadcasterRawParamsShared = {
   chainID: number;
   chainType: ChainType;
   feesID: string;
-  BroadcasterViewingKey: string;
+  broadcasterViewingKey: string;
   devLog: boolean;
   minVersion: string;
   maxVersion: string;
