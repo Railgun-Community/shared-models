@@ -133,7 +133,7 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
   [NetworkName.Arbitrum]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // (Arbitrum) WETH
 
   // Test nets
-  [NetworkName.EthereumSepolia]: '0x97a36608DA67AF0A79e50cb6343f86F340B3b49e', // (Sepolia) WETH
+  [NetworkName.EthereumSepolia]: '0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14', // (Sepolia) WETH
 
   // Dev only
   [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
