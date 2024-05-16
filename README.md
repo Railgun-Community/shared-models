@@ -6,4 +6,10 @@ Compatible with browser, node and React environments.
 
 `yarn add @railgun-community/shared-models`
 
-.
+### Run tests
+
+`yarn test`
+
+### Release new version
+
+`./release`
