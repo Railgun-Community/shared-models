@@ -12,6 +12,7 @@ export enum NetworkName {
 
   // Testnets
   EthereumSepolia = 'Ethereum_Sepolia',
+  PolygonAmoy = 'Polygon_Amoy',
 
   // Dev only
   Hardhat = 'Hardhat',
@@ -73,7 +74,8 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
   [NetworkName.Arbitrum]: '0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9',
 
   // Test nets
-  [NetworkName.EthereumSepolia]: '0x942D5026b421cf2705363A525897576cFAdA5964',
+  [NetworkName.EthereumSepolia]: '0xeCFCf3b4eC647c4Ca6D49108b311b7a7C9543fea',
+  [NetworkName.PolygonAmoy]: '0xD1aC80208735C7f963Da560C42d6BD82A8b175B5',
 
   // Dev only
   [NetworkName.Hardhat]: '0x610178dA211FEF7D417bC0e6FeD39F05609AD788',
@@ -93,7 +95,8 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
   [NetworkName.Arbitrum]: '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
 
   // Test nets
-  [NetworkName.EthereumSepolia]: '0xCc1C4D2B362c3a0Fb19f734A896A58C81A062dc8',
+  [NetworkName.EthereumSepolia]: '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D',
+  [NetworkName.PolygonAmoy]: '0xc340f7E17A42154674d6B50190386C9a2982D12E',
 
   // Dev only
   [NetworkName.Hardhat]: '0x0355B7B8cb128fA5692729Ab3AAa199C1753f726',
@@ -113,7 +116,8 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.Arbitrum]: 56109834,
 
   // Test nets
-  [NetworkName.EthereumSepolia]: 4495479,
+  [NetworkName.EthereumSepolia]: 5784866,
+  [NetworkName.PolygonAmoy]: 6666136,
 
   // Dev only
   [NetworkName.Hardhat]: 0,
@@ -134,6 +138,7 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14', // (Sepolia) WETH
+  [NetworkName.PolygonAmoy]: '0x21d4Ec3C9a2408C5535ecc26a09d94dC7B7f5c10', // (Amoy) WMATIC
 
   // Dev only
   [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
@@ -161,6 +166,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
   [NetworkName.Hardhat]: '0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5',
@@ -184,6 +190,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
   [NetworkName.Hardhat]: '0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d',
@@ -204,6 +211,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
+  [NetworkName.PolygonAmoy]: '', // TODO
 
   // Dev only
   [NetworkName.Hardhat]: '0xD84379CEae14AA33C123Af12424A37803F885889',
@@ -227,6 +235,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
 
   // Test nets
   [NetworkName.EthereumSepolia]: 0, // TODO
+  [NetworkName.PolygonAmoy]: 0, // TODO
 
   // Dev only
   [NetworkName.Hardhat]: 0,
@@ -484,7 +493,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     proxyContract: RailgunProxyContract[NetworkName.EthereumSepolia],
     relayAdaptContract: RelayAdaptContract[NetworkName.EthereumSepolia],
     relayAdaptHistory: [
-      '0xCc1C4D2B362c3a0Fb19f734A896A58C81A062dc8', // Initial deployment - Oct 2023
+      '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D', // Deployment - Apr 2024
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumSepolia],
     isDevOnlyNetwork: true,
@@ -501,6 +510,42 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
         NetworkName.EthereumSepolia
       ],
     supportsV3: false,
+  },
+  [NetworkName.PolygonAmoy]: {
+    deprecated: false,
+    chain: {
+      type: ChainType.EVM,
+      id: 80002,
+    },
+    name: NetworkName.PolygonAmoy,
+    publicName: 'Amoy Testnet',
+    shortPublicName: 'Amoy',
+    coingeckoId: 'polygon-pos',
+    baseToken: {
+      symbol: 'MATIC',
+      wrappedSymbol: 'WMATIC',
+      wrappedAddress: BaseTokenWrappedAddress[NetworkName.PolygonAmoy],
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract[NetworkName.PolygonAmoy],
+    relayAdaptContract: RelayAdaptContract[NetworkName.PolygonAmoy],
+    relayAdaptHistory: [
+      '0xc340f7E17A42154674d6B50190386C9a2982D12E', // Initial deployment
+    ],
+    deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
+    isDevOnlyNetwork: true,
+    isTestnet: true,
+    defaultEVMGasType: EVMGasType.Type2,
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.PolygonAmoy],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.PolygonAmoy],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.PolygonAmoy],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[
+        NetworkName.PolygonAmoy
+      ],
+    supportsV3: true,
   },
   [NetworkName.PolygonMumbai_DEPRECATED]: {
     deprecated: true,

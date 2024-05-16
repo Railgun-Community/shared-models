@@ -1,0 +1,29 @@
+name: Update OFAC Sanctions List
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 23 * * *'
+jobs:
+  update:
+    name: Update OFAC Sanctions List
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'yarn'
+      - name: Run script
+        run: node update-ofac-list.cjs
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update OFAC sanctions list'
+          title: 'chore: update OFAC sanctions list'
+          body: 'This PR updates the OFAC sanctions list.'
+          branch: 'update-ofac-sanctions-list'
+          base: 'main'
+          labels: 'automated'

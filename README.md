@@ -6,10 +6,10 @@ Compatible with browser, node and React environments.
 
 `yarn add @railgun-community/shared-models`
 
-### Run tests
+## Run tests
 
 `yarn test`
 
-### Release new version
+## Releases
 
-`./release`
+When ready to create a new version, run `./release` or `./release patch` or `./release minor` or `./release major`.

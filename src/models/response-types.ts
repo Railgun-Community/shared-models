@@ -147,7 +147,7 @@ export type RailgunPopulateTransactionResponse = {
 
 export type RailgunTransactionGasEstimateResponse = {
   gasEstimate: bigint;
-  relayerFeeCommitment?: CommitmentSummary;
+  broadcasterFeeCommitment?: CommitmentSummary;
 };
 
 export type RailgunERC20Recipient = {
@@ -272,7 +272,7 @@ export type TransactionHistoryItem = {
   receiveERC20Amounts: RailgunHistoryReceiveERC20Amount[];
   transferERC20Amounts: RailgunHistorySendERC20Amount[];
   changeERC20Amounts: RailgunHistoryERC20Amount[];
-  relayerFeeERC20Amount?: RailgunHistoryERC20Amount;
+  broadcasterFeeERC20Amount?: RailgunHistoryERC20Amount;
   unshieldERC20Amounts: RailgunHistoryUnshieldERC20Amount[];
   receiveNFTAmounts: RailgunHistoryReceiveNFTAmount[];
   transferNFTAmounts: RailgunHistorySendNFTAmount[];

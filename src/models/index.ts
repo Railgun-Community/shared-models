@@ -6,7 +6,7 @@ export * from './merkletree-scan';
 export * from './network-config';
 export * from './proof';
 export * from './proof-of-innocence';
-export * from './relayer';
+export * from './broadcaster';
 export * from './response-types';
 export * from './transaction';
 export * from './wallet';

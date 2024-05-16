@@ -74,9 +74,9 @@ export const sanitizeError = (cause: Error): Error => {
     }
     if (
       lowercaseMsg.includes('spendable private balance too low') &&
-      lowercaseMsg.includes('relayer fee')
+      lowercaseMsg.includes('broadcaster fee')
     ) {
-      return new Error('Private balance too low to pay relayer fee.', {
+      return new Error('Private balance too low to pay broadcaster fee.', {
         cause,
       });
     }

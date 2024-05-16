@@ -6,7 +6,7 @@ import {
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 
-export type RelayerFeeMessageData = {
+export type BroadcasterFeeMessageData = {
   fees: MapType<string>;
   feeExpiration: number;
   feesID: string;
@@ -18,30 +18,30 @@ export type RelayerFeeMessageData = {
   requiredPOIListKeys: string[];
 };
 
-export type RelayerFeeMessage = {
+export type BroadcasterFeeMessage = {
   data: string; // hex-encoded FeeMessageData
   signature: string; // hex-encoded signature
 };
 
 type EncryptedData = [string, string];
 
-export type RelayerEncryptedMethodParams = {
+export type BroadcasterEncryptedMethodParams = {
   pubkey: string;
   encryptedData: EncryptedData;
 };
 
-type RelayerRawParamsShared = {
+type BroadcasterRawParamsShared = {
   txidVersion: TXIDVersion;
   chainID: number;
   chainType: ChainType;
   feesID: string;
-  relayerViewingKey: string;
+  broadcasterViewingKey: string;
   devLog: boolean;
   minVersion: string;
   maxVersion: string;
 };
 
-export type RelayerRawParamsTransact = RelayerRawParamsShared & {
+export type BroadcasterRawParamsTransact = BroadcasterRawParamsShared & {
   to: string;
   data: string;
   minGasPrice: string;
@@ -49,19 +49,19 @@ export type RelayerRawParamsTransact = RelayerRawParamsShared & {
   preTransactionPOIsPerTxidLeafPerList: PreTransactionPOIsPerTxidLeafPerList;
 };
 
-export type RelayerRawParamsPreAuthorize = RelayerRawParamsShared & {
+export type BroadcasterRawParamsPreAuthorize = BroadcasterRawParamsShared & {
   gasLimit: string;
   commitmentCiphertext: CommitmentCiphertextV2 | CommitmentCiphertextV3;
   commitmentHash: string;
 };
 
-export type RelayerPreAuthorization = {
+export type BroadcasterPreAuthorization = {
   gasLimit: string;
   commitmentHash: string;
   expiration: number;
 };
 
-export type RelayerSignedPreAuthorization = RelayerPreAuthorization & {
+export type BroadcasterSignedPreAuthorization = BroadcasterPreAuthorization & {
   signature: string;
 };
 
@@ -73,13 +73,13 @@ export type CachedTokenFee = {
   relayAdapt: string;
 };
 
-export type SelectedRelayer = {
+export type SelectedBroadcaster = {
   railgunAddress: string;
   tokenAddress: string;
   tokenFee: CachedTokenFee;
 };
 
-export enum RelayerConnectionStatus {
+export enum BroadcasterConnectionStatus {
   Error = 'Error',
   Searching = 'Searching',
   Connected = 'Connected',
