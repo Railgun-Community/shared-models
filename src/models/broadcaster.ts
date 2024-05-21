@@ -6,7 +6,7 @@ import {
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 
-export const MIN_BROADCASTER_RELIABILITY_SCORE = 0.75;
+export const MIN_BROADCASTER_RELIABILITY_SCORE = 0.35;
 
 export type BroadcasterFeeMessageData = {
   fees: MapType<string>;
