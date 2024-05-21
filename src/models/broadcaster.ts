@@ -74,6 +74,7 @@ export type CachedTokenFee = {
   feesID: string;
   availableWallets: number;
   relayAdapt: string;
+  reliability: number;
 };
 
 export type SelectedBroadcaster = {
