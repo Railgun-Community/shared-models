@@ -6,8 +6,6 @@ import {
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 
-export const MIN_BROADCASTER_RELIABILITY_SCORE = 0.35;
-
 export type BroadcasterFeeMessageData = {
   fees: MapType<string>;
   feeExpiration: number;
@@ -18,7 +16,6 @@ export type BroadcasterFeeMessageData = {
   version: string;
   relayAdapt: string;
   requiredPOIListKeys: string[];
-  reliability: number;
 };
 
 export type BroadcasterFeeMessage = {
@@ -74,7 +71,6 @@ export type CachedTokenFee = {
   feesID: string;
   availableWallets: number;
   relayAdapt: string;
-  reliability: number;
 };
 
 export type SelectedBroadcaster = {
