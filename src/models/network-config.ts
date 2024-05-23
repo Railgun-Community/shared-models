@@ -499,6 +499,10 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     isDevOnlyNetwork: true,
     isTestnet: true,
     defaultEVMGasType: EVMGasType.Type2,
+    poi: {
+      launchBlock: 5944700, // May-21-2024 12:38:00 AM +UTC
+      launchTimestamp: 1716309480, // Unix timestamp in seconds — May-21-2024 12:38:00 AM +UTC
+    },
     poseidonMerkleAccumulatorV3Contract:
       RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.EthereumSepolia],
     poseidonMerkleVerifierV3Contract:
