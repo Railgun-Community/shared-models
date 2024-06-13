@@ -206,8 +206,8 @@ export type NodeStatusForNetwork = {
 
 export const POI_SHIELD_PENDING_SEC = 60 * 60; // 1 hour
 export const POI_SHIELD_PENDING_SEC_TEXT = 'One hour';
-export const POI_SHIELD_PENDING_SEC_TEST_NET = 5 * 60; // 5 minutes
-export const POI_SHIELD_PENDING_SEC_TEST_NET_TEXT = 'Five minutes';
+export const POI_SHIELD_PENDING_SEC_TEST_NET = 1 * 60; // 1 minute
+export const POI_SHIELD_PENDING_SEC_TEST_NET_TEXT = 'One minute';
 
 export enum POIListType {
   Active = 'Active',
