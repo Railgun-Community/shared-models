@@ -1,6 +1,6 @@
 {
   "name": "@railgun-community/shared-models",
-  "version": "7.2.0",
+  "version": "7.2.1",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
@@ -25,7 +25,6 @@
     "ethers": "github:Railgun-Community/ethers.js#v6.7.10"
   },
   "devDependencies": {
-    "ethers": "github:Railgun-Community/ethers.js#v6.7.10",
     "@types/chai": "4.3.5",
     "@types/chai-as-promised": "^7.1.5",
     "@types/mocha": "^10.0.1",
@@ -38,6 +37,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.26.0",
+    "ethers": "github:Railgun-Community/ethers.js#v6.7.10",
     "madge": "6.1.0",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
