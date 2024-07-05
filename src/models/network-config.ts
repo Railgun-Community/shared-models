@@ -346,6 +346,10 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
+    poi: {
+      launchBlock: 0, // TODO: Update
+      launchTimestamp: 0, // TODO: Update
+    },
     poseidonMerkleAccumulatorV3Contract:
       RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Polygon],
     poseidonMerkleVerifierV3Contract:
