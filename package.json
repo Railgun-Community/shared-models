@@ -1,6 +1,6 @@
 {
   "name": "@railgun-community/shared-models",
-  "version": "7.4.4",
+  "version": "7.5.0",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
@@ -22,7 +22,7 @@
     "test": "npm run compile-test && mocha 'src/**/__tests__/*.test.ts'"
   },
   "peerDependencies": {
-   "ethers": "6.13.1"
+    "ethers": "6.13.1"
   },
   "devDependencies": {
     "@types/chai": "4.3.5",
