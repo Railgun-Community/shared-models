@@ -22,7 +22,7 @@
     "test": "npm run compile-test && mocha 'src/**/__tests__/*.test.ts'"
   },
   "peerDependencies": {
-    "ethers": "github:Railgun-Community/ethers.js#v6.7.10"
+   "ethers": "6.13.1"
   },
   "devDependencies": {
     "@types/chai": "4.3.5",
@@ -37,7 +37,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.26.0",
-    "ethers": "github:Railgun-Community/ethers.js#v6.7.10",
+    "ethers": "6.13.1",
     "madge": "6.1.0",
     "mocha": "^10.2.0",
     "ts-node": "^10.9.1",
