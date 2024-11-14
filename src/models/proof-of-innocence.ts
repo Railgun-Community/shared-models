@@ -1,6 +1,6 @@
 import { TXIDVersion } from './engine';
 import { NetworkName } from './network-config';
-import { PreTransactionPOIsPerTxidLeafPerList } from './response-types';
+import { Chain, PreTransactionPOIsPerTxidLeafPerList } from './response-types';
 
 export type TransactProofData = {
   snarkProof: SnarkProof;
@@ -52,12 +52,14 @@ export type POIListStatus = {
 };
 
 export type GetTransactProofsParams = {
+  chain: Chain;
   txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
   listKey: string;
 };
 
 export type GetBlockedShieldsParams = {
+  chain: Chain;
   txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
   listKey: string;
@@ -82,24 +84,21 @@ export type SingleCommitmentProofsData = {
 };
 
 export type SubmitTransactProofParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   listKey: string;
   transactProofData: TransactProofData;
 };
 
 export type SubmitLegacyTransactProofParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   listKeys: string[];
   legacyTransactProofDatas: LegacyTransactProofData[];
 };
 
 export type SubmitSingleCommitmentProofsParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   singleCommitmentProofsData: SingleCommitmentProofsData;
 };
@@ -111,8 +110,7 @@ export enum BlindedCommitmentType {
 }
 
 export type ValidatePOIMerklerootsParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   listKey: string;
   poiMerkleroots: string[];
@@ -124,24 +122,21 @@ export type BlindedCommitmentData = {
 };
 
 export type GetPOIsPerListParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   listKeys: string[];
   blindedCommitmentDatas: BlindedCommitmentData[];
 };
 
 export type GetMerkleProofsParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   listKey: string;
   blindedCommitments: string[];
 };
 
 export type ValidateTxidMerklerootParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
   tree: number;
   index: number;
@@ -149,8 +144,7 @@ export type ValidateTxidMerklerootParams = {
 };
 
 export type GetLatestValidatedRailgunTxidParams = {
-  chainType: string;
-  chainID: string;
+  chain: Chain;
   txidVersion: TXIDVersion;
 };
 
