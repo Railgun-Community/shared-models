@@ -3,7 +3,7 @@ import { CustomErrorMapping } from "./types";
 export const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
 
 // eslint-disable-next-line no-useless-escape
-export const VALID_ASCII_REGEX = /[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g;
+export const INVALID_ASCII_REGEX = /[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g;
 
 export const CUSTOM_ERRORS: CustomErrorMapping = {
   CONNECTION_ERROR: {
