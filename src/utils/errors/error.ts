@@ -1,5 +1,5 @@
 import { CustomErrorMapping, ErrorDefinition } from './types';
-import { STRING_PREFIX_AFTER_UNICODE_REPLACEMENT, RAILGUN_ERRORS, CUSTOM_ERRORS } from './constants';
+import { STRING_PREFIX_AFTER_UNICODE_REPLACEMENT, RAILGUN_ERRORS, CUSTOM_ERRORS, INVALID_ASCII_REGEX } from './constants';
 import { isDefined } from '../util';
 
 class CustomError extends Error {
@@ -24,8 +24,7 @@ class RailgunContractError extends Error {
 
 const validAscii = (str: string) => {
   return str.replace(
-    // eslint-disable-next-line no-useless-escape
-    /[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g,
+    INVALID_ASCII_REGEX,
     '',
   );
 };
@@ -58,7 +57,6 @@ export const sanitizeError = (cause: Error): Error => {
     if (matchedCustomError) {
       return new Error(matchedCustomError.message, cause);
     }
-
 
     // If no error is matched we return the original sanitized error
     const errorMessage = validAscii(cause.message).replace(
