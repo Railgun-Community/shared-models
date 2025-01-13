@@ -1,6 +1,17 @@
-import { isDefined } from './util';
+import { isDefined } from '../util';
 
 const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
+
+
+class CustomError extends Error {
+  originalError: Error;
+
+  constructor(message: string, originalError: Error) { 
+    super(message);
+    this.name = 'CustomError';
+    this.originalError = originalError;
+  }
+}
 
 class RailgunContractError extends Error {
   originalError: Error;
@@ -19,8 +30,6 @@ const validAscii = (str: string) => {
     '',
   );
 };
-
-
 
 export const sanitizeError = (cause: Error): Error => {
   if (isDefined(cause) && cause.message) {
