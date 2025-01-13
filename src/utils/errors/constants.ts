@@ -1,5 +1,3 @@
-import { isDefined } from '../util';
-
 type ErrorDefinition = {
   matches: string[];
   message: string;
@@ -9,7 +7,7 @@ type CustomErrorMapping = {
   [key: string]: ErrorDefinition;
 };
 
-const CUSTOM_ERRORS: CustomErrorMapping = {
+export const CUSTOM_ERRORS: CustomErrorMapping = {
   CONNECTION_ERROR: {
     matches: ['quorum', 'could not connect to'],
     message: 'Could not connect.'
@@ -48,7 +46,7 @@ const CUSTOM_ERRORS: CustomErrorMapping = {
   }
 };
 
-const RAILGUN_ERRORS: CustomErrorMapping = {
+export const RAILGUN_ERRORS: CustomErrorMapping = {
   INVALID_NFT_NOTE: {
     matches: ['invalid nft note value'],
     message: 'RailgunSmartWallet: Invalid NFT Note Value.'
