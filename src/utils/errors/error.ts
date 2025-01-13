@@ -2,26 +2,6 @@ import { CustomErrorMapping, ErrorDefinition } from './types';
 import { STRING_PREFIX_AFTER_UNICODE_REPLACEMENT, RAILGUN_ERRORS, CUSTOM_ERRORS, INVALID_ASCII_REGEX } from './constants';
 import { isDefined } from '../util';
 
-class CustomError extends Error {
-  originalError: Error;
-
-  constructor(message: string, originalError: Error) { 
-    super(message);
-    this.name = 'CustomError';
-    this.originalError = originalError;
-  }
-}
-
-class RailgunContractError extends Error {
-  originalError: Error;
-
-  constructor(message: string, originalError: Error) { 
-    super(message);
-    this.name = 'RailgunContractError';
-    this.originalError = originalError;
-  }
-}
-
 const validAscii = (str: string) => {
   return str.replace(
     INVALID_ASCII_REGEX,
@@ -47,9 +27,9 @@ export const sanitizeError = (cause: Error): Error => {
     if (isRailgunError(cause)) {
       const matchedRailgunError = findMatchingError(cause.message, RAILGUN_ERRORS);
       if (matchedRailgunError) {
-        return new RailgunContractError(matchedRailgunError.message, cause);
+        return new Error(matchedRailgunError.message, cause);
       }
-      return new RailgunContractError('Uknown Railgun Smart Wallet Error.', cause);
+      return new Error('Uknown Railgun Smart Wallet Error.', cause);
     }
 
     const matchedCustomError = findMatchingError(cause.message, CUSTOM_ERRORS);
@@ -64,11 +44,11 @@ export const sanitizeError = (cause: Error): Error => {
       ': ',
     );
 
-    return new CustomError(
+    return new Error(
       errorMessage,
       cause
     );
   }
 
-  return new CustomError('Unknown error. Please try again.', cause);
+  return new Error('Unknown error. Please try again.', cause);
 };

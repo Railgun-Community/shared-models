@@ -43,7 +43,7 @@ export const CUSTOM_ERRORS: CustomErrorMapping = {
     message: 'Nonce already used: the transaction was already completed.'
   }, 
   LOW_PRIVATE_BALANCE: {
-    matches: ['spendable private balance too low', 'broadcaster fee'],
+    matches: ['private balance too low', 'broadcaster fee'],
     message: 'Private balance too low to pay broadcaster fee.'
   },
   TRANSACTION_SIMULATION_FAILED: {
