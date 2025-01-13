@@ -2,6 +2,16 @@ import { isDefined } from './util';
 
 const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
 
+class RailgunContractError extends Error {
+  originalError: Error;
+
+  constructor(message: string, originalError: Error) { 
+    super(message);
+    this.name = 'RailgunContractError';
+    this.originalError = originalError;
+  }
+}
+
 const validAscii = (str: string) => {
   return str.replace(
     // eslint-disable-next-line no-useless-escape
@@ -9,6 +19,8 @@ const validAscii = (str: string) => {
     '',
   );
 };
+
+
 
 export const sanitizeError = (cause: Error): Error => {
   if (isDefined(cause) && cause.message) {
@@ -84,56 +96,54 @@ export const sanitizeError = (cause: Error): Error => {
     // Custom RAILGUN contract error messages
     if (lowercaseMsg.includes('railgunsmartwallet')) {
       if (lowercaseMsg.includes('invalid nft note value')) {
-        return new Error('RailgunSmartWallet: Invalid NFT Note Value.', {
-          cause,
-        });
+        return new RailgunContractError('RailgunSmartWallet: Invalid NFT Note Value.', cause);
       }
       if (lowercaseMsg.includes('unsupported token')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Unsupported Token. This token cannot interact with the RAILGUN contract.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid note value')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Note Value. Please submit transaction with a corrected amount.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid adapt contract as sender')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Adapt Contract as Sender. Please update your frontend to current Adapt module versions.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid merkle root')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Merkle Root. Please sync your balances and try again.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('note already spent')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Note Already Spent. Please sync your balances and try again.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid note ciphertext array length')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Note Ciphertext Array Length. Please sync balances and re-prove your transaction.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid withdraw note')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Unshield Note. Please sync balances and re-prove your transaction.',
-          { cause },
+          cause,
         );
       }
       if (lowercaseMsg.includes('invalid snark proof')) {
-        return new Error(
+        return new RailgunContractError(
           'RailgunSmartWallet: Invalid Snark Proof. Please re-prove your transaction.',
-          { cause },
+          cause,
         );
       }
     }
