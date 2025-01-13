@@ -1,5 +1,6 @@
 import { CustomErrorMapping } from "./types";
 export const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
+
 export const CUSTOM_ERRORS: CustomErrorMapping = {
   CONNECTION_ERROR: {
     matches: ['quorum', 'could not connect to'],
