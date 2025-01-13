@@ -51,4 +51,36 @@ describe('error', () => {
       sanitizeError(new Error('replacement fee too low')).message,
     ).to.equal(expectedErrorMessage);
   });
+
+  it('Should sanitize insufficient gas errors', () => {
+    const expectedErrorMessage = 'Insufficient gas to process transaction.';
+    expect(
+      sanitizeError(new Error('insufficient funds for intrinsic')).message,
+    ).to.equal(expectedErrorMessage);
+  });
+
+  it('Should sanitize low gas price errors', () => {
+    const expectedErrorMessage = 'Gas price rejected. Please select a higher gas price or resubmit.';
+
+    expect(
+      sanitizeError(new Error('intrinsic gas too low')).message,
+    ).to.equal(expectedErrorMessage);
+  });
+
+  it('Should handle undefined error', () => {
+    const error = sanitizeError(undefined as unknown as Error);
+    expect(error.message).to.equal('Unknown error. Please try again.');
+  });
+
+  it('Should handle error without message', () => {
+    const error = sanitizeError(new Error());
+    expect(error.message).to.equal('Unknown error. Please try again.');
+  });
+
+  it('Should sanitize non-ASCII characters in unknown errors', () => {
+    const error = sanitizeError(new Error('Unknown error 🚫'));
+    expect(error.message).to.equal('Unknown error ');
+  });
+
+
 });
