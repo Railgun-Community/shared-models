@@ -70,5 +70,5 @@ export const sanitizeError = (cause: Error): Error => {
     );
   }
 
-  return new CustomError('Unknown error. Please try again', cause);
+  return new CustomError('Unknown error. Please try again.', cause);
 };
