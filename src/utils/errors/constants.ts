@@ -29,7 +29,7 @@ export const CUSTOM_ERRORS: CustomErrorMapping = {
   UNDERPRICED_TRANSACTION: {
     matches: ['transaction underpriced'],
     message: 'Gas price rejected. Please select a higher gas price and resubmit.'
-  }, // @@TODO: Find a better suited message for this
+  },
   INSUFFICIENT_GAS: {
     matches: ['insufficient funds for intrinsic'],
     message: 'Insufficient gas to process transaction.'
