@@ -26,8 +26,8 @@ export const CUSTOM_ERRORS: CustomErrorMapping = {
     matches: ['intrinsic gas too low'],
     message: 'Gas price rejected. Please select a higher gas price or resubmit.'
   },
-  LOW_GAS_RESUBMIT: {
-    matches: ['intrinsic gas too low'],
+  UNDERPRICED_TRANSACTION: {
+    matches: ['transaction underpriced'],
     message: 'Gas price rejected. Please select a higher gas price and resubmit.'
   }, // @@TODO: Find a better suited message for this
   INSUFFICIENT_GAS: {
