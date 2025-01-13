@@ -11,8 +11,12 @@ export const CUSTOM_ERRORS: CustomErrorMapping = {
     message: 'Could not connect.'
   },
   RPC_ERROR: {
-    matches: ['call revert exception', 'missing revert data', 'error while dialing dial tcp'],
+    matches: ['call revert exception', 'error while dialing dial tcp'],
     message: 'Failed to connect to RPC.'
+  },
+  RPC_CONNECTION_ERROR: {
+    matches: ['missing revert data'],
+    message: 'RPC connection error.'
   },
   KNOWN_TRANSACTION: {
     matches: ['already known'],
@@ -41,6 +45,10 @@ export const CUSTOM_ERRORS: CustomErrorMapping = {
   LOW_PRIVATE_BALANCE: {
     matches: ['spendable private balance too low', 'broadcaster fee'],
     message: 'Private balance too low to pay broadcaster fee.'
+  },
+  TRANSACTION_SIMULATION_FAILED: {
+    matches: ['transaction may fail or may require manual gas limit'],
+    message: 'Unknown error. Transaction failed.'
   }
 };
 
