@@ -49,7 +49,7 @@ export const sanitizeError = (cause: Error): Error => {
       if (matchedRailgunError) {
         return new RailgunContractError(matchedRailgunError.message, cause);
       }
-      return new RailgunContractError('Uknown Railgun Smart Wallet Error.', cause); // @@ TODO: Check if this is a possibility
+      return new RailgunContractError('Uknown Railgun Smart Wallet Error.', cause);
     }
 
     const matchedCustomError = findMatchingError(cause.message, CUSTOM_ERRORS);
