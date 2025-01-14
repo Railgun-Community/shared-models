@@ -81,6 +81,4 @@ describe('error', () => {
     const error = sanitizeError(new Error('Unknown error 🚫'));
     expect(error.message).to.equal('Unknown error ');
   });
-
-
 });
