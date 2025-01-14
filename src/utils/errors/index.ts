@@ -22,7 +22,7 @@ const findMatchingError = (errorMessage: string, errorMapping: CustomErrorMappin
 const isRailgunError = (cause: Error): boolean => cause.message.toLowerCase().includes('railgunsmartwallet')
 
 export const sanitizeError = (cause: Error): Error => {
-  if (!cause.message) {
+  if (!cause?.message) {
     return new Error('Unknown error. Please try again.', { cause });
   }
 
