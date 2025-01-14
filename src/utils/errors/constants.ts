@@ -2,8 +2,9 @@ import { CustomErrorMapping } from "./types";
 
 export const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
 
-// eslint-disable-next-line no-useless-escape
-export const INVALID_ASCII_REGEX = /[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g;
+// Matches any characters that are NOT in the printable ASCII range (space to tilde)
+// Printable ASCII characters are in the range of 32 (space) to 126 (tilde)
+export const INVALID_ASCII_REGEX = /[^ -~]+/g;
 
 export const CUSTOM_ERRORS: CustomErrorMapping = {
   CONNECTION_ERROR: {
