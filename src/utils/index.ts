@@ -2,7 +2,7 @@ export * from './artifact-v2';
 export * from './available-rpc';
 export * from './compare';
 export * from './fallback-provider';
-export * from './errors/error';
+export * from './errors';
 export * from './format';
 export * from './gas';
 export * from './network';

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { sanitizeError } from '../errors';
