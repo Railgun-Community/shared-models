@@ -1,12 +1,7 @@
 import { CustomErrorMapping, ErrorDefinition } from './types';
 import { STRING_PREFIX_AFTER_UNICODE_REPLACEMENT, RAILGUN_ERRORS, CUSTOM_ERRORS, INVALID_ASCII_REGEX } from './constants';
 
-const validAscii = (str: string) => {
-  return str.replace(
-    INVALID_ASCII_REGEX,
-    '',
-  );
-};
+const sanitizeAscii = (str: string) => str.replace(INVALID_ASCII_REGEX, '');
 
 const findMatchingError = (errorMessage: string, errorMapping: CustomErrorMapping): ErrorDefinition | null => {
   const lowercaseMsg = errorMessage.toLowerCase();
@@ -41,7 +36,7 @@ export const sanitizeError = (cause: Error): Error => {
   }
 
   // If no error is matched we return the original sanitized error
-  const errorMessage = validAscii(cause.message).replace(
+  const errorMessage = sanitizeAscii(cause.message).replace(
     `:${STRING_PREFIX_AFTER_UNICODE_REPLACEMENT}`,
     ': ',
   );
