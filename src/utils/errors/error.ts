@@ -29,15 +29,15 @@ export const sanitizeError = (cause: Error): Error => {
   if (isRailgunError(cause)) {
     const matchedRailgunError = findMatchingError(cause.message, RAILGUN_ERRORS);
     if (matchedRailgunError) {
-      return new Error(matchedRailgunError.message, cause);
+      return new Error(matchedRailgunError.message, { cause });
     }
-    return new Error('Uknown Railgun Smart Wallet Error.', cause);
+    return new Error('Uknown Railgun Smart Wallet Error.', { cause });
   }
 
   const matchedCustomError = findMatchingError(cause.message, CUSTOM_ERRORS);
 
   if (matchedCustomError) {
-    return new Error(matchedCustomError.message, cause);
+    return new Error(matchedCustomError.message, { cause });
   }
 
   // If no error is matched we return the original sanitized error
@@ -48,6 +48,6 @@ export const sanitizeError = (cause: Error): Error => {
 
   return new Error(
     errorMessage,
-    cause
+    { cause }
   );
 };
