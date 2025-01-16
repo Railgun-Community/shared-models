@@ -4,7 +4,7 @@ export const STRING_PREFIX_AFTER_UNICODE_REPLACEMENT = 'y %';
 
 // Matches any characters that are NOT in the printable ASCII range (space to tilde)
 // Printable ASCII characters are in the range of 32 (space) to 126 (tilde)
-export const INVALID_ASCII_REGEX = /[^ -~]+/g;
+export const INVALID_ASCII_REGEX = /[^ -~\n]+/g;
 
 export const CUSTOM_ERRORS: CustomErrorMapping = {
   CONNECTION_ERROR: {
