@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { sanitizeError } from '../errors';
+import { sanitizeError } from '../error';
 
 chai.use(chaiAsPromised);
 const { expect } = chai;
