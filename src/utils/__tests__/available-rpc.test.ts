@@ -8,7 +8,7 @@ import {
 chai.use(chaiAsPromised);
 const { expect } = chai;
 
-describe.only('available-rpc', () => {
+describe('available-rpc', () => {
   it('Should check fallback provider cascade for FallbackProvider of HTTPS RPCs', async () => {
     const config: FallbackProviderJsonConfig = {
       chainId: 1,
