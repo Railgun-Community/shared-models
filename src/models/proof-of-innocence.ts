@@ -55,6 +55,8 @@ export type GetTransactProofsParams = {
   txidVersion: TXIDVersion;
   bloomFilterSerialized: string;
   listKey: string;
+  chainType: string;
+  chainID: string;
 };
 
 export type GetBlockedShieldsParams = {
