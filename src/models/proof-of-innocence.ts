@@ -59,12 +59,10 @@ export type POIListStatus = {
 };
 
 export type GetTransactProofsParams = ChainParams & {
-  bloomFilterSerialized: string;
   listKey: string;
 };
 
 export type GetBlockedShieldsParams = ChainParams & {
-  bloomFilterSerialized: string;
   listKey: string;
 };
 
