@@ -1,6 +1,7 @@
-import { FallbackProvider, Network } from 'ethers';
+import { FallbackProvider, JsonRpcProvider, Network, Provider, WebSocketProvider } from 'ethers';
 import { ConfiguredJsonRpcProvider } from './configured-json-rpc-provider';
 import { FallbackProviderConfig } from 'ethers/lib.commonjs/providers/provider-fallback';
+import { isDefined } from './util';
 
 export type FallbackProviderJsonConfig = {
   chainId: number;
@@ -11,15 +12,42 @@ export type ProviderJson = {
   priority: number;
   weight: number;
   provider: string;
+  chainId?: number;
   stallTimeout?: number;
   maxLogsPerBatch?: number;
 };
 
-export const createFallbackProviderFromJsonConfig = (
-  config: FallbackProviderJsonConfig,
+export const createProviderFromJsonConfig = (
+  config: FallbackProviderJsonConfig | ProviderJson,
   pollingInterval?: number,
-): FallbackProvider => {
+): Provider => {
   try {
+    // Handle single provider case
+    if (!('providers' in config)) {
+      // Ensure chainId is present
+      if (!isDefined(config.chainId)) {
+        throw new Error('chainId is required for single provider configuration');
+      }
+
+      // Get RPC URL
+      const providerURL = config.provider;
+      
+      // Create singular provider depending on the URL
+      let provider: JsonRpcProvider | WebSocketProvider;
+      if (providerURL.startsWith('wss')) {
+        provider = new WebSocketProvider(providerURL, config.chainId, {
+          staticNetwork: true,
+        });
+      } else {
+        provider = new JsonRpcProvider(providerURL, config.chainId, {
+          staticNetwork: true,
+          pollingInterval,
+        });
+      }
+
+      return provider;
+    };
+
     const totalWeight = config.providers.reduce(
       (acc, { weight }) => acc + weight,
       0,

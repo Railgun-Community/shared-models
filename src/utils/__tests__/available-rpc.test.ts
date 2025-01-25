@@ -2,8 +2,9 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import {
   FallbackProviderJsonConfig,
-  createFallbackProviderFromJsonConfig,
-} from '../fallback-provider';
+  ProviderJson,
+  createProviderFromJsonConfig,
+} from '../provider';
 
 chai.use(chaiAsPromised);
 const { expect } = chai;
@@ -24,7 +25,7 @@ describe('available-rpc', () => {
       ],
     };
 
-    const fallbackProvider = createFallbackProviderFromJsonConfig(config);
+    const fallbackProvider = createProviderFromJsonConfig(config);
 
     await fallbackProvider.getBlockNumber();
   }).timeout(5000);
@@ -44,7 +45,7 @@ describe('available-rpc', () => {
 
     try {
       // This should throw an error because WSS is not supported in FallbackProvider
-      createFallbackProviderFromJsonConfig(config);
+      createProviderFromJsonConfig(config);
       throw new Error("Test should have thrown an error but did not");
     } catch (error) {
       if (error instanceof Error) {
@@ -56,6 +57,26 @@ describe('available-rpc', () => {
       }
   }
   }).timeout(5000);
+
+  it('Should fail to create single provider with missing chainId', async () => {
+    const config = {
+      provider: 'https://eth-mainnet.publicnode.com',
+      priority: 1,
+      weight: 2,
+      stallTimeout: 2500,
+    } as ProviderJson;
+  
+    try {
+      createProviderFromJsonConfig(config);
+      throw new Error("Test should have thrown an error but did not");
+    } catch (error) {
+      if (error instanceof Error) {
+        expect(error.message).to.equal('chainId is required for single provider configuration');
+      } else {
+        throw new Error("Caught an unexpected error type");
+      }
+    }
+  });
 
   it('Should sort ascending and descending', () => {
     const allConfigs = [

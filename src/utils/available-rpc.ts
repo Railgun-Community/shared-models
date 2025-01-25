@@ -1,6 +1,6 @@
 /// <reference types="../types/global" />
 import { JsonRpcProvider, Network, type Provider, WebSocketProvider } from 'ethers';
-import { ProviderJson } from './fallback-provider';
+import { ProviderJson } from './provider';
 import { getUpperBoundMedian } from './median';
 import { promiseTimeout } from './promises';
 
