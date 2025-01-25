@@ -64,7 +64,7 @@ export const createFallbackProviderFromJsonConfig = (
     );
 
     return new FallbackProvider(providers, network, {
-      pollingInterval,
+      pollingInterval
     });
   } catch (cause) {
     if (!(cause instanceof Error)) {
@@ -73,9 +73,7 @@ export const createFallbackProviderFromJsonConfig = (
         { cause },
       );
     }
-    throw new Error(
-      `Invalid fallback provider config for chain ${config.chainId}`,
-      { cause },
-    );
+    // Preserve the original error message
+    throw cause;
   }
 };

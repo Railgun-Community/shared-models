@@ -29,7 +29,7 @@ describe('available-rpc', () => {
     await fallbackProvider.getBlockNumber();
   }).timeout(5000);
 
-  it('Should check fallback provider cascade for FallbackProvider of WSS RPC', async () => {
+  it('Should fail to allow WSS RPC in a FallbackProvider', async () => {
     const config: FallbackProviderJsonConfig = {
       chainId: 1,
       providers: [
@@ -42,9 +42,19 @@ describe('available-rpc', () => {
       ],
     };
 
-    const fallbackProvider = createFallbackProviderFromJsonConfig(config);
-
-    await fallbackProvider.getBlockNumber();
+    try {
+      // This should throw an error because WSS is not supported in FallbackProvider
+      createFallbackProviderFromJsonConfig(config);
+      throw new Error("Test should have thrown an error but did not");
+    } catch (error) {
+      if (error instanceof Error) {
+          expect(error.message).to.equal(
+              "WebSocketProvider not supported in FallbackProvider as it will use polling instead of eth_subscribe"
+          );
+      } else {
+          throw new Error("Caught an unexpected error type");
+      }
+  }
   }).timeout(5000);
 
   it('Should sort ascending and descending', () => {
