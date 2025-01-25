@@ -24,13 +24,19 @@ export const createProviderFromJsonConfig = (
   try {
     // Handle single provider case
     if (!('providers' in config)) {
+      // Get RPC URL
+      const providerURL = config.provider;
+      // Ensure providerURL exists and is a string
+      if (!isDefined(providerURL)) {
+        throw new Error('provider is required for single provider configuration');
+      } else if (typeof providerURL !== 'string') {
+        throw new Error('provider must be a string');
+      }
+
       // Ensure chainId is present
       if (!isDefined(config.chainId)) {
         throw new Error('chainId is required for single provider configuration');
       }
-
-      // Get RPC URL
-      const providerURL = config.provider;
       
       // Create singular provider depending on the URL
       let provider: JsonRpcProvider | WebSocketProvider;

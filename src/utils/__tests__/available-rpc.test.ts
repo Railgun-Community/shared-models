@@ -68,12 +68,32 @@ describe('available-rpc', () => {
   
     try {
       createProviderFromJsonConfig(config);
-      throw new Error("Test should have thrown an error but did not");
+      expect.fail("Test should have thrown an error but did not");
     } catch (error) {
       if (error instanceof Error) {
         expect(error.message).to.equal('chainId is required for single provider configuration');
       } else {
-        throw new Error("Caught an unexpected error type");
+        expect.fail("Caught an unexpected error type");
+      }
+    }
+  });
+
+  it('Should fail to create single provider with missing provider URL', async () => {
+    const config = {
+      chainid: 1,
+      priority: 1,
+      weight: 2,
+      stallTimeout: 2500,
+    };
+  
+    try {
+      createProviderFromJsonConfig(config as unknown as ProviderJson);
+      expect.fail("Test should have thrown an error but did not");
+    } catch (error) {
+      if (error instanceof Error) {
+        expect(error.message).to.equal('provider is required for single provider configuration');
+      } else {
+        expect.fail("Caught an unexpected error type");
       }
     }
   });
