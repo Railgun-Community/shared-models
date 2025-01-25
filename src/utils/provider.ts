@@ -1,5 +1,4 @@
-import { FallbackProvider, JsonRpcProvider, Network, Provider, WebSocketProvider } from 'ethers';
-import { ConfiguredJsonRpcProvider } from './configured-json-rpc-provider';
+import { FallbackProvider, JsonRpcProvider, WebSocketProvider } from 'ethers';
 import { FallbackProviderConfig } from 'ethers/lib.commonjs/providers/provider-fallback';
 import { isDefined } from './util';
 
@@ -20,7 +19,7 @@ export type ProviderJson = {
 export const createProviderFromJsonConfig = (
   config: FallbackProviderJsonConfig | ProviderJson,
   pollingInterval?: number,
-): Provider => {
+): FallbackProvider | WebSocketProvider | JsonRpcProvider => {
   try {
     // Handle single provider case
     if (!('providers' in config)) {
@@ -52,7 +51,7 @@ export const createProviderFromJsonConfig = (
       }
 
       return provider;
-    };
+    }
 
     const totalWeight = config.providers.reduce(
       (acc, { weight }) => acc + weight,
@@ -63,8 +62,6 @@ export const createProviderFromJsonConfig = (
         'Total weight across providers must be >= 2 for fallback quorum.',
       );
     }
-
-    const network = Network.from(Number(config.chainId));
 
     const providers: FallbackProviderConfig[] = config.providers.map(
       ({
@@ -81,12 +78,18 @@ export const createProviderFromJsonConfig = (
           );
         }
 
-        const provider = new ConfiguredJsonRpcProvider(
+        // Create JsonRpcProvider
+        const provider = new JsonRpcProvider(
           providerURL,
-          network,
-          maxLogsPerBatch,
+          config.chainId,
+          {
+            staticNetwork: true,
+            pollingInterval,
+            batchMaxCount: maxLogsPerBatch,
+          },
         );
 
+        // Add JsonRpcProvider to FallbackProviderConfig
         const fallbackProviderConfig: FallbackProviderConfig = {
           provider,
           priority,
@@ -97,7 +100,8 @@ export const createProviderFromJsonConfig = (
       },
     );
 
-    return new FallbackProvider(providers, network, {
+    // Return FallbackProvider containing array of JsonRpcProviders
+    return new FallbackProvider(providers, config.chainId, {
       pollingInterval
     });
   } catch (cause) {
