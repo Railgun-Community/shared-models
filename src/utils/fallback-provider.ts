@@ -1,4 +1,4 @@
-import { FallbackProvider, Network, WebSocketProvider } from 'ethers';
+import { FallbackProvider, Network } from 'ethers';
 import { ConfiguredJsonRpcProvider } from './configured-json-rpc-provider';
 import { FallbackProviderConfig } from 'ethers/lib.commonjs/providers/provider-fallback';
 
@@ -17,6 +17,7 @@ export type ProviderJson = {
 
 export const createFallbackProviderFromJsonConfig = (
   config: FallbackProviderJsonConfig,
+  pollingInterval?: number,
 ): FallbackProvider => {
   try {
     const totalWeight = config.providers.reduce(
@@ -40,13 +41,17 @@ export const createFallbackProviderFromJsonConfig = (
         maxLogsPerBatch,
       }) => {
         const isWebsocket = providerURL.startsWith('wss');
-        const provider = isWebsocket
-          ? new WebSocketProvider(providerURL, network)
-          : new ConfiguredJsonRpcProvider(
-              providerURL,
-              network,
-              maxLogsPerBatch,
-            );
+        if (isWebsocket) {
+          throw new Error(
+            'WebSocketProvider not supported in FallbackProvider as it will use polling instead of eth_subscribe',  
+          );
+        }
+
+        const provider = new ConfiguredJsonRpcProvider(
+          providerURL,
+          network,
+          maxLogsPerBatch,
+        );
 
         const fallbackProviderConfig: FallbackProviderConfig = {
           provider,
@@ -58,7 +63,9 @@ export const createFallbackProviderFromJsonConfig = (
       },
     );
 
-    return new FallbackProvider(providers, network);
+    return new FallbackProvider(providers, network, {
+      pollingInterval,
+    });
   } catch (cause) {
     if (!(cause instanceof Error)) {
       throw new Error(
