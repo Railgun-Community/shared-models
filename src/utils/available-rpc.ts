@@ -68,7 +68,7 @@ const getBlockNumber = async (
 
   // Conditionally handle what type of provider is being passed
   let rpcProvider: Provider;
-  if(provider.startsWith('wss')) {
+  if (provider.startsWith('wss')) {
     rpcProvider = new WebSocketProvider(provider, network, {
       staticNetwork: network, // Network is dictated in the RPC URL, will not change
     });
