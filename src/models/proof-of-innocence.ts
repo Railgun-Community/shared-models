@@ -2,6 +2,13 @@ import { TXIDVersion } from './engine';
 import { NetworkName } from './network-config';
 import { PreTransactionPOIsPerTxidLeafPerList } from './response-types';
 
+// TODO: Migrate to using Chain object directly when PPOI API update is permissioned
+export type ChainParams = {
+  chainType: string;
+  chainID: string;
+  txidVersion: TXIDVersion;
+};
+
 export type TransactProofData = {
   snarkProof: SnarkProof;
   poiMerkleroots: string[];
@@ -51,15 +58,11 @@ export type POIListStatus = {
   latestHistoricalMerkleroot: string;
 };
 
-export type GetTransactProofsParams = {
-  txidVersion: TXIDVersion;
-  bloomFilterSerialized: string;
+export type GetTransactProofsParams = ChainParams & {
   listKey: string;
 };
 
-export type GetBlockedShieldsParams = {
-  txidVersion: TXIDVersion;
-  bloomFilterSerialized: string;
+export type GetBlockedShieldsParams = ChainParams & {
   listKey: string;
 };
 
@@ -81,26 +84,17 @@ export type SingleCommitmentProofsData = {
   pois: PreTransactionPOIsPerTxidLeafPerList;
 };
 
-export type SubmitTransactProofParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type SubmitTransactProofParams = ChainParams & {
   listKey: string;
   transactProofData: TransactProofData;
 };
 
-export type SubmitLegacyTransactProofParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type SubmitLegacyTransactProofParams = ChainParams & {
   listKeys: string[];
   legacyTransactProofDatas: LegacyTransactProofData[];
 };
 
-export type SubmitSingleCommitmentProofsParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type SubmitSingleCommitmentProofsParams = ChainParams & {
   singleCommitmentProofsData: SingleCommitmentProofsData;
 };
 
@@ -110,10 +104,7 @@ export enum BlindedCommitmentType {
   Unshield = 'Unshield',
 }
 
-export type ValidatePOIMerklerootsParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type ValidatePOIMerklerootsParams = ChainParams & {
   listKey: string;
   poiMerkleroots: string[];
 };
@@ -123,36 +114,23 @@ export type BlindedCommitmentData = {
   type: BlindedCommitmentType;
 };
 
-export type GetPOIsPerListParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type GetPOIsPerListParams = ChainParams & {
   listKeys: string[];
   blindedCommitmentDatas: BlindedCommitmentData[];
 };
 
-export type GetMerkleProofsParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type GetMerkleProofsParams = ChainParams & {
   listKey: string;
   blindedCommitments: string[];
 };
 
-export type ValidateTxidMerklerootParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
+export type ValidateTxidMerklerootParams = ChainParams & {
   tree: number;
   index: number;
   merkleroot: string;
 };
 
-export type GetLatestValidatedRailgunTxidParams = {
-  chainType: string;
-  chainID: string;
-  txidVersion: TXIDVersion;
-};
+export type GetLatestValidatedRailgunTxidParams = ChainParams;
 
 export enum POIStatus {
   // POI valdated in event list
