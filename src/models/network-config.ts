@@ -9,6 +9,7 @@ export enum NetworkName {
   BNBChain = 'BNB_Chain',
   Polygon = 'Polygon',
   Arbitrum = 'Arbitrum',
+  Ink = 'Ink',
 
   // Testnets
   EthereumSepolia = 'Ethereum_Sepolia',
@@ -72,6 +73,7 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
   [NetworkName.BNBChain]: '0x590162bf4b50f6576a459b75309ee21d92178a10',
   [NetworkName.Polygon]: '0x19b620929f97b7b990801496c3b361ca5def8c71',
   [NetworkName.Arbitrum]: '0xFA7093CDD9EE6932B4eb2c9e1cde7CE00B1FA4b9',
+  [NetworkName.Ink]: '', // TODO: Add Ink Proxy Contract
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0xeCFCf3b4eC647c4Ca6D49108b311b7a7C9543fea',
@@ -93,6 +95,7 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
   [NetworkName.BNBChain]: '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
   [NetworkName.Polygon]: '0xc7FfA542736321A3dd69246d73987566a5486968',
   [NetworkName.Arbitrum]: '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
+  [NetworkName.Ink]: '', // TODO: Add Ink Relay Adapt
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D',
@@ -114,6 +117,7 @@ export const RailgunProxyDeploymentBlock: Record<NetworkName, number> = {
   [NetworkName.BNBChain]: 17633701,
   [NetworkName.Polygon]: 28083766,
   [NetworkName.Arbitrum]: 56109834,
+  [NetworkName.Ink]: 0, // TODO: Add Ink Proxy Deployment Block
 
   // Test nets
   [NetworkName.EthereumSepolia]: 5784866,
@@ -135,6 +139,7 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
   [NetworkName.BNBChain]: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', // WBNB
   [NetworkName.Polygon]: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', // WMATIC
   [NetworkName.Arbitrum]: '0x82af49447d8a07e3bd95bd0d56f35241523fbab1', // (Arbitrum) WETH
+  [NetworkName.Ink]: '', // TODO: (Ink) WETH
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0xfFf9976782d46CC05630D1f6eBAb18b2324d6B14', // (Sepolia) WETH
@@ -163,6 +168,7 @@ export const RailgunPoseidonMerkleAccumulatorV3Contract: Record<
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
+  [NetworkName.Ink]: '', // TODO
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
@@ -187,6 +193,7 @@ export const RailgunPoseidonMerkleVerifierV3Contract: Record<
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
+  [NetworkName.Ink]: '', // TODO
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
@@ -208,6 +215,7 @@ export const RailgunTokenVaultV3Contract: Record<NetworkName, string> = {
   [NetworkName.BNBChain]: '', // TODO
   [NetworkName.Polygon]: '', // TODO
   [NetworkName.Arbitrum]: '', // TODO
+  [NetworkName.Ink]: '', // TODO
 
   // Test nets
   [NetworkName.EthereumSepolia]: '', // TODO
@@ -232,6 +240,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.BNBChain]: 0, // TODO
   [NetworkName.Polygon]: 0, // TODO
   [NetworkName.Arbitrum]: 0, // TODO
+  [NetworkName.Ink]: 0, // TODO
 
   // Test nets
   [NetworkName.EthereumSepolia]: 0, // TODO
@@ -392,6 +401,41 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Arbitrum],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Arbitrum],
+    supportsV3: false,
+  },
+  [NetworkName.Ink]: {
+    chain: {
+      type: ChainType.EVM,
+      id: 57073,
+    },
+    name: NetworkName.Ink,
+    publicName: 'Ink',
+    shortPublicName: 'Ink',
+    coingeckoId: 'arbitrum-one', // TODO: I think there's no Ink coingecko id
+    baseToken: {
+      symbol: 'ETH',
+      wrappedSymbol: 'WETH',
+      wrappedAddress: BaseTokenWrappedAddress[NetworkName.Ink],
+      decimals: 18,
+    },
+    proxyContract: RailgunProxyContract[NetworkName.Ink],
+    relayAdaptContract: RelayAdaptContract[NetworkName.Ink],
+    relayAdaptHistory: [
+      '', // TODO: // Initial deployment - Feb 2023 post v3.1
+    ],
+    deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ink],
+    defaultEVMGasType: EVMGasType.Type2, // TODO: Check if this is ok
+    poi: {
+      launchBlock: 223895116, // TODO: // Jun-20-2024 04:29:41 PM +UTC
+      launchTimestamp: 1718900981, // TODO:  // Unix timestamp in seconds — Jun-20-2024 04:29:41 PM +UTC
+    },
+    poseidonMerkleAccumulatorV3Contract:
+      RailgunPoseidonMerkleAccumulatorV3Contract[NetworkName.Ink],
+    poseidonMerkleVerifierV3Contract:
+      RailgunPoseidonMerkleVerifierV3Contract[NetworkName.Ink],
+    tokenVaultV3Contract: RailgunTokenVaultV3Contract[NetworkName.Ink],
+    deploymentBlockPoseidonMerkleAccumulatorV3:
+      RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ink],
     supportsV3: false,
   },
 
