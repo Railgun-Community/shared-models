@@ -64,6 +64,8 @@ export type GetTransactProofsParams = ChainParams & {
 
 export type GetBlockedShieldsParams = ChainParams & {
   listKey: string;
+  startIndex?: number; // Optional, defaults to 0
+  endIndex?: number; // Optional, defaults to startIndex + default limit
 };
 
 export type LegacyTransactProofData = {
