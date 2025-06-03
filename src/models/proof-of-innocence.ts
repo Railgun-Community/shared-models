@@ -210,7 +210,9 @@ export const POI_REQUIRED_LISTS: POIList[] = [
 ];
 
 export enum POIJSONRPCMethod {
+  Health = 'ppoi_health',
   NodeStatus = 'ppoi_node_status',
+  NodeStatusForwardedList = 'ppoi_node_status_forwardedList',
   POIEvents = 'ppoi_poi_events',
   POIMerkletreeLeaves = 'ppoi_poi_merkletree_leaves',
   TransactProofs = 'ppoi_transact_proofs',
