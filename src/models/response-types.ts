@@ -230,16 +230,16 @@ export type RailgunHistorySendERC20Amount = RailgunHistoryERC20Amount &
 export type RailgunHistorySendNFTAmount = RailgunHistoryNFTAmount &
   SendAdditionalData;
 
-type UnshieldAdditonalData = {
+type UnshieldAdditionalData = {
   unshieldFee: Optional<string>;
   hasValidPOIForActiveLists: boolean;
 };
 
 export type RailgunHistoryUnshieldERC20Amount = RailgunHistorySendERC20Amount &
-  UnshieldAdditonalData;
+  UnshieldAdditionalData;
 
 export type RailgunHistoryUnshieldNFTAmount = RailgunHistorySendNFTAmount &
-  UnshieldAdditonalData;
+  UnshieldAdditionalData;
 
 type ReceiveAdditionalData = {
   senderAddress: Optional<string>;
