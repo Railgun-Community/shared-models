@@ -1,0 +1,36 @@
+name: Bump version and release
+
+on:
+  push:
+    branches:
+      - release
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
+      - 'yarn.lock'
+
+jobs:
+  semantic-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - run: npm ci
+
+      - name: Lint and Test
+        run: |
+          npm run lint
+          npm test
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
