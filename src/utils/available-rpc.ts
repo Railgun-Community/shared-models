@@ -1,6 +1,6 @@
 /// <reference types="../types/global" />
 import { JsonRpcProvider, Network, type Provider, WebSocketProvider } from 'ethers';
-import { ProviderJson } from './fallback-provider';
+import { ProviderJson } from './provider';
 import { getUpperBoundMedian } from './median';
 import { promiseTimeout } from './promises';
 
@@ -68,13 +68,13 @@ const getBlockNumber = async (
 
   // Conditionally handle what type of provider is being passed
   let rpcProvider: Provider;
-
-  // If URL starts with wss, use WebSocketProvider
-  if(provider.startsWith('wss')) {
-    rpcProvider = new WebSocketProvider(provider, network);
+  if (provider.startsWith('wss')) {
+    rpcProvider = new WebSocketProvider(provider, network, {
+      staticNetwork: network, // Network is dictated in the RPC URL, will not change
+    });
   } else {
     rpcProvider = new JsonRpcProvider(provider, network, {
-      staticNetwork: network,
+      staticNetwork: network, // Network is dictated in the RPC URL, will not change
     });
   }
 
