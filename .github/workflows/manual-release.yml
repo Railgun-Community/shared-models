@@ -67,7 +67,9 @@ jobs:
           else
             npm version ${{ github.event.inputs.release_type }}
             VERSION=$(jq -r .version package.json)
+            git tag -d "v$VERSION"
             git commit --amend -m "chore(Release): v$VERSION [skip ci]"
+            git tag "v$VERSION"
           fi
 
       - name: Push changes
