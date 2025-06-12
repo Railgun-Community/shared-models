@@ -1,0 +1,85 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release type (major, minor, patch)'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+      # This will allow to bump and force push new version without any modifications
+      force:
+        description: 'Force release (skip checks)?'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  prepare-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      - name: Check for new commits since last tag
+        id: check_commits
+        if: github.event.inputs.force != 'true'
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            echo "No previous tags found. Will release current version."
+            echo "has_commits=true" >> $GITHUB_OUTPUT
+          else
+            COMMITS=$(git log "$LAST_TAG"..HEAD --oneline)
+            if [ -n "$COMMITS" ]; then
+              echo "New commits found."
+              echo "has_commits=true" >> $GITHUB_OUTPUT
+            else
+              echo "No new commits since last tag."
+              echo "has_commits=false" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Bump version
+        if: github.event.inputs.force == 'true' || steps.check_commits.outputs.has_commits == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            VERSION=$(jq -r .version package.json)
+            echo "Creating tag for v$VERSION"
+            git tag "v$VERSION"
+          else
+            npm version ${{ github.event.inputs.release_type }}
+            VERSION=$(jq -r .version package.json)
+            git tag -d "v$VERSION"
+            git commit --amend -m "chore(Release): v$VERSION [skip ci]"
+            git tag "v$VERSION"
+          fi
+
+      - name: Push changes
+        if: github.event.inputs.force == 'true' || steps.check_commits.outputs.has_commits == 'true'
+        run: |
+          git push origin ${{ github.ref_name }}
+          git push origin --tags
+
+      - name: Publish to NPM
+        if: github.event.inputs.force == 'true' || steps.check_commits.outputs.has_commits == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
