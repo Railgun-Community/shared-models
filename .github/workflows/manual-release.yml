@@ -33,7 +33,7 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
 
-      - run: npm i
+      - run: npm i --no-package-lock
 
       - name: Check for new commits since last tag
         id: check_commits
