@@ -1,6 +1,7 @@
 import { TXIDVersion } from './engine';
 import { NetworkName } from './network-config';
 import { PreTransactionPOIsPerTxidLeafPerList } from './response-types';
+import type { Optional } from '../types/global';
 
 // TODO: Migrate to using Chain object directly when PPOI API update is permissioned
 export type ChainParams = {

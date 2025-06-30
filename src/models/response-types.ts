@@ -1,9 +1,9 @@
-/// <reference types="../types/global" />
 import { ContractTransaction } from 'ethers';
 import { MerkletreeScanStatus } from './merkletree-scan';
 import { FeesSerialized } from './network-config';
 import { TXIDVersion } from './engine';
 import { RailgunWalletBalanceBucket } from './balance';
+import type { Optional } from '../types/global';
 
 export type RailgunAPICiphertext = {
   iv: string;

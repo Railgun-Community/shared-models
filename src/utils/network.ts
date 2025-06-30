@@ -1,5 +1,6 @@
 import { Network, NETWORK_CONFIG, NetworkName } from '../models/network-config';
 import { Chain } from '../models/response-types';
+import type { Optional } from '../types/global';
 
 export const networkForChain = (chain: Chain): Optional<Network> => {
   return Object.values(NETWORK_CONFIG).find(

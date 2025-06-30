@@ -1,3 +1,5 @@
+import type { Optional } from '../types/global';
+
 export type Artifact = {
   zkey: ArrayLike<number>;
   wasm: Optional<ArrayLike<number>>;
