@@ -1,4 +1,3 @@
-/// <reference types="../../types/global" />
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { delay, promiseTimeout, poll } from '../promises';

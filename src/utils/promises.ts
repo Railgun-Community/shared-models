@@ -1,3 +1,5 @@
+import type { Optional } from '../types/global';
+
 export const delay = (delayInMS: number): Promise<void> => {
   return new Promise(resolve => setTimeout(resolve, delayInMS));
 };

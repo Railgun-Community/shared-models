@@ -1,4 +1,5 @@
 import { Chain, ChainType, EVMGasType } from './response-types';
+import type { Optional } from '../types/global';
 
 /**
  * DO NOT CHANGE THESE ENUM STRINGS.

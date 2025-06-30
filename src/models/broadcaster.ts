@@ -5,6 +5,7 @@ import {
   CommitmentCiphertextV3,
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
+import type { MapType, Optional } from '../types/global';
 
 export const MIN_BROADCASTER_RELIABILITY_SCORE = 0.75;
 

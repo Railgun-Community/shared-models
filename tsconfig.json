@@ -11,8 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "outDir": "dist",
     "strict": true,
-    "types": ["node", "mocha"],
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "types": ["node", "mocha"]
   },
   "ts-node": { "files": true },
   "include": ["./src/**/*.ts"],
