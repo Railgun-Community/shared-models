@@ -90,10 +90,10 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
 
 export const RelayAdaptContract: Record<NetworkName, string> = {
   // Main nets
-  [NetworkName.Ethereum]: '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
-  [NetworkName.BNBChain]: '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
-  [NetworkName.Polygon]: '0xc7FfA542736321A3dd69246d73987566a5486968',
-  [NetworkName.Arbitrum]: '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
+  [NetworkName.Ethereum]: '0xAc9f360Ae85469B27aEDdEaFC579Ef2d052aD405',
+  [NetworkName.BNBChain]: '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd',
+  [NetworkName.Polygon]: '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd',
+  [NetworkName.Arbitrum]: '0xB4F2d77bD12c6b548Ae398244d7FAD4ABCE4D89b',
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D',
