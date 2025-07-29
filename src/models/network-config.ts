@@ -90,10 +90,10 @@ export const RailgunProxyContract: Record<NetworkName, string> = {
 
 export const RelayAdaptContract: Record<NetworkName, string> = {
   // Main nets
-  [NetworkName.Ethereum]: '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a',
-  [NetworkName.BNBChain]: '0x741936fb83DDf324636D3048b3E6bC800B8D9e12',
-  [NetworkName.Polygon]: '0xc7FfA542736321A3dd69246d73987566a5486968',
-  [NetworkName.Arbitrum]: '0x5aD95C537b002770a39dea342c4bb2b68B1497aA',
+  [NetworkName.Ethereum]: '0xAc9f360Ae85469B27aEDdEaFC579Ef2d052aD405',
+  [NetworkName.BNBChain]: '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd',
+  [NetworkName.Polygon]: '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd',
+  [NetworkName.Arbitrum]: '0xB4F2d77bD12c6b548Ae398244d7FAD4ABCE4D89b',
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D',
@@ -270,6 +270,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x22af4EDBeA3De885dDa8f0a0653E6209e44e5B84', // Initial deployment
       '0xc3f2C8F9d5F0705De706b1302B7a039e1e11aC88', // V3.0 Update - Nov 2022
       '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a', // V3.1 Update - Jan 2023
+      '0xAc9f360Ae85469B27aEDdEaFC579Ef2d052aD405', // Upgrade Jul 2025
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     deploymentBlockPoseidonMerkleAccumulatorV3:
@@ -307,6 +308,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x20d868C7F1Eb706C46641ADD2f849c5DBf4dB158', // Initial deployment
       '0x25f795A8eC8aF7904aa403fF2Cc7205ce683BF52', // V3.0 Update - Nov 2022
       '0x741936fb83DDf324636D3048b3E6bC800B8D9e12', // V3.1 Update - Jan 2023
+      '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.BNBChain],
     defaultEVMGasType: EVMGasType.Type0,
@@ -344,6 +346,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x30D8AD0339e2CF160620589f2DBa1765126A5fDC', // Initial deployment
       '0x969eE9AC1E0B5F5Dd781f63A168C52b73062ff86', // V3.0 Update - Nov 2022
       '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
+      '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
@@ -379,6 +382,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptContract: RelayAdaptContract[NetworkName.Arbitrum],
     relayAdaptHistory: [
       '0x5aD95C537b002770a39dea342c4bb2b68B1497aA', // Initial deployment - Feb 2023 post v3.1
+      '0xB4F2d77bD12c6b548Ae398244d7FAD4ABCE4D89b', // Upgrade Jul 2025
     ],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Arbitrum],
     defaultEVMGasType: EVMGasType.Type2,
