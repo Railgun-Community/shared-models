@@ -4,7 +4,6 @@ import {
   ChainType,
   CommitmentCiphertextV2,
   CommitmentCiphertextV3,
-  EVMGasType,
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 import type { MapType, Optional } from '../types/global';
@@ -20,6 +19,7 @@ export type BroadcasterFeeMessageData = {
   availableWallets: number;
   version: string;
   relayAdapt: string;
+  relayAdapt7702?: string;
   requiredPOIListKeys: string[];
   reliability: number;
 };
@@ -98,6 +98,7 @@ export type CachedTokenFee = {
   feesID: string;
   availableWallets: number;
   relayAdapt: string;
+  relayAdapt7702?: string;
   reliability: number;
 };
 
