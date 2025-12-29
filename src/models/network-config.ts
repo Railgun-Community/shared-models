@@ -104,7 +104,7 @@ export const RelayAdaptContract: Record<NetworkName, string> = {
   [NetworkName.PolygonAmoy]: '0xc340f7E17A42154674d6B50190386C9a2982D12E',
 
   // Dev only
-  [NetworkName.Hardhat]: '0x0355B7B8cb128fA5692729Ab3AAa199C1753f726',
+  [NetworkName.Hardhat]: '0xfaAddC93baf78e89DCf37bA67943E1bE8F37Bb8c',
 
   // Deprecated
   [NetworkName.EthereumRopsten_DEPRECATED]: '',
@@ -146,7 +146,7 @@ export const BaseTokenWrappedAddress: Record<NetworkName, string> = {
   [NetworkName.PolygonAmoy]: '0x21d4Ec3C9a2408C5535ecc26a09d94dC7B7f5c10', // (Amoy) WMATIC
 
   // Dev only
-  [NetworkName.Hardhat]: '0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7', // (Hardhat) WETH
+  [NetworkName.Hardhat]: '0xA7c59f010700930003b33aB25a7a0679C860f29c', // (Hardhat) WETH
 
   // Deprecated
   [NetworkName.EthereumRopsten_DEPRECATED]:
@@ -252,19 +252,28 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.PolygonMumbai_DEPRECATED]: 0,
 };
 
+// MAINNET_RAILGUN_REGISTRY_ADDRESS=0x6fa84bc1587cc90978dc9535d4d38dc74fa4b522
+// MAINNET_RELAY_ADAPT_ADDRESS=0x2df3d82c06339387a4532c685daaf39a218cf56e
+// BINANCE_RAILGUN_REGISTRY_ADDRESS=0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f
+// BINANCE_RELAY_ADAPT_ADDRESS=0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522
+// POLYGON_RAILGUN_REGISTRY_ADDRESS=0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f
+// POLYGON_RELAY_ADAPT_ADDRESS=0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522
+// ARBITRUM_RAILGUN_REGISTRY_ADDRESS=0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f
+// ARBITRUM_RELAY_ADAPT_ADDRESS=0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522
+
 export const RailgunRegistryContract: Record<NetworkName, string> = {
   // Main nets
-  [NetworkName.Ethereum]: '',
-  [NetworkName.BNBChain]: '',
-  [NetworkName.Polygon]: '',
-  [NetworkName.Arbitrum]: '',
+  [NetworkName.Ethereum]: '0x6fa84bc1587cc90978dc9535d4d38dc74fa4b522',
+  [NetworkName.BNBChain]: '0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f',
+  [NetworkName.Polygon]: '0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f',
+  [NetworkName.Arbitrum]: '0xD2014c99566d9e932e3Cfa7aCe840FC570e0fD5f',
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0xFe276aD6a9Be967292D7fcb74E5510a1A6796bFb',
   [NetworkName.PolygonAmoy]: '',
 
   // Dev only
-  [NetworkName.Hardhat]: '',
+  [NetworkName.Hardhat]: '0x3155755b79aA083bd953911C92705B7aA82a18F9',
 
   // Deprecated
   [NetworkName.EthereumRopsten_DEPRECATED]: '',
@@ -275,17 +284,17 @@ export const RailgunRegistryContract: Record<NetworkName, string> = {
 
 export const RelayAdapt7702Contract: Record<NetworkName, string> = {
   // Main nets
-  [NetworkName.Ethereum]: '',
-  [NetworkName.BNBChain]: '',
-  [NetworkName.Polygon]: '',
-  [NetworkName.Arbitrum]: '',
+  [NetworkName.Ethereum]: '0x2df3d82c06339387a4532c685daaf39a218cf56e',
+  [NetworkName.BNBChain]: '0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522',
+  [NetworkName.Polygon]: '0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522',
+  [NetworkName.Arbitrum]: '0x6fA84Bc1587CC90978dC9535d4d38DC74fa4b522',
 
   // Test nets
   [NetworkName.EthereumSepolia]: '0x19702345c059ac86a1f17434ebE0227D62F5965f',
   [NetworkName.PolygonAmoy]: '',
 
   // Dev only
-  [NetworkName.Hardhat]: '',
+  [NetworkName.Hardhat]: '0x5bf5b11053e734690269C6B9D438F8C9d48F528A',
 
   // Deprecated
   [NetworkName.EthereumRopsten_DEPRECATED]: '',
@@ -319,7 +328,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a', // V3.1 Update - Jan 2023
       '0xAc9f360Ae85469B27aEDdEaFC579Ef2d052aD405', // Upgrade Jul 2025
     ],
-    supports7702: false,
+    supports7702: true,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Ethereum],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
     railgunRegistryContract:
@@ -362,7 +371,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x741936fb83DDf324636D3048b3E6bC800B8D9e12', // V3.1 Update - Jan 2023
       '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
-    supports7702: false,
+    supports7702: true,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.BNBChain],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
     railgunRegistryContract:
@@ -405,7 +414,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
       '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
-    supports7702: false,
+    supports7702: true,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Polygon],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
     railgunRegistryContract:
@@ -446,7 +455,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x5aD95C537b002770a39dea342c4bb2b68B1497aA', // Initial deployment - Feb 2023 post v3.1
       '0xB4F2d77bD12c6b548Ae398244d7FAD4ABCE4D89b', // Upgrade Jul 2025
     ],
-    supports7702: false,
+    supports7702: true,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Arbitrum],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
     railgunRegistryContract:
@@ -771,7 +780,7 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       decimals: 18,
     },
     proxyContract: RailgunProxyContract[NetworkName.Hardhat],
-    supports7702: false,
+    supports7702: true,
     relayAdaptContract: RelayAdaptContract[NetworkName.Hardhat],
     relayAdaptHistory: [''],
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Hardhat],
