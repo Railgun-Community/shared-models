@@ -18,12 +18,14 @@ export enum EVMGasType {
   Type0 = 0,
   Type1 = 1,
   Type2 = 2,
+  Type4 = 4,
 }
 
 export type TransactionGasDetails =
   | TransactionGasDetailsType0
   | TransactionGasDetailsType1
-  | TransactionGasDetailsType2;
+  | TransactionGasDetailsType2
+  | TransactionGasDetailsType4;
 
 export type TransactionGasDetailsType0 = {
   evmGasType: EVMGasType.Type0;
@@ -39,6 +41,13 @@ export type TransactionGasDetailsType1 = {
 
 export type TransactionGasDetailsType2 = {
   evmGasType: EVMGasType.Type2;
+  gasEstimate: bigint;
+  maxFeePerGas: bigint;
+  maxPriorityFeePerGas: bigint;
+};
+
+export type TransactionGasDetailsType4 = {
+  evmGasType: EVMGasType.Type4;
   gasEstimate: bigint;
   maxFeePerGas: bigint;
   maxPriorityFeePerGas: bigint;
@@ -314,4 +323,13 @@ export type CommitmentCiphertextV3 = {
 export type CommitmentSummary = {
   commitmentCiphertext: CommitmentCiphertextV2 | CommitmentCiphertextV3;
   commitmentHash: string;
+};
+
+export type EIP7702Authorization = {
+  chainId: string;
+  address: string;
+  nonce: number;
+  yParity: number;
+  r: string;
+  s: string;
 };

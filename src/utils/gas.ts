@@ -27,7 +27,8 @@ export const calculateGasPrice = (gasDetails: TransactionGasDetails) => {
     case EVMGasType.Type1: {
       return gasDetails.gasPrice;
     }
-    case EVMGasType.Type2: {
+    case EVMGasType.Type2:
+    case EVMGasType.Type4: {
       return gasDetails.maxFeePerGas;
     }
   }

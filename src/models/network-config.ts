@@ -54,6 +54,10 @@ export type Network = {
   proxyContract: string;
   relayAdaptContract: string;
   relayAdaptHistory: string[];
+  supports7702: boolean;
+  relayAdapt7702Contract: string;
+  relayAdapt7702History: string[];
+  relayAdapt7702DeployerContract: string;
   deploymentBlock: number;
   poseidonMerkleAccumulatorV3Contract: string;
   poseidonMerkleVerifierV3Contract: string;
@@ -248,6 +252,50 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.PolygonMumbai_DEPRECATED]: 0,
 };
 
+// 7702 Adapt Deployer not yet deployed on mainnets/testnets
+export const RelayAdapt7702DeployerContract: Record<NetworkName, string> = {
+  // Main nets
+  [NetworkName.Ethereum]: '',
+  [NetworkName.BNBChain]: '',
+  [NetworkName.Polygon]: '',
+  [NetworkName.Arbitrum]: '',
+
+  // Test nets
+  [NetworkName.EthereumSepolia]: '',
+  [NetworkName.PolygonAmoy]: '',
+
+  // Dev only
+  [NetworkName.Hardhat]: '',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+  [NetworkName.PolygonMumbai_DEPRECATED]: '',
+};
+
+export const RelayAdapt7702Contract: Record<NetworkName, string> = {
+  // Main nets
+  [NetworkName.Ethereum]: '',
+  [NetworkName.BNBChain]: '',
+  [NetworkName.Polygon]: '',
+  [NetworkName.Arbitrum]: '',
+
+  // Test nets
+  [NetworkName.EthereumSepolia]: '',
+  [NetworkName.PolygonAmoy]: '',
+
+  // Dev only
+  [NetworkName.Hardhat]: '',
+
+  // Deprecated
+  [NetworkName.EthereumRopsten_DEPRECATED]: '',
+  [NetworkName.EthereumGoerli_DEPRECATED]: '',
+  [NetworkName.ArbitrumGoerli_DEPRECATED]: '',
+  [NetworkName.PolygonMumbai_DEPRECATED]: '',
+};
+
+
 export const NETWORK_CONFIG: Record<NetworkName, Network> = {
   [NetworkName.Ethereum]: {
     chain: {
@@ -272,6 +320,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x4025ee6512DBbda97049Bcf5AA5D38C54aF6bE8a', // V3.1 Update - Jan 2023
       '0xAc9f360Ae85469B27aEDdEaFC579Ef2d052aD405', // Upgrade Jul 2025
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Ethereum],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.Ethereum],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
@@ -310,6 +363,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x741936fb83DDf324636D3048b3E6bC800B8D9e12', // V3.1 Update - Jan 2023
       '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.BNBChain],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.BNBChain],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.BNBChain],
     defaultEVMGasType: EVMGasType.Type0,
     poi: {
@@ -348,6 +406,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0xc7FfA542736321A3dd69246d73987566a5486968', // V3.1 Update - Jan 2023
       '0xF82d00fC51F730F42A00F85E74895a2849ffF2Dd', // Upgrade Jul 2025
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Polygon],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.Polygon],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
@@ -384,6 +447,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x5aD95C537b002770a39dea342c4bb2b68B1497aA', // Initial deployment - Feb 2023 post v3.1
       '0xB4F2d77bD12c6b548Ae398244d7FAD4ABCE4D89b', // Upgrade Jul 2025
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Arbitrum],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.Arbitrum],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Arbitrum],
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
@@ -422,6 +490,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptContract:
       RelayAdaptContract[NetworkName.EthereumRopsten_DEPRECATED],
     relayAdaptHistory: [''],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumRopsten_DEPRECATED],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.EthereumRopsten_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.EthereumRopsten_DEPRECATED],
     isTestnet: true,
@@ -468,6 +541,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x6E9C59F042acB1577A297eDE607c21Ff284846F3', // V3.1 partial update - Jan 2023
       '0x14a57CA7C5c1AD54fB6c642f428d973fcD696ED4', // V3.1 Update - Jan 2023
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumGoerli_DEPRECATED],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.EthereumGoerli_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli_DEPRECATED],
     isTestnet: true,
@@ -512,6 +590,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptHistory: [
       '0x7e3d929EbD5bDC84d02Bd3205c777578f33A214D', // Deployment - Apr 2024
     ],
+    supports7702: true,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumSepolia],  
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.EthereumSepolia],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumSepolia],
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -553,6 +636,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptHistory: [
       '0xc340f7E17A42154674d6B50190386C9a2982D12E', // Initial deployment
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.PolygonAmoy],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.PolygonAmoy],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -593,6 +681,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x80efF1a8939C9B6E8C61Ed5Be683Eda21088B7E6', // V3.0 Update - Nov 2022
       '0x17D36875D723Cf0dA250d404Ef4cA0aABE105837', // V3.1 Update - Jan 2023
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.PolygonMumbai_DEPRECATED],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.PolygonMumbai_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.PolygonMumbai_DEPRECATED],
     isDevOnlyNetwork: true,
@@ -638,6 +731,11 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       '0x7E77d890179Aa683ac2B9A608bd8121255CAa917', // Initial deployment (post v3.0)
       '0x3eAf99B5EDc79D833AA8B6d18F0a8dd041e13eF6', // V3.1 Update - Jan 2023
     ],
+    supports7702: false,
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.ArbitrumGoerli_DEPRECATED],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.ArbitrumGoerli_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli_DEPRECATED],
     isTestnet: true,
@@ -674,8 +772,13 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
       decimals: 18,
     },
     proxyContract: RailgunProxyContract[NetworkName.Hardhat],
+    supports7702: false,
     relayAdaptContract: RelayAdaptContract[NetworkName.Hardhat],
     relayAdaptHistory: [''],
+    relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Hardhat],
+    relayAdapt7702History: [], // no need for history, theres a set on chain?
+    relayAdapt7702DeployerContract:
+      RelayAdapt7702DeployerContract[NetworkName.Hardhat],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Hardhat],
     isDevOnlyNetwork: true,
     isTestnet: true,

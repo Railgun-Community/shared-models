@@ -4,6 +4,7 @@ import {
   CommitmentCiphertextV2,
   CommitmentCiphertextV3,
   PreTransactionPOIsPerTxidLeafPerList,
+  EIP7702Authorization,
 } from './response-types';
 import type { MapType, Optional } from '../types/global';
 
@@ -51,6 +52,7 @@ export type BroadcasterRawParamsTransact = BroadcasterRawParamsShared & {
   minGasPrice: string;
   useRelayAdapt: boolean;
   preTransactionPOIsPerTxidLeafPerList: PreTransactionPOIsPerTxidLeafPerList;
+  authorization?: EIP7702Authorization;
 };
 
 export type BroadcasterRawParamsPreAuthorize = BroadcasterRawParamsShared & {
