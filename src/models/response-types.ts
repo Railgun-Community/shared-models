@@ -325,11 +325,3 @@ export type CommitmentSummary = {
   commitmentHash: string;
 };
 
-export type EIP7702Authorization = {
-  chainId: string;
-  address: string;
-  nonce: number;
-  yParity: number;
-  r: string;
-  s: string;
-};
