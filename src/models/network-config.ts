@@ -261,7 +261,7 @@ export const RelayAdapt7702DeployerContract: Record<NetworkName, string> = {
   [NetworkName.Arbitrum]: '',
 
   // Test nets
-  [NetworkName.EthereumSepolia]: '',
+  [NetworkName.EthereumSepolia]: '0xFe276aD6a9Be967292D7fcb74E5510a1A6796bFb',
   [NetworkName.PolygonAmoy]: '',
 
   // Dev only
@@ -282,7 +282,7 @@ export const RelayAdapt7702Contract: Record<NetworkName, string> = {
   [NetworkName.Arbitrum]: '',
 
   // Test nets
-  [NetworkName.EthereumSepolia]: '',
+  [NetworkName.EthereumSepolia]: '0x19702345c059ac86a1f17434ebE0227D62F5965f',
   [NetworkName.PolygonAmoy]: '',
 
   // Dev only
