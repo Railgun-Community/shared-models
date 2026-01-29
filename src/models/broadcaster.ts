@@ -4,6 +4,7 @@ import {
   ChainType,
   CommitmentCiphertextV2,
   CommitmentCiphertextV3,
+  EVMGasType,
   PreTransactionPOIsPerTxidLeafPerList,
 } from './response-types';
 import type { MapType, Optional } from '../types/global';
@@ -46,14 +47,34 @@ type BroadcasterRawParamsShared = {
   maxVersion: string;
 };
 
-export type BroadcasterRawParamsTransact = BroadcasterRawParamsShared & {
+export type BroadcasterTransactRequestRaw = BroadcasterRawParamsShared & {
   to: string;
   data: string;
-  minGasPrice: string;
   useRelayAdapt: boolean;
   preTransactionPOIsPerTxidLeafPerList: PreTransactionPOIsPerTxidLeafPerList;
-  authorization?: Authorization;
+}
+
+export enum BroadcasterTransactRequestType {
+  COMMON = 'COMMON',
+  TX7702 = 'TX7702',
+}
+
+export type BroadcasterRawParamsTransactCommon = BroadcasterTransactRequestRaw & {
+  transactType: BroadcasterTransactRequestType.COMMON;
+  minGasPrice: string;
 };
+
+export type BroadcasterRawParamsTransactEIP7702 = BroadcasterRawParamsShared & {
+  transactType: BroadcasterTransactRequestType.TX7702;
+  // Explicit ERC-1559 fee fields. These are REQUIRED for ERC-7702 (type 4).
+  maxFeePerGas: string;
+  maxPriorityFeePerGas: string;
+  authorization: Authorization;
+};
+
+export type BroadcasterRawParamsTransact =
+  | BroadcasterRawParamsTransactCommon
+  | BroadcasterRawParamsTransactEIP7702;
 
 export type BroadcasterRawParamsPreAuthorize = BroadcasterRawParamsShared & {
   gasLimit: string;

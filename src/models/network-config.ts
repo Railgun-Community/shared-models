@@ -57,7 +57,7 @@ export type Network = {
   supports7702: boolean;
   relayAdapt7702Contract: string;
   relayAdapt7702History: string[];
-  relayAdapt7702DeployerContract: string;
+  railgunRegistryContract: string;
   deploymentBlock: number;
   poseidonMerkleAccumulatorV3Contract: string;
   poseidonMerkleVerifierV3Contract: string;
@@ -253,7 +253,7 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
 };
 
 // 7702 Adapt Deployer not yet deployed on mainnets/testnets
-export const RelayAdapt7702DeployerContract: Record<NetworkName, string> = {
+export const RailgunRegistryContract: Record<NetworkName, string> = {
   // Main nets
   [NetworkName.Ethereum]: '',
   [NetworkName.BNBChain]: '',
@@ -323,8 +323,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Ethereum],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.Ethereum],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.Ethereum],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Ethereum],
     deploymentBlockPoseidonMerkleAccumulatorV3:
       RailgunPoseidonMerkleAccumulatorV3DeploymentBlock[NetworkName.Ethereum],
@@ -366,8 +366,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.BNBChain],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.BNBChain],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.BNBChain],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.BNBChain],
     defaultEVMGasType: EVMGasType.Type0,
     poi: {
@@ -409,8 +409,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Polygon],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.Polygon],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.Polygon],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Polygon],
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
@@ -450,8 +450,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Arbitrum],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.Arbitrum],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.Arbitrum],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Arbitrum],
     defaultEVMGasType: EVMGasType.Type2,
     poi: {
@@ -493,8 +493,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumRopsten_DEPRECATED],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.EthereumRopsten_DEPRECATED],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.EthereumRopsten_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.EthereumRopsten_DEPRECATED],
     isTestnet: true,
@@ -544,8 +544,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumGoerli_DEPRECATED],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.EthereumGoerli_DEPRECATED],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.EthereumGoerli_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.EthereumGoerli_DEPRECATED],
     isTestnet: true,
@@ -593,8 +593,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: true,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.EthereumSepolia],  
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.EthereumSepolia],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.EthereumSepolia],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.EthereumSepolia],
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -639,8 +639,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.PolygonAmoy],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.PolygonAmoy],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.PolygonAmoy],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.PolygonAmoy],
     isDevOnlyNetwork: true,
     isTestnet: true,
@@ -684,8 +684,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.PolygonMumbai_DEPRECATED],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.PolygonMumbai_DEPRECATED],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.PolygonMumbai_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.PolygonMumbai_DEPRECATED],
     isDevOnlyNetwork: true,
@@ -734,8 +734,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     supports7702: false,
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.ArbitrumGoerli_DEPRECATED],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.ArbitrumGoerli_DEPRECATED],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.ArbitrumGoerli_DEPRECATED],
     deploymentBlock:
       RailgunProxyDeploymentBlock[NetworkName.ArbitrumGoerli_DEPRECATED],
     isTestnet: true,
@@ -777,8 +777,8 @@ export const NETWORK_CONFIG: Record<NetworkName, Network> = {
     relayAdaptHistory: [''],
     relayAdapt7702Contract: RelayAdapt7702Contract[NetworkName.Hardhat],
     relayAdapt7702History: [], // no need for history, theres a set on chain?
-    relayAdapt7702DeployerContract:
-      RelayAdapt7702DeployerContract[NetworkName.Hardhat],
+    railgunRegistryContract:
+      RailgunRegistryContract[NetworkName.Hardhat],
     deploymentBlock: RailgunProxyDeploymentBlock[NetworkName.Hardhat],
     isDevOnlyNetwork: true,
     isTestnet: true,
