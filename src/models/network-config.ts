@@ -252,7 +252,6 @@ export const RailgunPoseidonMerkleAccumulatorV3DeploymentBlock: Record<
   [NetworkName.PolygonMumbai_DEPRECATED]: 0,
 };
 
-// 7702 Adapt Deployer not yet deployed on mainnets/testnets
 export const RailgunRegistryContract: Record<NetworkName, string> = {
   // Main nets
   [NetworkName.Ethereum]: '',
