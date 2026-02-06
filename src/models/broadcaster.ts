@@ -64,7 +64,7 @@ export type BroadcasterRawParamsTransactCommon = BroadcasterTransactRequestRaw &
   minGasPrice: string;
 };
 
-export type BroadcasterRawParamsTransactEIP7702 = BroadcasterRawParamsShared & {
+export type BroadcasterRawParamsTransactERC7702 = BroadcasterRawParamsShared & {
   transactType: BroadcasterTransactRequestType.TX7702;
   // Explicit ERC-1559 fee fields. These are REQUIRED for ERC-7702 (type 4).
   maxFeePerGas: string;
@@ -74,7 +74,7 @@ export type BroadcasterRawParamsTransactEIP7702 = BroadcasterRawParamsShared & {
 
 export type BroadcasterRawParamsTransact =
   | BroadcasterRawParamsTransactCommon
-  | BroadcasterRawParamsTransactEIP7702;
+  | BroadcasterRawParamsTransactERC7702;
 
 export type BroadcasterRawParamsPreAuthorize = BroadcasterRawParamsShared & {
   gasLimit: string;
