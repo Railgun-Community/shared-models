@@ -1,6 +1,10 @@
 {
   "name": "@railgun-community/shared-models",
-  "version": "8.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Railgun-Community/shared-models.git"
+  },
+  "version": "8.0.1",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
