@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/Railgun-Community/shared-models.git"
   },
-  "version": "8.1.97",
+  "version": "8.2.1",
   "license": "MIT",
   "main": "dist/index.js",
   "files": [
