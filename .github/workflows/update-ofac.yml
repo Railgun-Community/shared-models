@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '10 23 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update:
     name: Update OFAC Sanctions List
@@ -16,14 +21,37 @@ jobs:
           cache: 'yarn'
       - name: Run script
         run: node update-ofac-list.cjs
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'chore: update OFAC sanctions list'
-          title: 'chore: update OFAC sanctions list'
-          body: 'This PR updates the OFAC sanctions list.'
-          branch: 'update-ofac-sanctions-list'
-          base: 'main'
-          labels: 'automated'
+      - name: Open / update Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_BRANCH: update-ofac-sanctions-list
+          PR_BASE: main
+          PR_TITLE: 'chore: update OFAC sanctions list'
+          PR_BODY: 'This PR updates the OFAC sanctions list.'
+          COMMIT_MESSAGE: 'chore: update OFAC sanctions list'
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "$PR_BRANCH"
+          git add -A
+          git commit -m "$COMMIT_MESSAGE"
+          git push -f origin "$PR_BRANCH"
+          if gh pr view "$PR_BRANCH" --json number >/dev/null 2>&1; then
+            echo "PR already exists for $PR_BRANCH — branch updated via force-push."
+          else
+            gh pr create \
+              --base "$PR_BASE" \
+              --head "$PR_BRANCH" \
+              --title "$PR_TITLE" \
+              --body "$PR_BODY" \
+              --label "automated" || \
+              gh pr create \
+                --base "$PR_BASE" \
+                --head "$PR_BRANCH" \
+                --title "$PR_TITLE" \
+                --body "$PR_BODY"
+          fi
