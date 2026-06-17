@@ -20,3 +20,15 @@ export const isHistoricalRelayAdaptContractAddress = (
     }) != null
   );
 };
+
+export const isHistoricalRelayAdapt7702ContractAddress = (
+  networkName: NetworkName,
+  address: string,
+) => {
+  const network = NETWORK_CONFIG[networkName];
+  return (
+    network.relayAdapt7702History.find(historicalAddress => {
+      return historicalAddress.toLowerCase() === address.toLowerCase();
+    }) != null
+  );
+};
