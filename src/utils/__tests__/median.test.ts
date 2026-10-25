@@ -13,5 +13,8 @@ describe('median', () => {
     expect(getUpperBoundMedian([1, 2, 5, 6])).to.equal(5);
     expect(getUpperBoundMedian([1, 2, 5, 6, 7])).to.equal(5);
     expect(getUpperBoundMedian([1, 2, 6, 7, 5])).to.equal(5);
+    expect(getUpperBoundMedian([9, 10])).to.equal(10);
+    expect(getUpperBoundMedian([8, 9, 10])).to.equal(9);
+    expect(getUpperBoundMedian([23_600_000, 9_400_000])).to.equal(23_600_000);
   });
 });

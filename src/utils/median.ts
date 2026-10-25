@@ -3,6 +3,6 @@ export const getUpperBoundMedian = (numbers: number[]) => {
     return 0;
   }
   const index = Math.floor(numbers.length / 2);
-  const sorted = numbers.sort();
+  const sorted = [...numbers].sort((a, b) => a - b);
   return sorted[index];
 };
